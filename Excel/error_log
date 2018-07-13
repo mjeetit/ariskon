@@ -1,0 +1,86 @@
+[08-Mar-2017 05:31:08 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:25 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:27 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:28 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:29 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:30 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:31 America/Denver] PHP Fatal error:  Class 'PHPExcel_Reader_Excel2007_Theme' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel2007.php on line 532
+[08-Mar-2017 05:31:46 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:31:46 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:31:47 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:31:47 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:31:52 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:31:52 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:32:23 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:32:23 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:32:39 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:32:39 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:32:42 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:32:42 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:32:44 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:32:44 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:33:03 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:33:03 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:34:09 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:34:09 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:34:14 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:34:14 America/Denver] PHP Fatal error:  Class 'PHPExcel_Writer_Excel2007_StringTable' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Writer/Excel2007.php on line 163
+[08-Mar-2017 05:52:11 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[08-Mar-2017 05:52:17 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home4/jclifesc/public_html/hrm/Excel/test.php on line 18
+[08-Mar-2017 05:52:17 America/Denver] PHP Notice:  Undefined index: term in /home4/jclifesc/public_html/hrm/Excel/test.php on line 20
+[08-Mar-2017 05:52:17 America/Denver] PHP Warning:  mysqli::query(): Couldn't fetch mysqli in /home4/jclifesc/public_html/hrm/Excel/test.php on line 22
+[08-Mar-2017 05:52:17 America/Denver] PHP Fatal error:  Call to a member function fetch_assoc() on a non-object in /home4/jclifesc/public_html/hrm/Excel/test.php on line 23
+[08-Mar-2017 05:54:24 America/Denver] PHP Warning:  mysqli::mysqli(): (28000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home4/jclifesc/public_html/hrm/Excel/test.php on line 18
+[08-Mar-2017 05:54:24 America/Denver] PHP Warning:  mysqli_query(): Couldn't fetch mysqli in /home4/jclifesc/public_html/hrm/Excel/test.php on line 31
+[08-Mar-2017 05:54:24 America/Denver] PHP Warning:  mysqli_fetch_row() expects parameter 1 to be mysqli_result, null given in /home4/jclifesc/public_html/hrm/Excel/test.php on line 32
+[08-Mar-2017 05:54:24 America/Denver] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Invalid cell coordinate C' in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php:539
+Stack trace:
+#0 /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Worksheet.php(1121): PHPExcel_Cell::coordinateFromString('C')
+#1 /home4/jclifesc/public_html/hrm/Excel/test.php(37): PHPExcel_Worksheet->getCell('C')
+#2 {main}
+  thrown in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php on line 539
+[08-Mar-2017 06:16:04 America/Denver] PHP Notice:  Array to string conversion in /home4/jclifesc/public_html/hrm/Excel/test.php on line 37
+[08-Mar-2017 06:16:04 America/Denver] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Invalid cell coordinate CARRAY' in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php:539
+Stack trace:
+#0 /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Worksheet.php(1121): PHPExcel_Cell::coordinateFromString('CARRAY')
+#1 /home4/jclifesc/public_html/hrm/Excel/test.php(37): PHPExcel_Worksheet->getCell('CArray')
+#2 {main}
+  thrown in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php on line 539
+[08-Mar-2017 06:16:08 America/Denver] PHP Notice:  Array to string conversion in /home4/jclifesc/public_html/hrm/Excel/test.php on line 37
+[08-Mar-2017 06:16:08 America/Denver] PHP Fatal error:  Uncaught exception 'PHPExcel_Exception' with message 'Invalid cell coordinate CARRAY' in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php:539
+Stack trace:
+#0 /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Worksheet.php(1121): PHPExcel_Cell::coordinateFromString('CARRAY')
+#1 /home4/jclifesc/public_html/hrm/Excel/test.php(37): PHPExcel_Worksheet->getCell('CArray')
+#2 {main}
+  thrown in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Cell.php on line 539
+[09-Mar-2017 22:40:01 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 22:40:07 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:00:16 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:00:18 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:02:00 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:02:01 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:02:03 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:03:04 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:03:06 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:03:53 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:03:55 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:03:56 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:04:16 America/Denver] PHP Notice:  Undefined variable: i in /home4/jclifesc/public_html/hrm/Excel/index.php on line 65
+[09-Mar-2017 23:05:30 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:05:32 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:07:23 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:07:43 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not open kamlesh.xls for reading! File does not exist.' in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5.php:519
+Stack trace:
+#0 /home4/jclifesc/public_html/hrm/Excel/PHPExcel/IOFactory.php(268): PHPExcel_Reader_Excel5->canRead('kamlesh.xls')
+#1 /home4/jclifesc/public_html/hrm/Excel/test.php(6): PHPExcel_IOFactory::createReaderForFile('kamlesh.xls')
+#2 {main}
+  thrown in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5.php on line 519
+[09-Mar-2017 23:07:44 America/Denver] PHP Fatal error:  Uncaught exception 'Exception' with message 'Could not open kamlesh.xls for reading! File does not exist.' in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5.php:519
+Stack trace:
+#0 /home4/jclifesc/public_html/hrm/Excel/PHPExcel/IOFactory.php(268): PHPExcel_Reader_Excel5->canRead('kamlesh.xls')
+#1 /home4/jclifesc/public_html/hrm/Excel/test.php(6): PHPExcel_IOFactory::createReaderForFile('kamlesh.xls')
+#2 {main}
+  thrown in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5.php on line 519
+[09-Mar-2017 23:08:16 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:08:18 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472
+[09-Mar-2017 23:10:14 America/Denver] PHP Fatal error:  Class 'PHPExcel_Shared_Escher_DgContainer_SpgrContainer_SpContainer' not found in /home4/jclifesc/public_html/hrm/Excel/PHPExcel/Reader/Excel5/Escher.php on line 472

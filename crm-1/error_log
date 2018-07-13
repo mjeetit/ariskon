@@ -1,0 +1,443 @@
+[22-Aug-2016 13:41:37 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:41:37 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:41:37 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:41:50 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:41:50 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:41:50 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:43:19 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:43:19 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:43:19 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:44:12 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:44:12 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:44:12 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:45:02 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:45:02 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:45:02 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:45:04 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:45:04 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:45:04 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:46:40 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:46:40 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:46:40 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:48:41 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:48:41 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:48:41 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:49:40 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:49:40 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:49:40 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[22-Aug-2016 13:52:24 Asia/Calcutta] PHP Warning:  include_once(AppointmentManager.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:52:24 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'AppointmentManager.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2016 13:52:24 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[21-Sep-2016 13:20:44 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[21-Sep-2016 13:21:24 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[21-Sep-2016 13:21:47 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[21-Sep-2016 14:37:37 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[21-Sep-2016 14:38:14 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[23-Nov-2016 16:32:27 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[23-Nov-2016 16:32:43 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[23-Nov-2016 16:33:03 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[23-Nov-2016 16:33:05 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[23-Nov-2016 16:34:20 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[23-Nov-2016 16:34:57 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 889
+[23-Nov-2016 16:35:32 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file, expecting variable (T_VARIABLE) or ${ (T_DOLLAR_OPEN_CURLY_BRACES) or {$ (T_CURLY_OPEN) in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 889
+[23-Nov-2016 16:38:32 Asia/Calcutta] PHP Parse error:  syntax error, unexpected ')', expecting ')' in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1877
+[23-Nov-2016 16:51:19 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 381
+[05-Dec-2016 13:51:03 Asia/Calcutta] PHP Parse error:  syntax error, unexpected ''COUNT' (T_ENCAPSED_AND_WHITESPACE), expecting ')' in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 135
+[16-Dec-2016 12:27:32 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[16-Dec-2016 12:33:48 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[16-Dec-2016 14:22:11 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[19-Dec-2016 13:35:25 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/index.php on line 34
+[19-Dec-2016 13:36:11 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/index.php on line 34
+[19-Dec-2016 13:36:40 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/doctor/index.php on line 83
+[19-Dec-2016 13:36:40 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/doctor/index.php on line 213
+[19-Dec-2016 16:56:19 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/index.php on line 34
+[20-Dec-2016 15:39:30 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getProducts() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 483
+[20-Dec-2016 15:39:47 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getProducts() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 483
+[20-Dec-2016 15:40:59 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getProducts() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 483
+[31-Dec-2016 13:29:54 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[31-Dec-2016 13:30:42 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[31-Dec-2016 13:32:34 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[31-Dec-2016 13:43:38 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[02-Jan-2017 12:10:06 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 170
+[02-Jan-2017 12:10:09 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 170
+[02-Jan-2017 12:10:10 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 170
+[02-Jan-2017 12:10:12 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 170
+[02-Jan-2017 12:10:14 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 170
+[02-Jan-2017 12:45:27 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 169
+[04-Jan-2017 16:54:18 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[04-Jan-2017 17:23:46 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[04-Jan-2017 17:24:34 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[04-Jan-2017 17:36:02 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::ExportAll() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 36
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[06-Jan-2017 11:54:00 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:18:21 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:22:27 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:25:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:25:47 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:26:18 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:26:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:28:05 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 65
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:28:07 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:28:42 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:28:48 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:29:04 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:29:49 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:29:51 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 167
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[14-Jan-2017 17:30:28 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 188
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 162
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_name' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 163
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'expenseCost' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 164
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'crmAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 165
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'roiAmount' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 166
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'roi_month' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 186
+[14-Jan-2017 17:34:53 Asia/Calcutta] PHP Warning:  Illegal string offset 'doctor_id' in /home4/jclifesc/public_html/crm/application/views/scripts/roi/index.php on line 187
+[18-Jan-2017 14:12:01 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 484
+[18-Jan-2017 14:12:25 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 484
+[07-Apr-2017 12:12:01 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Apr-2017 12:12:08 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[21-Aug-2017 16:17:26 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[21-Aug-2017 17:34:32 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 62
+[21-Aug-2017 17:34:47 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 62
+[21-Aug-2017 17:34:49 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 62
+[21-Aug-2017 17:34:50 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 62
+[22-Aug-2017 15:29:23 Asia/Calcutta] PHP Warning:  include_once(Zend/Custom/Class.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2017 15:29:23 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'Zend/Custom/Class.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[22-Aug-2017 15:29:23 Asia/Calcutta] PHP Fatal error:  Class 'Zend_Custom_Class' not found in /home4/jclifesc/public_html/crm/library/Zend/Custom.php on line 38
+[24-Aug-2017 12:31:11 Asia/Calcutta] PHP Fatal error:  Class 'ReportsManager' not found in /home4/jclifesc/public_html/crm/application/controllers/ReportsController.php on line 37
+[03-Sep-2017 10:29:52 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1417
+[03-Sep-2017 10:34:31 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 35
+[09-Sep-2017 12:07:27 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/edit.php on line 574
+[09-Sep-2017 12:40:48 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 484
+[10-Sep-2017 09:10:45 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 35
+[10-Sep-2017 14:35:52 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1417
+[10-Sep-2017 14:36:11 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 35
+[25-Sep-2017 18:50:31 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 484
+[27-Sep-2017 14:13:03 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 507
+[11-Oct-2017 17:34:13 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 507
+[06-Nov-2017 10:21:08 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1419
+[06-Nov-2017 10:42:03 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1419
+[06-Nov-2017 11:12:13 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1419
+[06-Nov-2017 14:55:30 Asia/Calcutta] PHP Fatal error:  Call to undefined method AppointmentManager::productList() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 555
+[06-Nov-2017 15:41:07 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER) in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/print.php on line 92
+[06-Nov-2017 15:43:06 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER) in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/print.php on line 92
+[06-Nov-2017 15:43:08 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '2' (T_LNUMBER) in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/print.php on line 92
+[06-Nov-2017 17:09:17 Asia/Calcutta] PHP Parse error:  syntax error, unexpected '/' in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/print.php on line 325
+[06-Nov-2017 21:11:18 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 514
+[06-Nov-2017 22:34:41 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/crm/application/models/AppointmentManager.php on line 432
+[07-Nov-2017 09:41:33 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1419
+[07-Nov-2017 09:44:59 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1419
+[07-Nov-2017 10:27:26 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[07-Nov-2017 13:42:50 Asia/Calcutta] PHP Warning:  include_once(Zend/MPDF/mpdf.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[07-Nov-2017 13:42:50 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'Zend/MPDF/mpdf.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[07-Nov-2017 13:42:50 Asia/Calcutta] PHP Fatal error:  Class 'Zend_MPDF_mpdf' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 563
+[07-Nov-2017 13:46:14 Asia/Calcutta] PHP Warning:  include_once(Zend/MPDF/mpdf.php): failed to open stream: No such file or directory in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[07-Nov-2017 13:46:14 Asia/Calcutta] PHP Warning:  include_once(): Failed opening 'Zend/MPDF/mpdf.php' for inclusion (include_path='/home4/jclifesc/public_html/crm/library:/home4/jclifesc/public_html/crm/application:/home4/jclifesc/public_html/crm/application/models:/home4/jclifesc/public_html/crm/application/forms:.:/usr/php/54/usr/lib64:/usr/php/54/usr/share/pear') in /home4/jclifesc/public_html/crm/library/Zend/Loader.php on line 146
+[07-Nov-2017 13:46:14 Asia/Calcutta] PHP Fatal error:  Class 'Zend_MPDF_mpdf' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 563
+[07-Nov-2017 13:50:26 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 570
+[07-Nov-2017 14:28:26 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 14:31:18 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 14:32:02 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:23:49 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:24:01 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:24:58 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:27:33 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:27:35 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:30:40 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:37:31 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1032
+[07-Nov-2017 15:38:01 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1032
+[07-Nov-2017 15:41:19 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:42:34 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:43:42 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:43:55 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:44:14 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:46:03 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:46:43 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:52:02 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:52:16 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:53:17 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[07-Nov-2017 15:54:11 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[08-Nov-2017 15:49:39 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 570
+[08-Nov-2017 15:49:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:06:26 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:06:38 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:06:41 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:06:43 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:16:36 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:16:36 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 570
+[08-Nov-2017 16:16:36 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:18:31 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:18:31 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 570
+[08-Nov-2017 16:18:31 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:22:06 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:22:06 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 570
+[08-Nov-2017 16:22:06 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:32:00 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:32:00 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 571
+[08-Nov-2017 16:32:01 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:32:01 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 16:32:38 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:32:39 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 571
+[08-Nov-2017 16:32:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:32:39 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 16:54:21 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:54:27 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 572
+[08-Nov-2017 16:54:33 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:54:33 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 16:58:37 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 16:58:37 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 572
+[08-Nov-2017 16:58:38 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 16:58:38 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 17:05:26 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 17:05:27 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 572
+[08-Nov-2017 17:05:28 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:05:28 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 17:17:42 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/view.php on line 118
+[08-Nov-2017 17:17:43 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 572
+[08-Nov-2017 17:17:44 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:17:44 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 17:18:44 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 17:18:44 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 571
+[08-Nov-2017 17:18:45 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:18:45 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/views/scripts/appointment/test.php on line 104
+[08-Nov-2017 17:35:59 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 17:36:01 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:38:32 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 17:38:33 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:40:03 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 17:40:04 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:41:01 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 17:41:02 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 17:45:57 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 17:45:58 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 18:29:35 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 18:29:36 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 18:41:15 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 18:41:16 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[08-Nov-2017 18:43:29 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[08-Nov-2017 18:43:30 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 12:23:36 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 12:23:37 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 12:42:12 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 12:42:14 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 12:52:15 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 12:52:16 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 15:31:03 Asia/Calcutta] PHP Fatal error:  Class 'AppointmentManager' not found in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 19
+[09-Nov-2017 16:05:09 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 16:05:11 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 17:52:16 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 17:52:17 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 17:53:23 Asia/Calcutta] PHP Fatal error:  Call to a member function setValue() on a non-object in /home4/jclifesc/public_html/crm/library/Zend/PHPExcel/Worksheet.php on line 1029
+[09-Nov-2017 17:53:27 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 17:53:31 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 17:55:22 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 17:55:23 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[09-Nov-2017 18:12:27 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[09-Nov-2017 18:12:31 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:56:53 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:56:55 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:58:32 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:58:33 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:58:45 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:58:46 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:58:58 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:58:59 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:59:19 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:59:20 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:59:34 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:59:35 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 12:59:58 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 12:59:59 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:00:45 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:00:46 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:01:01 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:01:02 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:01:16 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:01:17 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:01:32 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:01:33 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:01:54 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:01:56 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:03:14 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:03:15 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:03:38 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:03:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:04:33 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:04:34 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:05:10 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:05:11 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:05:38 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:05:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:05:55 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:05:56 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:06:12 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:06:13 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:06:30 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:06:31 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:06:49 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:06:50 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:07:17 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:07:17 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:07:28 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:07:28 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:07:44 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:07:45 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:09:04 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:09:05 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:09:17 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:09:17 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:09:30 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:09:31 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:09:48 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:09:49 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:10:14 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:10:16 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:10:40 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:10:41 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:10:53 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:10:54 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:11:22 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:11:23 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:11:33 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:11:34 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:11:44 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:11:44 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:11:56 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:11:57 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:12:14 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:12:15 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:12:29 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:12:30 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:12:56 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:12:57 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:13:04 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:13:04 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:13:15 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:13:16 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:13:28 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:13:29 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:13:39 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:13:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:14:06 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:14:07 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:14:21 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:14:21 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:14:49 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:14:50 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:15:02 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:15:03 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:15:18 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:15:19 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:15:38 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:15:39 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:15:49 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:15:49 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:16:03 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:16:04 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:16:19 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:16:20 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:16:35 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:16:36 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:16:59 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:17:00 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:17:17 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:17:18 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:17:29 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:17:30 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[15-Nov-2017 13:17:42 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 517
+[15-Nov-2017 13:17:43 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[20-Nov-2017 11:41:59 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1452
+[20-Nov-2017 11:45:19 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1452
+[20-Nov-2017 11:54:52 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1452
+[20-Nov-2017 12:00:56 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1452
+[20-Nov-2017 12:06:23 Asia/Calcutta] PHP Fatal error:  Call to undefined method ReportsManager::getHeadquarters() in /home4/jclifesc/public_html/crm/application/models/ReportsManager.php on line 1452
+[23-Nov-2017 16:39:16 Asia/Calcutta] PHP Warning:  Invalid argument supplied for foreach() in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 85
+[24-Nov-2017 17:44:15 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 534
+[24-Nov-2017 17:44:16 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[24-Nov-2017 17:48:49 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 534
+[24-Nov-2017 17:48:49 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[24-Nov-2017 18:37:47 Asia/Calcutta] PHP Warning:  Creating default object from empty value in /home4/jclifesc/public_html/crm/application/controllers/AppointmentController.php on line 534
+[24-Nov-2017 18:37:48 Asia/Calcutta] PHP Warning:  unlink(/home4/jclifesc/public_html/crm/library/Zend/MPDF/tmp/.svn): Is a directory in /home4/jclifesc/public_html/crm/library/Zend/MPDF/mpdf.php on line 7107
+[29-Jun-2018 15:30:19 Asia/Calcutta] PHP Parse error:  syntax error, unexpected end of file in /home4/jclifesc/public_html/ariskon/crm/application/views/scripts/doctor/index.php on line 75
