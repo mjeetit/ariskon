@@ -63,6 +63,12 @@
 			$_SESSION['AdminDepartment']  = $result['department_id'];
 			$_SESSION['LastLogin']  	  = $result['last_login'];
 			$_SESSION['LastLoginIP']  	  = $result['last_login_ip'];
+
+			/*********************************************************************************
+			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
+			**********************************************************************************/
+			$_SESSION['ParentTab']  	  = "HRM";
+
 			if($_SESSION['AdminLoginID']==1){
 			  $table = 'admin_detail';
 			}else{
@@ -92,6 +98,11 @@
 			unset($_SESSION['AdminDepartment']);
 			unset($_SESSION['LastLogin']);
 			unset($_SESSION['LastLoginIP']);
+			/*********************************************************************************
+			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
+			**********************************************************************************/
+			unset($_SESSION['ParentTab']);
+			
 			/*session_unregister($_SESSION['AdminLoginID']);
 			session_unregister($_SESSION['AdminLevelID']);
 			session_unregister($_SESSION['AdminUserType']);

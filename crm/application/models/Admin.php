@@ -11,19 +11,6 @@
 		public $status    = '1';			// Status of module
 		public $level_id  = NULL;			// Lavel of module.
 		public $Tables  = array('1'=>'admin_detail','2'=>'employee_personaldetail');
-		
-		public function checkAuthentication($datavalue){
-		    $select = $this->_db->select()
-									 ->from(array('UD'=>'users'),array('*'))
-									// ->joininner(array('EP'=>'employee_personaldetail'),array())
-									 ->where("UD.username='".$datavalue['username']."' AND UD.password='".md5($datavalue['password'])."'");
-			 $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
-			 if(!empty($result)){
-			    return $result;
-			 }else{
-			    return false;
-			 }
-		}
 	
 		public function setSession($uservalue){
 			/*session_register("AdminLoginID");
@@ -32,15 +19,15 @@
 			session_register("AdminName");
 			session_register("AdminBunit");
 			session_register("AdminDesignation");
-			session_register("AdminDepartment");*/
+			session_register("AdminDepartment");*/			
 			
-			$usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
-			$_SESSION['AdminLoginID']     = $uservalue['user_id'];
-			$_SESSION['AdminLevelID']     = $uservalue['level_id'];
-			$_SESSION['AdminUserType']    = $uservalue['user_type'];
+			$_SESSION['AdminLoginID']     = $uservalue->user_id;
+			$_SESSION['AdminLevelID']     = $uservalue->level_id;
+			$_SESSION['AdminUserType']    = $uservalue->user_type;
+			$tables = ($uservalue->user_id==1) ? 1 : 2;
 			$select = $this->_db->select()
-								 ->from($this->Tables[$usertype],array('*'))
-								 ->where("user_id='".$uservalue['user_id']."'");
+								 ->from($this->Tables[$tables],array('*'))
+								 ->where("user_id='".$uservalue->user_id."'");
 								 //echo $select->__toString();die;
 			$result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
 			$_SESSION['AdminName']        = $result['first_name'];
@@ -52,7 +39,7 @@
 			/*********************************************************************************
 			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
 			**********************************************************************************/
-			$_SESSION['ParentTab']  	  = "REPORTING";
+			$_SESSION['ParentTab']  	  = "CRM";
 
 			if($_SESSION['AdminLoginID']==1){
 			  $table = 'admin_detail';
@@ -60,9 +47,21 @@
 			  $table = 'employee_personaldetail';
 			}
 			$this->_db->update($table,array('last_login'=>new Zend_Db_Expr('NOW()'),'last_login_ip'=>$_SERVER['REMOTE_ADDR']),"user_id='".$_SESSION['AdminLoginID']."'");					 
-		   						 
+		   	//Newly inserted code
+			$this->_db->insert('login_logout_details',array_filter(array('user_id'=>$_SESSION['AdminLoginID'],'login_time'=>date('Y-m-d H:i:s',time()),'login_via'=>0)));					 
     	}
+		
 		public function unsetSession(){
+			
+			//Newly inserted Code
+			$select = $this->_db->select()
+							->from('login_logout_details',array('*'))
+							->where("user_id='".$_SESSION['AdminLoginID']."'")
+							->order('id DESC');//echo $select->__toString();die;
+			$lastInserted= $this->getAdapter()->fetchRow($select);//print_r($lastInserted);die;
+			$this->_db->update('login_logout_details',array('logout_time'=>date('Y-m-d H:i:s',time())),"id='".$lastInserted['id']."'","user_id='".$lastInserted['user_id']."'");
+			//End of newly inserted code
+			
 			unset($_SESSION['AdminLoginID']);
 			unset($_SESSION['AdminLevelID']);
 			unset($_SESSION['AdminUserType']);
@@ -76,6 +75,7 @@
 			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
 			**********************************************************************************/
 			unset($_SESSION['ParentTab']);
+
 			/*session_unregister($_SESSION['AdminLoginID']);
 			session_unregister($_SESSION['AdminLevelID']);
 			session_unregister($_SESSION['AdminUserType']);
@@ -88,11 +88,11 @@
 			session_destroy();
 		
 		}
-                public function getStatusCheck($uservalue){
-				   $usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
+        
+		public function getStatusCheck($uservalue){
                     $select = $this->_db->select()
-                                             ->from($this->Tables[$usertype],array('*'))
-                                             ->where("user_id='".$uservalue['user_id']."' AND delete_status='0'");
+                                             ->from($this->Tables[$uservalue->user_type],array('*'))
+                                             ->where("user_id='".$uservalue->user_id."' AND delete_status='0'");//echo $select->__toString();die;
                     $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
                     if(!empty($result)){
                         return true;

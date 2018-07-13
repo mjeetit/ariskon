@@ -142,6 +142,10 @@ class DashboardManager extends Zend_Custom
 			$_SESSION['AdminDepartment']  = $result['department_id'];
 			$_SESSION['LastLogin']  	  = $result['last_login'];
 			$_SESSION['LastLoginIP']  	  = $result['last_login_ip'];
+			/*********************************************************************************
+			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
+			**********************************************************************************/
+			$_SESSION['ParentTab']  	  = "REPORTING";
 			
 			$this->_db->update($table,array('last_login'=>new Zend_Db_Expr('NOW()'),'last_login_ip'=>$_SERVER['REMOTE_ADDR']),"user_id='".$_SESSION['AdminLoginID']."'");
 		}	

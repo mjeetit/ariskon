@@ -1,9 +1,10 @@
 <?php
 $root = dirname(dirname(__FILE__));
 /**********************************************************************************************
- get main library folder path for reporting module and pass this path at the time of calling library by jm on 13072018 
+ get main library folder path for crm module and pass this path at the time of calling library  
+ by jm on 13072018 
 **********************************************************************************************/
-$library_root = str_replace("/reporting","",$root);
+$library_root = str_replace("/crm","",$root);
 //require_once './library/Zend/Loader.php';
 require_once $library_root.'/library/Zend/Loader.php';
 
@@ -11,8 +12,8 @@ class Bootstrap
 {
     public static $frontController = null;
     public static $root = '';
-    //public static $baseUrl = 'http://ariskon.jclifecare.com/reporting/';
-    public static $baseUrl = 'http://localhost/ariskon/reporting/';
+    //public static $baseUrl = 'http://www.ariskon.jclifecare.com/crm/';
+    public static $baseUrl = 'http://localhost/ariskon/crm/';
     public static $registry = null;
 	public static $setPrivillages = NULL;
 	public static $Translation = array();
@@ -24,6 +25,7 @@ class Bootstrap
 	public static $_parent = 0;
 	public static $_level = 1;
 	public static $ActionName = 'index';
+	public static $menuPrivilege = array();
 	
     //Primary function will be called first from index.php, it will call rest of functions to boot
     public static function run()
@@ -69,8 +71,8 @@ class Bootstrap
           add the library root variable and pass it for the library call time 
           by jm on 13072018 
         *************************************************************************************/
-        $library_root = str_replace("/reporting","",$root);
-
+        $library_root = str_replace("/crm","",$root);
+        
 		set_include_path(
 		    $library_root . '/library' . PATH_SEPARATOR .
                     $root . '/application' . PATH_SEPARATOR .
@@ -149,7 +151,20 @@ class Bootstrap
     {	
         $view = new Zend_View;
 	    $view->setEncoding('UTF-8');
-			
+		
+	    //add jquery
+	    /*$view->addHelperPath("ZendX/JQuery/View/Helper", "ZendX_JQuery_View_Helper");
+    	$view->jQuery()->addStylesheet(self::$baseUrl .'javascript/jquery/css/ui-lightness/jquery-ui-1.8.16.custom.css')
+                       ->setLocalPath(self::$baseUrl .'javascript/jquery/js/jquery-1.6.2.min.js')
+                       ->setUiLocalPath(self::$baseUrl .'javascript/jquery/js/jquery-ui-1.8.16.custom.min.js')
+                       ->addStylesheet(self::$baseUrl .'javascript/jquery/css/ui-lightness/jquery-ui-timepicker-addon.css');
+		
+       
+	    $view->addHelperPath('My/View/Helper', 'My_View_Helper_');
+        $viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer($view);
+        Zend_Controller_Action_HelperBroker::addHelper($viewRenderer);*/
+		
+		
 		$view->addHelperPath("ZendX/JQuery/View/Helper", "ZendX_JQuery_View_Helper");
 		$viewRenderer = new Zend_Controller_Action_Helper_ViewRenderer();
 		$viewRenderer->setView($view);
@@ -173,7 +188,7 @@ class Bootstrap
         $config = self::$registry->configuration;
         $db = Zend_Db::factory($config->db);
         $db->query("SET NAMES 'utf8'");
-		$db->query('SET SQL_BIG_SELECTS=1');
+        //$db->query("SET SQL_BIG_SELECTS=1");
         self::$registry->database = $db;
         Zend_Db_Table::setDefaultAdapter($db);
     }

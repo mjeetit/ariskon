@@ -242,56 +242,5 @@ class Bootstrap
 	   unset($_SESSION[ERROR_MSG]);
 	 }
   }
-
-
-
-
-  public function _initRoutes()
-  {
-       
-        $router = Zend_Controller_Front::getInstance()->getRouter();
-
-    
-        $route = new Zend_Controller_Router_Route('admin', array(
-        'module' => 'default',
-        'controller' => 'index',
-        'action' => 'admin'
-        ));
-        
-        $attendance = new Zend_Controller_Router_Route('attendance', array(
-        'module' => 'default',
-        'controller' => 'attendance',
-        'action' => 'attendance'
-        ));
-        
-        $dashboard = new Zend_Controller_Router_Route('dashboard', array(
-        'module' => 'default',
-        'controller' => 'dashboard',
-        'action' => 'index'
-        ));
-        
-        
-        $router->addRoute('admin', $route); 
-        $router->addRoute('attendance', $welcomeroute);        
-        $router->addRoute('dashboard', $viewsettingsroute);
-    }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 ?>

@@ -1,5 +1,12 @@
 <?php
-include Bootstrap::$root.'/library/Zend/FPDF/pdf_js.php';
+
+/**********************************************************************************************
+below path is modified to cope crm package with outer library instead of its own library
+by jm on 13072018
+***********************************************************************************************/
+//include Bootstrap::$root.'/library/Zend/FPDF/pdf_js.php';
+
+include '/opt/lampp/htdocs/ariskon/library/Zend/FPDF/pdf_js.php';
 
 abstract class Zend_FPDF_Abstract extends PDF_JavaScript
 {

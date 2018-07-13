@@ -12,7 +12,8 @@
 				          <li><a href="<?php echo $this->url(array('controller'=>'Dashboard'),'default',true)?>">Dashboard</a></li> 
 					<?php 
 					  $ObjModel =new Zend_Custom();
-					  $MainModules  = $ObjModel->AdminModuleAndSubModule();//echo "<pre>";print_r($MainModules);echo "<pre>";die;
+					  $MainModules  = $ObjModel->AdminModuleAndSubModule();
+					  //echo "line 16 Dashboard <pre>";print_r($MainModules); die;
 					  foreach($MainModules as $module){
 						  $subModules = $ObjModel->getModules($module['module_id']);//echo "<pre>";print_r($subModules);echo "<pre>";die;
 						  $liClass = (count($subModules)>0) ? 'class="dropdown"' : '';

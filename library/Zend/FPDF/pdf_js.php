@@ -1,6 +1,15 @@
 <?php
-require_once(Bootstrap::$root."/library/Zend/FPDF/fpdf.php");
-require_once(Bootstrap::$root."/library/Zend/FPDF/code128.php");
+
+/**********************************************************************************************
+below path is modified to cope crm package with outer library instead of its own library
+by jm on 13072018
+***********************************************************************************************/
+//require_once(Bootstrap::$root."/library/Zend/FPDF/fpdf.php");
+//require_once(Bootstrap::$root."/library/Zend/FPDF/code128.php");
+
+require_once("/opt/lampp/htdocs/ariskon/library/Zend/FPDF/fpdf.php");
+require_once("/opt/lampp/htdocs/ariskon/library/Zend/FPDF/code128.php");
+
 
 class PDF_JavaScript extends PDF_Code128 {
 
