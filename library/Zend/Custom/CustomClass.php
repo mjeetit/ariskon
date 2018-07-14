@@ -50,10 +50,8 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         }else if($parent_tab == 'CRM'){
 
             if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
-
                 $where .= " AND isAdmin='1'";
             }else{
-
                 $where .= " AND isUser='1'"; 
             }
 
@@ -68,7 +66,24 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
         }else if($parent_tab == 'REPORTING'){
 
-            echo "reporting tab"; die;
+            $where = "status='1'";
+     
+            if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
+                $where .= " AND admin_status='1'";
+            }else{
+                $where .= " AND user_status='1'"; 
+            }
+      
+            $select = $this->_db->select()
+                ->from('module',array('*'))
+                ->where("parent_id='".Bootstrap::$_parent."' AND level_id='".Bootstrap::$_level."'")
+                ->where($where)
+                ->where("module_type=3");
+                //echo $select->__toString();die;
+        
+            $result = $this->getAdapter()->fetchAll($select);
+            
+            return $result;
         }    
     }
 
@@ -90,12 +105,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
             $where = "status='1'";
         
-            if($_SESSION['AdminLoginID']==1){
-           
+            if($_SESSION['AdminLoginID']==1){    
                 $where .= " AND admin_status='1'";
-            
             }else{
-            
                 $where .= " AND user_status='1'"; 
             }
          
@@ -111,18 +123,15 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
                         ->where("module_type=1");
             //echo $select->__toString();die;
             $result = $this->getAdapter()->fetchAll($select);
+            
             return $result;
 
         }else if($parent_tab == 'CRM'){
 
             if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
-
                 $where .= " AND isAdmin='1'";
-
             }else{
-
                 $where .= " AND isUser='1'"; 
-
             }
 
             $select = $this->_db->select()
@@ -136,7 +145,22 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
         }else if($parent_tab == 'REPORTING'){
 
-
+            $where = "status='1'";
+        
+            if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
+                $where .= " AND admin_status='1'";
+            }else{
+                $where .= " AND user_status='1'"; 
+            }
+        
+            $select = $this->_db->select()
+                    ->from('module',array('*'))
+                    ->where("parent_id='".$parent_id."'")
+                    ->where($where)
+                    ->where("module_type=3");
+            $result = $this->getAdapter()->fetchAll($select);
+            
+            return $result;
         }
 	}
 
@@ -289,7 +313,6 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
             $where = '';
    
             if($user_id){
-            
                 $where = " AND UT.user_id='".$user_id."'"; 
             }
      
@@ -323,9 +346,28 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
         }else if($parent_tab == 'REPORTING'){
 
-
+            $where = '';
+            
+            if($user_id){
+                $where = " AND UT.user_id='".$user_id."'"; 
+            }
+            
+            $select = $this->_db->select()
+                ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
+                ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
+                ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
+                ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
+                ->order("employee_code ASC");
+            //echo $select->__toString();die;
+            
+            if($user_id){
+                $result = $this->getAdapter()->fetchRow($select);
+            }else{
+                $result = $this->getAdapter()->fetchAll($select);
+            }
+        
+            return $result;
         }   
-
     }
 
 
@@ -352,9 +394,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     **/
     public function getDesignation(){
         $select = $this->_db->select()
-                        ->from('designation',array('*'))
-                        ->joinleft(array('PD'=>'designation'),"PD.designation_id=designation.designation_level",array('designation_name as parentdesig'))
-                                                ->order("designation.serial_no ASC");
+            ->from('designation',array('*'))
+            ->joinleft(array('PD'=>'designation'),"PD.designation_id=designation.designation_level",array('designation_name as parentdesig'))
+            ->order("designation.serial_no ASC");
         $result = $this->getAdapter()->fetchAll($select);
     
         return $result;
@@ -384,9 +426,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getSalaryhead(){
     
         $select = $this->_db->select()
-                        ->from('salary_head',array('*'))
-                        ->where("salary_type='1'")
-                        ->order("sequence ASC");
+                ->from('salary_head',array('*'))
+                ->where("salary_type='1'")
+                ->order("sequence ASC");
         $result = $this->getAdapter()->fetchAll($select);
     
         return $result;
@@ -401,9 +443,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getDetectionSalaryhead(){
     
         $select = $this->_db->select()
-                        ->from('salary_head',array('*'))
-                        ->where("salary_type='2'")
-                        ->order("sequence ASC");
+                ->from('salary_head',array('*'))
+                ->where("salary_type='2'")
+                ->order("sequence ASC");
         $result = $this->getAdapter()->fetchAll($select);
         return $result;
     } 
@@ -417,7 +459,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getCompany(){
     
         $select = $this->_db->select()
-                ->from('company',array('*'));
+            ->from('company',array('*'));
         $result = $this->getAdapter()->fetchAll($select);
     
             return $result;             
@@ -446,7 +488,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * */
     public function gerCountryList(){
             $select = $this->_db->select()
-                        ->from('country',array('*'));
+                ->from('country',array('*'));
              $result = $this->getAdapter()->fetchAll($select);
             return $result;  
     }
@@ -458,11 +500,13 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Fetch All the column Name of specific table.
     * */
     public function getSalaryHeadName($salaryhead_id){
-         $select = $this->_db->select()
-                        ->from('salary_head',array('salary_title'))
-                        ->where("salaryhead_id='".$salaryhead_id."'");
-             $result = $this->getAdapter()->fetchRow($select);
-            return $result['salary_title']; 
+         
+        $select = $this->_db->select()
+            ->from('salary_head',array('salary_title'))
+            ->where("salaryhead_id='".$salaryhead_id."'");
+        $result = $this->getAdapter()->fetchRow($select);
+        
+        return $result['salary_title']; 
     }
     
 
@@ -629,17 +673,17 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         if($user_id!=1){
             
             $select = $this->_db->select()
-                    ->from(array('UD'=>'employee_personaldetail'),array('*'))
-                    ->joininner(array('DES'=>'designation'),"DES.designation_id=UD.designation_id",array('designation_name'))
-                    ->joininner(array('DEP'=>'department'),"DEP.department_id=UD.department_id",array('department_name'))
-                    ->where("user_id='".$user_id."'");
+                ->from(array('UD'=>'employee_personaldetail'),array('*'))
+                ->joininner(array('DES'=>'designation'),"DES.designation_id=UD.designation_id",array('designation_name'))
+                ->joininner(array('DEP'=>'department'),"DEP.department_id=UD.department_id",array('department_name'))
+                ->where("user_id='".$user_id."'");
             //echo $select->__toString();die;
         }else{
             
             $select = $this->_db->select()
                 ->from(array('UD'=>'admin_detail'),array('*','first_name as department_name'))
                 ->where("user_id='".$user_id."'");
-                //echo $select->__toString();die;
+            //echo $select->__toString();die;
         }                  
       
         $detail = $this->getAdapter()->fetchRow($select); 
@@ -654,16 +698,20 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Get All the messages of Emp
     **/
     public function getMessagesforEmp(){
-            $RecordArr =array();
-            $select = $this->_db->select()
-                        ->from(array('NT'=>'notification'),array('*'))
-                        ->where("(bunit_id='".$_SESSION['AdminBunit']."' AND department_id='".$_SESSION['AdminDepartment']."' 
-                                 AND designation_id='".$_SESSION['AdminDesignation']."') OR (bunit_id='".$_SESSION['AdminBunit']."' 
-                                 AND department_id='".$_SESSION['AdminDepartment']."' AND designation_id=0) OR (bunit_id='".$_SESSION['AdminBunit']."' 
-                                 AND department_id=0 AND designation_id=0)");
-            //echo $select->__toString();die;
+        
+        $RecordArr =array();
+        
+        $select = $this->_db->select()
+            ->from(array('NT'=>'notification'),array('*'))
+            ->where("(bunit_id='".$_SESSION['AdminBunit']."' AND department_id='".$_SESSION['AdminDepartment']."' 
+                AND designation_id='".$_SESSION['AdminDesignation']."') OR (bunit_id='".$_SESSION['AdminBunit']."' 
+                AND department_id='".$_SESSION['AdminDepartment']."' AND designation_id=0) OR (bunit_id='".$_SESSION['AdminBunit']."' 
+                AND department_id=0 AND designation_id=0)");
+                //echo $select->__toString();die;
+        
         $RecordArr =$this->getAdapter()->fetchAll($select);
        //print_r($RecordArr);die;
+       
        return $RecordArr;
     }
 
@@ -680,9 +728,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         $select = $this->_db->select()
                     ->from(array('NT'=>'events'),array('*'))
                     ->where("(bunit_id='".$_SESSION['AdminBunit']."' AND department_id='".$_SESSION['AdminDepartment']."' 
-                             AND designation_id='".$_SESSION['AdminDesignation']."') OR (bunit_id='".$_SESSION['AdminBunit']."' 
-                             AND department_id='".$_SESSION['AdminDepartment']."' AND designation_id=0) OR (bunit_id='".$_SESSION['AdminBunit']."' 
-                             AND department_id=0 AND designation_id=0)");
+                    AND designation_id='".$_SESSION['AdminDesignation']."') OR (bunit_id='".$_SESSION['AdminBunit']."' 
+                    AND department_id='".$_SESSION['AdminDepartment']."' AND designation_id=0) OR (bunit_id='".$_SESSION['AdminBunit']."' 
+                    AND department_id=0 AND designation_id=0)");
         //echo $select->__toString();die;
         $RecordArr =$this->getAdapter()->fetchAll($select);
         //print_r($RecordArr);die;
@@ -748,92 +796,104 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 	}
 
 
-	/**
-     * Get Bank Details
-     * Function : getBankAccountDetail()
-     * Get Informations of Bank Account
-     **/
+    /**
+    * Get Bank Details
+    * Function : getBankAccountDetail()
+    * Get Informations of Bank Account
+    **/
 	public function getBankAccountDetail($user_id){
-	   $select = $this->_db->select()
-		 				->from(array('AD'=>'emp_bank_account'),array('*'))
-						->where("AD.user_id='".$user_id."'");
-		 return $this->getAdapter()->fetchRow($select);
-	}
-
-
-	/**
-     * Get Informations of Documents
-     * Function : getDocumentsInfo()
-     * Get Informations about Employee Documents
-     **/
-	public function getDocumentsInfo($user_id){
-	   $select = $this->_db->select()
-		 				->from(array('DT'=>'emp_docoments'),array('*'))
-						->where("DT.user_id='".$this->_getData['user_id']."'");
-		 return $this->getAdapter()->fetchAll($select);
-	}
-
-
-	/**
-     * Get Informations of Salary Duration
-     * Function : getSalaryDuration()
-     * Duration In wich salary will be processing
-     **/ 
-	public function getSalaryDuration(){
-	     $select = $this->_db->select()
-		 				->from(array('SD'=>'salary_duration'),array('*'));
-		 return $this->getAdapter()->fetchRow($select);
-	}
-
-
-	/**
-     * Information of providend setting
-     * Function : getMasterProvidentSetting()
-     * Providend settings for salary processing
-     **/ 
-   public function getMasterProvidentSetting(){
+	   
         $select = $this->_db->select()
-		 				->from(array('PS'=>'provident_setting'),array('*'));
-		 return $this->getAdapter()->fetchRow($select);
-   }
+		 		->from(array('AD'=>'emp_bank_account'),array('*'))
+				->where("AD.user_id='".$user_id."'");
+		
+        return $this->getAdapter()->fetchRow($select);
+	}
+
+
+    /**
+    * Get Informations of Documents
+    * Function : getDocumentsInfo()
+    * Get Informations about Employee Documents
+    **/
+	public function getDocumentsInfo($user_id){
+	   
+        $select = $this->_db->select()
+            ->from(array('DT'=>'emp_docoments'),array('*'))
+            ->where("DT.user_id='".$this->_getData['user_id']."'");
+		return $this->getAdapter()->fetchAll($select);
+	}
+
+
+	/**
+    * Get Informations of Salary Duration
+    * Function : getSalaryDuration()
+    * Duration In wich salary will be processing
+    **/ 
+	public function getSalaryDuration(){
+
+	    $select = $this->_db->select()
+			->from(array('SD'=>'salary_duration'),array('*'));
+		
+        return $this->getAdapter()->fetchRow($select);
+	}
+
+
+	/**
+    * Information of providend setting
+    * Function : getMasterProvidentSetting()
+    * Providend settings for salary processing
+    **/ 
+    public function getMasterProvidentSetting(){
+    
+        $select = $this->_db->select()
+			->from(array('PS'=>'provident_setting'),array('*'));
+		
+        return $this->getAdapter()->fetchRow($select);
+    }
 
    
-   /**
-     * Information of ESI setting
-     * Function : getMasterEsiSettings()
-     * ESI settings for salary processing
-     **/ 
-   public function getMasterEsiSettings(){
+    /**
+    * Information of ESI setting
+    * Function : getMasterEsiSettings()
+    * ESI settings for salary processing
+    **/ 
+    public function getMasterEsiSettings(){
+        
         $select = $this->_db->select()
-		 				->from(array('ES'=>'esi_setting'),array('*'));
-		 return $this->getAdapter()->fetchRow($select);
-   }
+		    ->from(array('ES'=>'esi_setting'),array('*'));
+		return $this->getAdapter()->fetchRow($select);
+    }
 
 
-   /**
-     * Location info
-     * Function : getlocationInfo()
-     * Employee belongs to pericular location and headquater
-     **/ 
-   public function getlocationInfo($user_id){
-      $select = $this->_db->select()
-		 				->from(array('UL'=>'emp_locations'),array('*'))
-						->where("user_id='".$user_id."'");
-		 return $this->getAdapter()->fetchRow($select);
+    /**
+    * Location info
+    * Function : getlocationInfo()
+    * Employee belongs to pericular location and headquater
+    **/ 
+    public function getlocationInfo($user_id){
+    
+        $select = $this->_db->select()
+			->from(array('UL'=>'emp_locations'),array('*'))
+			->where("user_id='".$user_id."'");
+		
+        return $this->getAdapter()->fetchRow($select);
     }
 
 
 	/**
-     * Current user Info
-     * Function : logedInuserInfo()
-     * The information about current loged in user
-     **/ 
+    * Current user Info
+    * Function : logedInuserInfo()
+    * The information about current loged in user
+    **/ 
     public function logedInuserInfo(){
-	    $select = $this->_db->select()
-		 				->from(array('UD'=>'employee_personaldetail'),array('*'))
-						->where("user_id='".$_SESSION['AdminLoginID']."'");
-						//print_r($select->__toString());die;
-		 return $this->getAdapter()->fetchRow($select);
+	
+        $select = $this->_db->select()
+			->from(array('UD'=>'employee_personaldetail'),array('*'))
+			->where("user_id='".$_SESSION['AdminLoginID']."'");
+			//print_r($select->__toString());die;
+	   
+        return $this->getAdapter()->fetchRow($select);
 	}
 
 
@@ -843,12 +903,14 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Return ALl the head of user
     **/	
     public function getUserExpenseHead(){
-	  $select = $this->_db->select()
-	  			->from(array('EEA'=>'emp_expense_amount'),array('*'))
-				->joinleft(array('EH'=>'expense_head'),"EEA.head_id=EH.head_id",array('head_name'))
-				->where("user_id='".$_SESSION['AdminLoginID']."'");
-				//echo $select->__toString();die;
-	   return $this->getAdapter()->fetchAll($select);
+
+        $select = $this->_db->select()
+	  		->from(array('EEA'=>'emp_expense_amount'),array('*'))
+			->joinleft(array('EH'=>'expense_head'),"EEA.head_id=EH.head_id",array('head_name'))
+			->where("user_id='".$_SESSION['AdminLoginID']."'");
+			//echo $select->__toString();die;
+	   
+       return $this->getAdapter()->fetchAll($select);
 	}
 
 
@@ -859,10 +921,10 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     **/	
     public function getAllExpenseHead(){
 	
-      $select = $this->_db->select()
-	  			->from(array('EEA'=>'expense_head'),array('*'));
-				//echo $select->__toString();die;
-	   return $this->getAdapter()->fetchAll($select);
+        $select = $this->_db->select()
+	       	->from(array('EEA'=>'expense_head'),array('*'));
+			//echo $select->__toString();die;
+	    return $this->getAdapter()->fetchAll($select);
 	}
 
 
@@ -875,15 +937,12 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 	{
 	
     	if($n==0){
-
         	if($followup=='no'){
             	return "";
             	exit();
-        	
             }else{
-
-        	   return "zero";
-        	   exit();
+        	    return "zero";
+        	    exit();
         	}
     	}
 
@@ -1028,10 +1087,8 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         $expensedate  =  $this->getAdapter()->fetchRow($select);
 	  
         if(!empty($expensedate)){
-	       
            return date('M Y',strtotime($expensedate['expense_date']));
-        }else{ 
-	    
+        }else{	    
             return;
         }
 	}
@@ -1040,7 +1097,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getHeadquaters(){
     
         $select = $this->_db->select()
-				->from(array('HQ'=>'headquater'),array('*'));
+			->from(array('HQ'=>'headquater'),array('*'));
 		//print_r($select->__toString());die;
 	    $result = $this->getAdapter()->fetchAll($select);
 	 
@@ -1051,12 +1108,8 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getAllModules($parent_id=0){ 
 	
         $where = "status='1'";
-		/*if($_SESSION['AdminLoginID']==1){
-		   $where .= " AND admin_status='1'";
-		 }else{
-		   $where .= " AND user_status='1'"; 
-		 }*/
-		$select = $this->_db->select()
+		
+        $select = $this->_db->select()
 					->from('module',array('*'))
 					->where("parent_id='".$parent_id."'")
 					->where($where)
@@ -1099,9 +1152,11 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 	   
         if($count<4){
 	   	
-        	$count = $count+1;
-		    return $this->getChildUser($param,$count);
+         	$count = $count+1;
+		
+            return $this->getChildUser($param,$count);
         }else{
+        
             return $param;
         }
     }
@@ -1167,11 +1222,10 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     public function getSuperUserPrivileges() {
 
         $query = $this->_db->select()
-
-                ->from('crm_modules',array('module_id','parent_id','module_name','module_title','module_controller','module_action','module_icon'))
-                ->where('isActive="1"')
-                ->where('isDelete="0"')
-                ->order("set_order ASC"); //echo $query->__toString();die;
+            ->from('crm_modules',array('module_id','parent_id','module_name','module_title','module_controller','module_action','module_icon'))
+            ->where('isActive="1"')
+            ->where('isDelete="0"')
+            ->order("set_order ASC"); //echo $query->__toString();die;
 
         $allModules = $this->getAdapter()->fetchAll($query);
         $modules = array(); 
@@ -1358,7 +1412,111 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         }
 
         return $actions;
+    }
 
-    }   		
+
+    /**
+    * get chilllds
+    * Function : getChilllds()
+    * From : Reporting custom class
+    **/
+    public function getChilllds($alias){
+
+        $select = $this->_db->select()
+                ->from(array('ED'=>'employee_personaldetail'),array('*'))
+                ->where("parent_id='".$_SESSION['AdminLoginID']."'");
+                //  echo $select->__toString();die;
+        
+        $result =  $this->getAdapter()->fetchAll($select);
+        $userids = array();
+        
+        foreach($result as $users){
+            $userids[] = $users['user_id'];
+        } 
+        
+        $where = '';
+        
+        if(!empty($userids)){
+          $where = " OR ".$alias.".parent_id IN(".implode(',',$userids).")";
+        }
+        
+        return $where;
+    }
+
+
+    /**
+    * get All Headquaters
+    * Function : getAllHeadquaters()
+    * From : Reporting custom class
+    **/
+    public function getAllHeadquaters(){
+        
+        $select = $this->_db->select()
+                ->from(array('HQ'=>'headquater'),array('*'))
+                ->order("headquater_name ASC");
+                //print_r($select->__toString());die;
+        $result = $this->getAdapter()->fetchAll($select);
+     
+        return $result;
+    }
+
+
+    /**
+    * get Empname
+    * Function : getEmpname()
+    * From : Reporting custom class
+    **/
+    public function getEmpname($user_id){
+        
+        $select = $this->_db->select()
+            ->from(array('EL'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) AS name'))
+            ->where("user_id='".$user_id."'");
+        //print_r($select->__toString());die;
+     
+        $result = $this->getAdapter()->fetchRow($select);
+        
+        return $result['name'];
+     }
+
+
+    /**
+    * get Reporting users
+    * Function : getReportedusers()
+    * From : Reporting custom class
+    **/
+    public function getReportedusers($userids,$count){
+    
+        $select = $this->_db->select()
+            ->from(array('EL'=>'employee_personaldetail'),array('EL.user_id'))
+            ->where("EL.parent_id IN('".implode("','",$userids)."') AND EL.delete_status='0' AND designation_id IN(8,7,6,5)");
+            //print_r($select->__toString());die;
+        
+        $userid = $this->getAdapter()->fetchAll($select);
+        $userids = $this->getsinglrArr($userid,'user_id',$userids);
+       
+        if($count<4){
+            $count = $count+1;
+            return $this->getReportedusers($userids,$count);
+        }else{
+            return $userids;
+        }
+     }
+
+    
+    /**
+    * get singlerArr
+    * Function : getsinglrArr()
+    * From : Reporting custom class
+    **/ 
+    public function getsinglrArr($array,$niddle,$userids){
+    
+       $filterarra = array();
+    
+       foreach($array as $niddlearr){
+          $userids[] = $niddlearr[$niddle]; 
+       }
+    
+       return $userids;
+    }
 }
 ?>
