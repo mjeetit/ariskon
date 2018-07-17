@@ -1,240 +1,119 @@
 <?php
 
-
-
 class ClassSalaryslipPdf extends Zend_FPDF_Abstract{
 
-
-
 	public $int_x = 1;
-
 	public $int_y = 1;
-
 	public $b_width = 89;
-
 	public $b_height = 129;
-
 	public $angle = 0;
-
 	public $backroundExist = true;
-
 	public $borderExist = false;
-
 	public $_filePath = NULL;
-
 	public $LabelFormat = NULL;
-
 	public $outputparam = NULL;
-
 	public $ObjDb = NULL;
-
-	
 
 	public function SalarySlip(){
 
 	    $Obj = new Zend_Custom();
-
 	    $this->AddPage();
-
 		//$this->SetXY($this->int_x + 15,($this->int_y + $y +($inc*2.8)));
-
 		//print_r($this->outputparam['user_id']);die;
-
 		$this->Image(Bootstrap::$baseUrl.'public/admin_images/login_8.png',$this->int_x +70,$this->int_y+5 ,70,25,'png');
-
-		
-
 		$this->SetLineWidth(.3);
-
 		$this->Rect($this->int_x + 10,$this->int_y +35,$this->int_x + 190,41);
-
 		$this->SetFillColor(0,0,300);
-
 		$this->Rect($this->int_x+10 ,$this->int_y+42,$this->int_x+190 , 7, 'F');
-
-		
-
 		$this->Rect($this->int_x + 10,$this->int_y +80,$this->int_x + 190,7);
-
 		$this->SetFillColor(0,0,300);
-
 		$this->Rect($this->int_x+10 ,$this->int_y+80,$this->int_x+190 , 7, 'F');
 
-		
-
 		/************************** 1ST HORIZONTAL LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+10,$this->int_y +42,$this->int_x+201,$this->int_y +42);
 
-		
-
 		/************************** 2ND HORIZONTAL LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+10,$this->int_y +49,$this->int_x+201,$this->int_y +49);
 
-		
-
 		/************************** 3RD HORIZONTAL LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+10,$this->int_y +56,$this->int_x+201,$this->int_y +56);
 
-
-
 		/************************** 4TH HORIZONTAL LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+10,$this->int_y +63,$this->int_x+201,$this->int_y +63);
 
-		
-
 		/************************** 5TH HORIZONTAL LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+10,$this->int_y +70,$this->int_x+201,$this->int_y +70);
-
-		
-
+	
 		/************************** 1 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+30,$this->int_y +49,$this->int_x+30,$this->int_y +76);
 
-		
-
 		/************************** 2 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+60,$this->int_y +42,$this->int_x+60,$this->int_y +76);
 
-		
-
 		/************************** 3 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+90,$this->int_y +49,$this->int_x+90,$this->int_y +76);
 
-		
-
 		/************************** 4 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+116,$this->int_y +70,$this->int_x+116,$this->int_y +76);
-
 		
-
 		/************************** 4 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+130,$this->int_y +42,$this->int_x+130,$this->int_y +70);
 
-		
-
 		/************************** 5 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+132,$this->int_y +70,$this->int_x+132,$this->int_y +76);
 
-		
-
 		/************************** 6 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+149,$this->int_y +70,$this->int_x+149,$this->int_y +76);
 
-		
-
 		/************************** 7 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+150,$this->int_y +35,$this->int_x+150,$this->int_y +42);
 
-		
-
 		/************************** 8 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+160,$this->int_y +49,$this->int_x+160,$this->int_y +70);
 
-		
-
 		/************************** 9 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+165,$this->int_y +70,$this->int_x+165,$this->int_y +76);
 
-		
-
 		/************************** 3 verticle LONG LINE ********************************/
-
 		$this->SetLineWidth(0.3);
-
 		$this->Line($this->int_x+182,$this->int_y +70,$this->int_x+182,$this->int_y +76);
-
 
 		$this->SetFont('Helvetica','B',12);
 		//echo "<pre>";print_r($this->outputparam);echo "<pre>";die;
 		//$this->SetTextColor(255);
-
 		$this->SetXY($this->int_x + 12,$this->int_y+38.5);
-
 		$this->Cell(0,0,strtoupper($this->outputparam['UserInfo']['first_name'].' '.$this->outputparam['UserInfo']['last_name']),0,0);
 
-		
-
 		$this->SetFont('Helvetica','B',12);
-
 		$this->SetTextColor(255);
-
 		$this->SetXY($this->int_x + 12,$this->int_y+46);
-
 		$this->Cell(0,0,ucfirst('Employee Details'),0,0);
-
-		
-
 		$this->SetFont('Helvetica','B',12);
-
 		$this->SetTextColor(255);
-
 		$this->SetXY($this->int_x + 72,$this->int_y+46);
-
 		$this->Cell(0,0,ucfirst('Payment & Leave Details'),0,0);
-
-		
-
 		$this->SetFont('Helvetica','B',12);
-
 		$this->SetTextColor(255);
-
 		$this->SetXY($this->int_x + 134,$this->int_y+46);
-
 		$this->Cell(0,0,ucfirst('Location Details'),0,0);
-
-		
-
 		$this->SetFont('Helvetica','B',12);
-
 		$this->SetTextColor(0);
-
 		$this->SetXY($this->int_x + 152,$this->int_y+38.5);
-
 		$this->Cell(0,0,strtoupper(date('F  Y',strtotime($this->outputparam['date']))),0,0);
 
 		
@@ -636,80 +515,42 @@ class ClassSalaryslipPdf extends Zend_FPDF_Abstract{
 
 		 $this->Cell(0,0,ucwords('Rs. '.str_replace(',','',$this->outputparam['TotalText'])).' Only',0,0);
 
-		 
-
-		  
-
 		$yinc = 7;
 		foreach($this->outputparam['Deduction'] as $key=>$dedect){
 
-		  $this->Rect($this->int_x + 131,$this->int_y +80+$yinc,$this->int_x + 69,7);
+			$this->Rect($this->int_x + 131,$this->int_y +80+$yinc,$this->int_x + 69,7);
+			$this->SetFont('Helvetica','',11);
+			$this->SetTextColor(0);
+			$this->SetXY($this->int_x + 134,$this->int_y +80+$yinc+2.5);
 
-		   
+		   	if($key==100){
+			    $this->Cell(0,0,'Loan',0,0);
+			}elseif($key==200){
+				$this->Cell(0,0,'Provident Fund',0,0);
+			}else{
+		 		$this->Cell(0,0,$Obj->getSalaryHeadName($key),0,0);
+		  	}
+			//****************** 1 verticle LONG LINE ****************************
 
-		  $this->SetFont('Helvetica','',11);
-
-		  $this->SetTextColor(0);
-
-		  $this->SetXY($this->int_x + 134,$this->int_y +80+$yinc+2.5);
-
-		   if($key==100){
-
-		    $this->Cell(0,0,'Loan',0,0);
-
-		  }elseif($key==200){
-
-		    $this->Cell(0,0,'Provident Fund',0,0);
-
-		  }else{
-
-		 	$this->Cell(0,0,$Obj->getSalaryHeadName($key),0,0);
-
-		  }
-
-//		  ************************* 1 verticle LONG LINE *******************************
-
-		  $this->SetLineWidth(0.3);
-
-		  $this->Line($this->int_x+170,$this->int_y +80+$yinc,$this->int_x+170,$this->int_y +80+$yinc+7);
-
-		  
-
-		  $this->SetFont('Helvetica','',12);
-
-		  $this->SetTextColor(0);
-
-		  $this->SetXY($this->int_x +185,$this->int_y +80+$yinc+2.5);
-		  $this->CellRight(15,0,number_format($dedect+$this->outputparam['ArrierDeduction'][$key],2),0,0);
+		  	$this->SetLineWidth(0.3);
+			$this->Line($this->int_x+170,$this->int_y +80+$yinc,$this->int_x+170,$this->int_y +80+$yinc+7);
+			$this->SetFont('Helvetica','',12);
+			$this->SetTextColor(0);
+			$this->SetXY($this->int_x +185,$this->int_y +80+$yinc+2.5);
+			$this->CellRight(15,0,number_format($dedect+$this->outputparam['ArrierDeduction'][$key],2),0,0);
 			
-		
-
-		  $yinc =$yinc+7;
-
+			$yinc =$yinc+7;
 		}
-
-		 $this->Line($this->int_x+170,$this->int_y +80,$this->int_x+170,$this->int_y +87);
-
+		$this->Line($this->int_x+170,$this->int_y +80,$this->int_x+170,$this->int_y +87);
 	}
-
 	public function printLabel(){ //print_r($this->_filePath);die;
-
 	?>
-
 		<script type="text/javascript">
-
 				window.open('<?php print $this->_filePath;?>');
-
 		</script>
 
 	<?php
 
     }
-
-	
-
 }
-
-
-
 ?>

@@ -222,11 +222,13 @@ class Bootstrap
      * Load a common class function that is used in whole project.
      */
 	public function commonClass() {
-		include self::$root . "/public/classes/class.salaryslip.pdf.php";
+    
+    	include self::$root . "/public/classes/class.salaryslip.pdf.php";
 		include self::$root . "/public/classes/class.mailmanager.php";
 		include self::$root . "/public/globalvar/Variable.php";
 		include self::$root . "/public/classes/class.function.php";
-		$var = new Variable();
+		
+        $var = new Variable();
 		$var->setDefined();
 		Bootstrap::$LabelObj = new ClassSalaryslipPdf('P','mm','a4');
 		self::$Mail = new class_mailmanager();

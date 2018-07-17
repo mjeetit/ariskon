@@ -90,34 +90,50 @@ class SalaryController extends Zend_Controller_Action {
 	  }
 	  $this->view->previoussetting = $this->ObjModel->getPreviousHeadSetting();
   }	
-  public function chequenumberAction(){
-     $this->_helper->layout->setLayout('popupmain');
-      if($this->_request->isPost()){
-	     $this->ObjModel->AddUpdateChequeNumber();
-	  }
+	public function chequenumberAction(){
+		$this->_helper->layout->setLayout('popupmain');
+	  	if($this->_request->isPost()){
+	    	$this->ObjModel->AddUpdateChequeNumber();
+	  	}
 	  $this->view->chequenumber = $this->ObjModel->getchequeNumber($this->_data['user_id']);
-  }
-   public function arriercurrentsalarylistAction(){
-      $this->view->salarylist = $this->ObjModel->getBackSalaryList();
-   } 
-   public function addarearAction(){
-       $usersalaryhead  = array();
-     if($this->_request->isPost() && !empty($this->_data['submit'])){
-         $usersalaryhead  = $this->ObjModel->getUserSalaryHead();
-		 $this->view->userinfo 	= $this->ObjModel->getAllUsersForSalary($this->_data['user_id']);
-      }
-     if($this->_request->isPost() && !empty($this->_data['submit_arrear'])){
-         $this->ObjModel->addArrearSalaryhead();
-      }
-      $this->view->usersalaryhead = $usersalaryhead;
-      $this->view->filteruserList = $this->ObjModel->getUserFilterHistory();
-   }
+	}
+	public function arriercurrentsalarylistAction(){
+		$this->view->salarylist = $this->ObjModel->getBackSalaryList();
+	} 
+	
+	public function addarearAction(){
+		
+		$usersalaryhead  = array();
+		
+		if($this->_request->isPost() && !empty($this->_data['submit'])){
+			
+			$usersalaryhead  = $this->ObjModel->getUserSalaryHead();
+			/*********************************************************************************
+			  function name modify on the basis of main menu either HRM, CRM or Reporting 
+			   by jm on 16072018
+			*********************************************************************************/
+			//$this->view->userinfo = $this->ObjModel->getAllUsersForSalary($this->_data['user_id']);
+			$this->view->userinfo = $this->ObjModel->getAllUsersForSalaryReporting($this->_data['user_id']);
+		}
+
+		if($this->_request->isPost() && !empty($this->_data['submit_arrear'])){
+			$this->ObjModel->addArrearSalaryhead();
+		}
+	
+		$this->view->usersalaryhead = $usersalaryhead;
+		$this->view->filteruserList = $this->ObjModel->getUserFilterHistory();
+	}
    
-   public function manualarrierAction(){
-     if($this->_request->isPost() && !empty($this->_data['submit'])){
-	      $this->ObjModel->insertManualSalary();
-	  }
-      $this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();
-   }
+   	public function manualarrierAction(){
+    	if($this->_request->isPost() && !empty($this->_data['submit'])){
+	    	$this->ObjModel->insertManualSalary();
+	  	}
+	  	/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   	*********************************************************************************/
+	  	//$this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();
+      	$this->view->filteruserList = $this->ObjModel->getAllUsersForSalaryReporting();
+   	}
 }
 ?>

@@ -25,10 +25,15 @@ class UsersController extends Zend_Controller_Action {
 		$this->ObjModel->ExportOrganographReport();
 	   }
 	   $this->view->Users = $this->ObjModel->getUsers();
-	   $this->view->filteruser = $this->ObjModel->getAllUsersForSalary();
-	   $this->view->filterdesignation = $this->ObjModel->getDesignation();
-	   $this->view->filterdepartment = $this->ObjModel->getDepartment();
-	   $this->view->filterheadquater = $this->ObjModel->getHeadquaters();
+		/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   	*********************************************************************************/
+		//$this->view->filteruser = $this->ObjModel->getAllUsersForSalary();
+		$this->view->filteruser = $this->ObjModel->getAllUsersForSalaryHRM();
+		$this->view->filterdesignation = $this->ObjModel->getDesignation();
+		$this->view->filterdepartment = $this->ObjModel->getDepartment();
+		$this->view->filterheadquater = $this->ObjModel->getHeadquaters();
 	}
 	public function adduserAction(){
 	  $this->view->form = 1;
@@ -143,15 +148,27 @@ class UsersController extends Zend_Controller_Action {
 		$UserID   = (isset($data['UserID']))   ? trim($data['UserID'])   : 0;
 		$Action   = (isset($data['Action']))   ? trim($data['Action'])   : 0;
 		
-		$modules   = $this->ObjModel->getModules($ParentID);
+		/***********************************************************************
+		getModule function name modified to make it separate to define in 
+		custom class file in library by jm on 16072018
+		***********************************************************************/
+		//$modules   = $this->ObjModel->getModules($ParentID);
+		$modules   = $this->ObjModel->getModulesHRM($ParentID);
 		$levelPrivilege = $this->ObjModel->getLevelPrivileges($LevelID);
-		$userPrivilege  = $this->ObjModel->getUserPrivileges($UserID); //echo "<pre>";print_r($userPrivilege);die;
+		$userPrivilege  = $this->ObjModel->getUserPrivileges($UserID); 
+		//echo "<pre>";print_r($userPrivilege);die;
 		$output = "";
 		if (count($modules) > 0) {
 			$output .= '<ul style="list-style: none;">';
 			foreach($modules as $key=>$child) {
 				if(in_array($child['module_id'],$levelPrivilege['Modules'],true)) {
-					$countChild = $this->ObjModel->getModules($child['module_id']);
+
+					/***********************************************************************
+					getModule function name modified to make it separate to define in 
+					custom class file in library by jm on 16072018
+					***********************************************************************/
+					//$countChild = $this->ObjModel->getModules($child['module_id']);
+					$countChild = $this->ObjModel->getModulesHRM($child['module_id']);
 					$onclick = (count($countChild) > 0) ? 'onclick="$.ShowModule('.$child['module_id'].')"' : 'onclick="$.ShowAction('.$child['module_id'].')"';
 					$chkcond = ($Action==1) ? $userPrivilege['Modules'] : $levelPrivilege['Modules'];
 					$checked = (in_array($child['module_id'],$chkcond,true)) ? 'checked="checked"' : '';

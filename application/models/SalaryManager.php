@@ -336,17 +336,23 @@ class SalaryManager extends Zend_Custom
 		} 
 	   //ob_end_clean();
 	   //Bootstrap::$LabelObj->Output($filename,'D');
-  }
+  	}
 
-  public function CalculateSalary($user_id,$filename){
-       $this->_salaryData = array();
+ 	public function CalculateSalary($user_id,$filename){
+       
+       	$this->_salaryData = array();
 	   
-       $empsalaries =  $this->SalaryAmount($user_id,$this->_salaryDate);
-	   $userinfo 	= $this->getAllUsersForSalary($user_id);
-	   $changectc = 0;
-	   $changectc = $this->checkCTCChange($user_id,$this->_salaryDate);
+       	$empsalaries =  $this->SalaryAmount($user_id,$this->_salaryDate);
+		/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	    *********************************************************************************/
+		//$userinfo 	= $this->getAllUsersForSalary($user_id);
+		$userinfo 	= $this->getAllUsersForSalaryHRM($user_id);
+		$changectc = 0;
+		$changectc = $this->checkCTCChange($user_id,$this->_salaryDate);
 	  
-	   $attandance 	= $this->getFinalAttandance($userinfo['employee_code'],$this->_salaryDate,$changectc);
+	   	$attandance 	= $this->getFinalAttandance($userinfo['employee_code'],$this->_salaryDate,$changectc);
 	   $this->_salaryData['EarningsTotal'] = 0;
 	   $this->_salaryData['DeductionsTotal'] = 0;
 	   $this->_salaryData['ArrEarningTotal'] = 0;
@@ -1472,14 +1478,18 @@ class SalaryManager extends Zend_Custom
 		  $salaries['salaryhead_id']  = $this->_getData['salaryhead_id'][$key];	
 		  $empsalaries[]  =  $salaries;
 	   }
-	   echo "<pre>";print_r($empsalaries);die;
-	   print_r($this->_getData);die;
-	   $userinfo 	= $this->getAllUsersForSalary($this->_getData['user_id']);
-	   //$attandance 	= array('total_salary_days'=>$this->_getData['current_sal_days'],'total_present'=>);
-	   $this->_salaryData['EarningsTotal'] = 0;
-	   $this->_salaryData['DeductionsTotal'] = 0;
-	   $this->_salaryData['ArrEarningTotal'] = 0;
-	   $this->_salaryData['ArrDeductionTotal'] = 0;
+	   
+	   /*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	    *********************************************************************************/
+	   	//$userinfo 	= $this->getAllUsersForSalary($this->_getData['user_id']);
+	   	$userinfo 	= $this->getAllUsersForSalaryHRM($this->_getData['user_id']);
+	   
+	   	$this->_salaryData['EarningsTotal'] = 0;
+	   	$this->_salaryData['DeductionsTotal'] = 0;
+	   	$this->_salaryData['ArrEarningTotal'] = 0;
+	   	$this->_salaryData['ArrDeductionTotal'] = 0;
  // =======================Current Salary Calculation==============================	  
 	   foreach($empsalaries as $salary){
 	        $this->_salaryData['date'] = $salary['date'];

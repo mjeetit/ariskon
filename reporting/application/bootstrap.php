@@ -219,11 +219,25 @@ class Bootstrap
      * Load a common class function that is used in whole project.
      */
 	public function commonClass() {
-		include self::$root . "/public/classes/class.salaryslip.pdf.php";
+        /*
+    	include self::$root . "/public/classes/class.salaryslip.pdf.php";
 		include self::$root . "/public/classes/class.mailmanager.php";
 		include self::$root . "/public/globalvar/Variable.php";
 		include self::$root . "/public/classes/class.function.php";
-		include self::$root . "/public/classes/class.encryption.php";
+		include self::$root . "/public/classes/class.encryption.php";  */
+
+        /***************************************************************************
+         Get main library folder path for reporting menu and pass this path at the 
+         time of calling common classes by jm on 13072018 
+        *****************************************************************************/
+        $library_root = str_replace("/reporting","",self::$root);
+
+        include $library_root . "/public/classes/class.salaryslip.pdf.php";
+        include $library_root . "/public/classes/class.mailmanager.php";
+        include $library_root . "/public/globalvar/Variable.php";
+        include $library_root . "/public/classes/class.function.php";
+        include $library_root . "/public/classes/class.encryption.php";
+
 		$var = new Variable();
 		$var->setDefined();
 		Bootstrap::$LabelObj = new ClassSalaryslipPdf('P','mm','a4');

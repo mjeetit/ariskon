@@ -18,27 +18,28 @@ class AdminController extends Zend_Controller_Action {
 	}
 	
 	public function indexAction(){
-	  if($this->_request->isPost()) {
-                $auth = Zend_Auth::getInstance();
-                $authAdapter = new Zend_Auth_Adapter_DbTable($this->ObjModel->getAdapter(),'users');
-				
-                $authAdapter->setIdentityColumn('username')
-                        	->setCredentialColumn('password');
-                $authAdapter->setIdentity($this->_data['username'])
-                        	->setCredential(md5($this->_data['password']));
-                $result = $auth->authenticate($authAdapter);
-					if($result->isValid()){
-						$this->ObjModel->setSession($authAdapter->getResultRowObject());
-						$this->_redirect(Bootstrap::$baseUrl.'Dashboard');
-					}else{
-						$_SESSION[ERROR_MSG] = "Invalid username or password.";
-				}
+	  	
+	  	if($this->_request->isPost()){
+
+            $auth = Zend_Auth::getInstance();
+            $authAdapter = new Zend_Auth_Adapter_DbTable($this->ObjModel->getAdapter(),'users');
+
+            $authAdapter->setIdentityColumn('username')
+                    	->setCredentialColumn('password');
+            $authAdapter->setIdentity($this->_data['username'])
+                    	->setCredential(md5($this->_data['password']));
+            $result = $auth->authenticate($authAdapter);
+			if($result->isValid()){
+				$this->ObjModel->setSession($authAdapter->getResultRowObject());
+				$this->_redirect(Bootstrap::$baseUrl.'Dashboard');
+			}else{
+				$_SESSION[ERROR_MSG] = "Invalid username or password.";
+			}
         }
 	}
 	public function logoutAction(){
 	  $this->ObjModel->unsetSession();
 	  $this->_redirect(Bootstrap::$baseUrl);
 	}
-	
 }
 ?>

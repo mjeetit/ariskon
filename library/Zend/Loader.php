@@ -1,4 +1,4 @@
-<?php  echo "this is from outer library folder";
+<?php 
 /**
  * Zend Framework
  *

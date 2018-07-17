@@ -130,23 +130,23 @@ class Bootstrap
      */
     public static function setupFrontController()
     {
-	self::$frontController = Zend_Controller_Front::getInstance();
-	self::$frontController->setDefaultControllerName('Admin');
+    	self::$frontController = Zend_Controller_Front::getInstance();
+    	self::$frontController->setDefaultControllerName('Admin');
         self::$frontController->throwExceptions(true);
         self::$frontController->returnResponse(true);
         self::$frontController->setControllerDirectory(
-                array(
-                    'default' => self::$root . '/application/controllers'
-		)
+            array(
+                'default' => self::$root . '/application/controllers'
+            )
         );
 	
         self::$frontController->setParam('registry', self::$registry);
     }
 
     /**
-     * Initialize the view
-     * @return Zend_View
-     */
+    * Initialize the view
+    * @return Zend_View
+    */
     public static function setupView()
     {	
         $view = new Zend_View;
@@ -180,9 +180,9 @@ class Bootstrap
     }
 
     /**
-     * DB setup done here.
-     * Read configuration, create db instance & set in registry to use in other part of application.
-     */
+    * DB setup done here.
+    * Read configuration, create db instance & set in registry to use in other part of application.
+    */
     public static function setupDatabase()
     {
         $config = self::$registry->configuration;
@@ -234,14 +234,29 @@ class Bootstrap
      * Load a common class function that is used in whole project.
      */
 	public function commonClass() {
+        /*
 		include self::$root . "/public/classes/class.salaryslip.pdf.php";
 		include self::$root . "/public/classes/class.mailmanager.php";
 		include self::$root . "/public/globalvar/Variable.php";
 		include self::$root . "/public/classes/class.function.php";
 		include self::$root . "/public/classes/class.encryption.php";
+        */
+
+        /*****************************************************************************
+         get main library folder path for calling common classes from main library  
+         by jm on 13072018 
+        ******************************************************************************/
+        $library_root = str_replace("/crm","",self::$root);
+
+        //include $library_root . "/public/classes/class.salaryslip.pdf.php";
+        include $library_root . "/public/classes/class.mailmanager.php";
+        include $library_root . "/public/globalvar/Variable.php";
+        include $library_root . "/public/classes/class.function.php";
+        include $library_root . "/public/classes/class.encryption.php";
+
 		$var = new Variable();
 		$var->setDefined();
-		Bootstrap::$LabelObj = new ClassSalaryslipPdf('P','mm','a4');
+		//Bootstrap::$LabelObj = new ClassSalaryslipPdf('P','mm','a4');
 		self::$Mail = new class_mailmanager();
 	}
 	

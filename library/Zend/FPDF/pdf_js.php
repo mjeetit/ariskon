@@ -7,8 +7,9 @@ by jm on 13072018
 //require_once(Bootstrap::$root."/library/Zend/FPDF/fpdf.php");
 //require_once(Bootstrap::$root."/library/Zend/FPDF/code128.php");
 
-require_once("/opt/lampp/htdocs/ariskon/library/Zend/FPDF/fpdf.php");
-require_once("/opt/lampp/htdocs/ariskon/library/Zend/FPDF/code128.php");
+$main_library_path = dirname(__FILE__);
+require_once($main_library_path."/fpdf.php");
+require_once($main_library_path."/code128.php");
 
 
 class PDF_JavaScript extends PDF_Code128 {

@@ -1,31 +1,34 @@
 <?php
+/****************************************************************************************
+This file contains the custom class functions from HRM library, CRM library and 
+Reporting Library by jm on 14072018
+*****************************************************************************************/
+
 class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     
 	public $_recordData = array();
 	public $_table = array('1'=>'admin_detail','2'=>'employee_personaldetail');
-	
-	public function AdminModuleAndSubModule($parent_id = 0){
 
-        /***********************************************************************************
-          custom class code is merged into one library file and distinguished by session 
-          variable ParentTab by jm on 13072018 
-        ************************************************************************************/
-        $parent_tab = $_SESSION['ParentTab'];
+    /**
+    * Get Admin module and Sub Module for HRM
+    * Function : AdminModuleAndSubModuleHRM()
+    * The AdminModuleAndSubModule common function is separated to add module name at the end 
+    * by jm on 16072018 
+    **/
+    public function AdminModuleAndSubModuleHRM($parent_id = 0){
 
-        if($parent_tab == 'HRM'){
-
-            $where = "status='1'";
+        $where = "status='1'";
 
             if($_SESSION['AdminLoginID']==1){
               
-               $where .= " AND admin_status='1'";
+                $where .= " AND admin_status='1'";
               
-               $select = $this->_db->select()
-                                ->from('module',array('*'))
-                                ->where("parent_id='".Bootstrap::$_parent."' AND level_id='".Bootstrap::$_level."'")
-                                ->where($where)
-                                ->where("module_type=1");
-             }else{
+                $select = $this->_db->select()
+                    ->from('module',array('*'))
+                    ->where("parent_id='".Bootstrap::$_parent."' AND level_id='".Bootstrap::$_level."'")
+                    ->where($where)
+                    ->where("module_type=1");
+            }else{
             
                 /* line commented by jm on 09072018 to remove error in HRM module for usr other then admin (becauser fields used is where clause are not present in the tables) 
 
@@ -37,36 +40,51 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
                                 ->where("MT.module_type=1");  */
 
 
-                    $select = $this->_db->select()
-                                ->from(array('MT'=>'module'),array('*'))
-                                ->where("MT.parent_id='".Bootstrap::$_parent."' AND MT.level_id='".Bootstrap::$_level."'")
-                                ->where("MT.user_status='1' AND MT.module_type='1'");           
+                $select = $this->_db->select()
+                    ->from(array('MT'=>'module'),array('*'))
+                    ->where("MT.parent_id='".Bootstrap::$_parent."' AND MT.level_id='".Bootstrap::$_level."'")
+                    ->where("MT.user_status='1' AND MT.module_type='1'");           
             }
 
             //echo $select->__toString();die;
             $result = $this->getAdapter()->fetchAll($select);
             return $result;
+    }        
 
-        }else if($parent_tab == 'CRM'){
+    /**
+    * Get Admin module and Sub Module for CRM
+    * Function : AdminModuleAndSubModule()
+    * The AdminModuleAndSubModule common function is separated to add module name at the end 
+    * by jm on 16072018 
+    **/
+    public function AdminModuleAndSubModule($parent_id = 0){
 
-            if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
-                $where .= " AND isAdmin='1'";
-            }else{
-                $where .= " AND isUser='1'"; 
-            }
+        if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
+            $where .= " AND isAdmin='1'";
+        }else{
+            $where .= " AND isUser='1'"; 
+        }
 
-            $select = $this->_db->select()
-                        ->from('crm_modules',array('*'))
-                        ->where("parent_id='".Bootstrap::$_parent."' AND level_id='".Bootstrap::$_level."'")
-                        ->where("isActive='1'"); 
-						//echo $select->__toString();die;
-            $result = $this->getAdapter()->fetchAll($select);
+        $select = $this->_db->select()
+            ->from('crm_modules',array('*'))
+            ->where("parent_id='".Bootstrap::$_parent."' AND level_id='".Bootstrap::$_level."'")
+            ->where("isActive='1'"); 
+            //echo $select->__toString();die;
+        $result = $this->getAdapter()->fetchAll($select);
 
-            return $result;
+        return $result;
+    }
 
-        }else if($parent_tab == 'REPORTING'){
 
-            $where = "status='1'";
+    /**
+    * Get Admin module and Sub Module for Reporting
+    * Function : AdminModuleAndSubModuleReporting()
+    * The AdminModuleAndSubModule common function is separated to add module name at the end 
+    * by jm on 16072018 
+    **/
+    public function AdminModuleAndSubModuleReporting($parent_id = 0){
+
+        $where = "status='1'";
      
             if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
                 $where .= " AND admin_status='1'";
@@ -84,86 +102,92 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
             $result = $this->getAdapter()->fetchAll($select);
             
             return $result;
-        }    
     }
 
 
     /**
-    * Get Modules
-    * Function : getModules()
-    * Get modules
-    * */
-    public function getModules($parent_id=0){ 
+    * Get Modules for HRM
+    * Function : getModulesHRM()
+    * getModuleHRM is a separated function to get the list of modules by jm on 16072018
+    **/
+    public function getModulesHRM($parent_id=0){ 
 
-        /***********************************************************************************
-          custom class code is merged into one library file and distinguished by session 
-          variable ParentTab by jm on 13072018 
-        ************************************************************************************/
-        $parent_tab = $_SESSION['ParentTab'];
-
-        if($parent_tab == 'HRM'){
-
-            $where = "status='1'";
-        
-            if($_SESSION['AdminLoginID']==1){    
-                $where .= " AND admin_status='1'";
-            }else{
-                $where .= " AND user_status='1'"; 
-            }
-         
-            if($_SESSION['AdminLoginID']==163){
-                $priv = $this->getSpecialPriv();
-                $where = "status='1' AND (user_status='1' OR module_id IN(".implode(',',$priv)."))";
-            }
-        
-            $select = $this->_db->select()
-                        ->from('module',array('*'))
-                        ->where("parent_id='".$parent_id."'")
-                        ->where($where)
-                        ->where("module_type=1");
-            //echo $select->__toString();die;
-            $result = $this->getAdapter()->fetchAll($select);
-            
-            return $result;
-
-        }else if($parent_tab == 'CRM'){
-
-            if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
-                $where .= " AND isAdmin='1'";
-            }else{
-                $where .= " AND isUser='1'"; 
-            }
-
-            $select = $this->_db->select()
-                    ->from('crm_modules',array('*'))
-                    ->where("isActive='1'")
-                    ->where("parent_id='".$parent_id."'"); 
-            //echo $select->__toString();die;
-            $result = $this->getAdapter()->fetchAll($select);
-
-            return $result;
-
-        }else if($parent_tab == 'REPORTING'){
-
-            $where = "status='1'";
-        
-            if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
-                $where .= " AND admin_status='1'";
-            }else{
-                $where .= " AND user_status='1'"; 
-            }
-        
-            $select = $this->_db->select()
+        $where = "status='1'";
+    
+        if($_SESSION['AdminLoginID']==1){    
+            $where .= " AND admin_status='1'";
+        }else{
+            $where .= " AND user_status='1'"; 
+        }
+     
+        if($_SESSION['AdminLoginID']==163){
+            $priv = $this->getSpecialPriv();
+            $where = "status='1' AND (user_status='1' OR module_id IN(".implode(',',$priv)."))";
+        }
+    
+        $select = $this->_db->select()
                     ->from('module',array('*'))
                     ->where("parent_id='".$parent_id."'")
                     ->where($where)
-                    ->where("module_type=3");
-            $result = $this->getAdapter()->fetchAll($select);
-            
-            return $result;
-        }
-	}
+                    ->where("module_type=1");
+        //echo $select->__toString();die;
+        $result = $this->getAdapter()->fetchAll($select);
+        
+        return $result;
+    }
 
+
+    /**
+    * Get Modules for CRM
+    * Function : getModulesCRM()
+    * getModuleCRM is a separated function to get the list of modules by jm on 16072018
+    **/
+    public function getModulesCRM($parent_id=0){ 
+
+        echo "148  custom class get module crm separated funtion";
+
+        if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
+            $where .= " AND isAdmin='1'";
+        }else{
+            $where .= " AND isUser='1'"; 
+        }
+
+        $select = $this->_db->select()
+                ->from('crm_modules',array('*'))
+                ->where("isActive='1'")
+                ->where("parent_id='".$parent_id."'"); 
+        //echo $select->__toString();die;
+        $result = $this->getAdapter()->fetchAll($select);
+
+        return $result;
+    }
+
+
+    /**
+    * Get Modules for Reporting
+    * Function : getModulesReporting()
+    * This is for Reporting block
+    **/
+    public function getModulesReporting($parent_id=0){
+
+        $where = "status='1'";
+    
+        if($_SESSION['AdminLoginID']==1 || $_SESSION['AdminLoginID']==44){
+            $where .= " AND admin_status='1'";
+        }else{
+            $where .= " AND user_status='1'"; 
+        }
+    
+        $select = $this->_db->select()
+                ->from('module',array('*'))
+                ->where("parent_id='".$parent_id."'")
+                ->where($where)
+                ->where("module_type=3");
+        $result = $this->getAdapter()->fetchAll($select);
+        
+        return $result;
+    }
+     
 
     /**
     * Insert nto Table
@@ -189,8 +213,8 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
 
     /**
-    * Insert nto Table
-    * Function : insertInToTable()
+    * Update Table
+    * Function : updateTable()
     * Insert data into table.
     * */
     public function updateTable($tablename, $updatedata, $where) {
@@ -296,78 +320,82 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 
 
     /**
-    * Column Name List
-    * Function : getBusinessToCountry()
-    * Fetch All the column Name of specific table.
+    * Get the list of all users for salary of HRM 
+    * Function : getAllUsersForSalaryHRM()
+    * function separated on the basis of main dashboard menu
     * */
-    public function getAllUsersForSalary($user_id=false){
-    
-        /***********************************************************************************
-          custom class code is merged into one library file and distinguished by session 
-          variable ParentTab by jm on 13072018 
-        ************************************************************************************/
-        $parent_tab = $_SESSION['ParentTab'];
+    public function getAllUsersForSalaryHRM($user_id=false){
+            
+        $where = '';
 
-        if($parent_tab == 'HRM'){
+        if($user_id){
+            $where = " AND UT.user_id='".$user_id."'"; 
+        }
+ 
+        $select = $this->_db->select()
+            ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
+            ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
+            ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
+            ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
+            ->order("employee_code ASC");
+        //echo $select->__toString();die;
 
-            $where = '';
-   
-            if($user_id){
-                $where = " AND UT.user_id='".$user_id."'"; 
-            }
-     
-            $select = $this->_db->select()
-                ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
-                ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
-                ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
-                ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
-                ->order("employee_code ASC");
-            //echo $select->__toString();die;
-    
-            if($user_id){
-                $result = $this->getAdapter()->fetchRow($select);
-            }else{
-                $result = $this->getAdapter()->fetchAll($select);
-            }
-
-            return $result; 
-
-        }else if($parent_tab == 'CRM'){
-
-            $select = $this->_db->select()
-                    ->from(array('UT'=>'user_detail'),array('*'))
-                    ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
-                    ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'));
-            //echo $select->__toString();die;
-
+        if($user_id){
+            $result = $this->getAdapter()->fetchRow($select);
+        }else{
             $result = $this->getAdapter()->fetchAll($select);
+        }
 
-            return $result; 
+        return $result; 
+    }
 
-        }else if($parent_tab == 'REPORTING'){
 
-            $where = '';
+    /**
+    * Get the list of all users for salary of CRM 
+    * Function : getAllUsersForSalaryCRM()
+    * function separated on the basis of main dashboard menu
+    * */
+    public function getAllUsersForSalaryCRM($user_id=false){
             
-            if($user_id){
-                $where = " AND UT.user_id='".$user_id."'"; 
-            }
+        $select = $this->_db->select()
+                ->from(array('UT'=>'user_detail'),array('*'))
+                ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
+                ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'));
+        //echo $select->__toString();die;
+        $result = $this->getAdapter()->fetchAll($select);
+
+        return $result; 
+    }
+
+
+    /**
+    * Get the list of all users for salary of Reporting 
+    * Function : getAllUsersForSalaryReporting()
+    * function separated on the basis of main dashboard menu
+    * */
+    public function getAllUsersForSalaryReporting($user_id=false){
             
-            $select = $this->_db->select()
-                ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
-                ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
-                ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
-                ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
-                ->order("employee_code ASC");
-            //echo $select->__toString();die;
-            
-            if($user_id){
-                $result = $this->getAdapter()->fetchRow($select);
-            }else{
-                $result = $this->getAdapter()->fetchAll($select);
-            }
+        $where = '';
         
-            return $result;
-        }   
+        if($user_id){
+            $where = " AND UT.user_id='".$user_id."'"; 
+        }
+        
+        $select = $this->_db->select()
+            ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
+            ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
+            ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
+            ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
+            ->order("employee_code ASC");
+        //echo $select->__toString();die;
+        
+        if($user_id){
+            $result = $this->getAdapter()->fetchRow($select);
+        }else{
+            $result = $this->getAdapter()->fetchAll($select);
+        }
+    
+        return $result; 
     }
 
 
@@ -1114,6 +1142,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 					->where("parent_id='".$parent_id."'")
 					->where($where)
 					->where("module_type=1");
+        echo "1142 main custom class from library getAllMOdule function is call<pre>"; print_r($select->__toString()); die;            
 		$result = $this->getAdapter()->fetchAll($select);
 		
         return $result;

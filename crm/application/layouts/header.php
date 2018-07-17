@@ -44,7 +44,7 @@
 					<strong>Administration Section</strong>
                     </div>
                     <div class="grid_4">
-                      <p>Welcome, <strong><?=ucfirst($_SESSION['AdminName'])?>&nbsp;</strong><img src="<?=Bootstrap::$baseUrl.'public/admin_images/user.gif'?>"/>  <a href="<?=$this->url(array('controller'=>'Admin','action'=>'logout'),'default',true)?>" id="logout">
+                      <p>Welcome, <strong><?php echo ucfirst($_SESSION['AdminName'])?>&nbsp;</strong><img src="<?=Bootstrap::$baseUrl.'public/admin_images/user.gif'?>"/>  <a href="<?=$this->url(array('controller'=>'Admin','action'=>'logout'),'default',true)?>" id="logout">
                         Logout
                         </a>
                     </div>

@@ -85,7 +85,8 @@ class ZendX_JQuery_View_Helper_privilegeElement extends Zend_View_Helper_FormEle
         return $htmlstring;
     }
 
-    public function checkprivilege($priv = '') {//print_r($this->needle);print_r($priv);die;
+    public function checkprivilege($priv = '') {
+    //print_r($this->needle);print_r($priv);die;
         if (!empty($priv)) {
             (in_array($this->needle, $priv)) ? $this->checked = 'checked="checked" ' : $this->checked = '';
         }

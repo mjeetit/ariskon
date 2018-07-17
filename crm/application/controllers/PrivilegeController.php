@@ -70,13 +70,25 @@ class PrivilegeController extends Zend_Controller_Action {
 		$DesigID  = (isset($data['DesigID']))  ? trim($data['DesigID'])  : 0;
 		
 		$privilege = $this->ObjModel->getLevelPrivileges($DesigID);
-		$modules   = $this->ObjModel->getModules($ParentID); //echo "<pre>";print_r($modules);die;
-		
+
+		/***********************************************************************
+		 getModule function name modified to make it separate to define in 
+		 custom class file in library by jm on 16072018
+		***********************************************************************/
+		//$modules   = $this->ObjModel->getModules($ParentID);
+		$modules   = $this->ObjModel->getModulesCRM($ParentID); 
+				
 		$output = "";
 		if (count($modules) > 0) {
 			$output .= '<ul style="list-style: none;">';
 			foreach($modules as $key=>$child) {
-				$countChild = $this->ObjModel->getModules($child['module_id']);
+
+				/***********************************************************************
+				 getModule function name modified to make it separate to define in 
+				 custom class file in library by jm on 16072018
+				***********************************************************************/
+				//$countChild = $this->ObjModel->getModules($child['module_id']);
+				$countChild = $this->ObjModel->getModulesCRM($child['module_id']);
 				$onclick = (count($countChild) > 0) ? 'onclick="$.ShowModule('.$child['module_id'].')"' : 'onclick="$.ShowAction('.$child['module_id'].')"';
 				$checked = (in_array($child['module_id'],$privilege['Modules'],true)) ? 'checked="checked"' : '';
 				$output .= '<li><input type="checkbox" name="modules[]" id="module'.$child['module_id'].'" value="'.$child['module_id'].'" '.$onclick.' '.$checked.' />&nbsp;&nbsp;'.$child['module_name'];					
@@ -172,15 +184,22 @@ class PrivilegeController extends Zend_Controller_Action {
 		$UserID   = (isset($data['UserID']))   ? trim($data['UserID'])   : 0;
 		$Action	  = (isset($data['Action']))   ? trim($data['Action'])   : 1;
 		
-		$modules   		= $this->ObjModel->getModules($ParentID);
+		/***********************************************************************
+		  getModule function name modified to make it separate to define in 
+		  custom class file in library by jm on 16072018
+		***********************************************************************/
+		//$modules   		= $this->ObjModel->getModules($ParentID);
+		$modules   		= $this->ObjModel->getModulesCRM($ParentID);
 		$levelPrivilege = $this->ObjModel->getLevelPrivileges($LevelID);
-		$userPrivilege  = $this->ObjModel->getUserPrivileges($UserID); //echo "<pre>";print_r($userPrivilege);die;
+		$userPrivilege  = $this->ObjModel->getUserPrivileges($UserID);
+
 		$output = "";
 		if (count($modules) > 0) {
 			$output .= '<ul style="list-style: none;">';
 			foreach($modules as $key=>$child) {
 				if(in_array($child['module_id'],$levelPrivilege['Modules'],true)) {
-					$countChild = $this->ObjModel->getModules($child['module_id']);
+					//$countChild = $this->ObjModel->getModules($child['module_id']);
+					$countChild = $this->ObjModel->getModulesCRM($child['module_id']);
 					$onclick = (count($countChild) > 0) ? 'onclick="$.ShowModule('.$child['module_id'].')"' : 'onclick="$.ShowAction('.$child['module_id'].')"';
 					$chkcond = ($Action==1) ? $userPrivilege['Modules'] : $levelPrivilege['Modules'];
 					$checked = (in_array($child['module_id'],$chkcond,true)) ? 'checked="checked"' : '';

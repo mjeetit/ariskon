@@ -7,7 +7,7 @@
 					<thead>
 					<tr>
 					<td colspan="5">
-					<a href="<?php echo $this->url(array('controller'=>'Setting','action'=>'addexpsetting','Mode'=>'Add'),'default',true)?>" class="button add">
+						<a href="<?php echo $this->url(array('controller'=>'Setting','action'=>'addexpsetting','Mode'=>'Add'),'default',true)?>" class="button add">
                         	<span>Add Setting<img src="<?php echo IMAGE_LINK;?>/plus-small.gif"  width="12" height="9" alt="Add Setting" /></span>
                         </a></td>
 					</tr>

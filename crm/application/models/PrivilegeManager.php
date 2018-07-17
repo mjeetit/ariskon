@@ -43,13 +43,14 @@ class PrivilegeManager extends Zend_Custom
 	}
 	
 	/**
-	 * Method getModules() get list of module_id, parent_id, level_id, module_name on the basis of module id and gui=web and which
-	   have delete_status=0 and status=1..
-	 * @access	public
-	 * @param	$moduleID , hold module ID and $gui holds web
-	 * @return	array.
-	 */
-	public function getModules($parentID){
+	* Method getModules() get list of module_id, parent_id, level_id, module_name on the basis of module id and gui=web and which
+	have delete_status=0 and status=1..
+	* @access	public
+	* @param	$moduleID , hold module ID and $gui holds web
+	* @return	array.
+	*/
+	//public function getModulesCRM($parentID){   
+	public function getModulesCRM($parentID){
 		$query = $this->_db->select()
 				 ->from(array('CM'=>'crm_modules'),array('CM.module_id','CM.parent_id','CM.level_id','CM.module_name'))
 				 ->where("CM.isDelete='0' AND CM.isActive='1' AND CM.parent_id=".(int)$parentID); //echo $query->__toString();die;

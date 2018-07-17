@@ -26,7 +26,7 @@
 
 					  <tr>
 
-                      <td width="40px">Comapny Name</td>
+                      <td width="40px">98-Comapny Name</td>
 
 						    <td width="40px"><input type="text" name="company_name" class="classtext"/></td>
 

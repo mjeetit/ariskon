@@ -32,21 +32,26 @@ class SalaryController extends Zend_Controller_Action {
 	  $this->view->user_id = $this->_data['user_id'];
 	}
 	public function salaryprocessingAction(){
-	  if(!empty($this->_data['Mode']) && !empty($this->_data['user_id'])){
-	      $this->ObjModel->GenerateSalary();
-		  $_SESSION[SUCCESS_MSG] = 'Salary slip has been generated';
-		  $this->_redirect($this->_request->getControllerName().'/salaryprocessing');
-	  }
-	  if($this->_request->isPost() && !empty($this->_data['recalculate'])){
-		   $this->ObjModel->ReCalculationSalary();
-	   }
-	  if($this->_request->isPost() && !empty($this->_data['Exportsalary'])){ 
-		   $this->ObjModel->ExportCurrentSalary();
-	   }
-	  $this->view->salarylist = $this->ObjModel->SalaryList();
-	  $this->view->filteruser = $this->ObjModel->getAllUsersForSalary();
-	  $this->view->filterdesignation = $this->ObjModel->getDesignation();
-	  $this->view->processingdate = $this->ObjModel->getSalaryDuration();
+		if(!empty($this->_data['Mode']) && !empty($this->_data['user_id'])){
+			$this->ObjModel->GenerateSalary();
+			$_SESSION[SUCCESS_MSG] = 'Salary slip has been generated';
+			$this->_redirect($this->_request->getControllerName().'/salaryprocessing');
+		}
+		if($this->_request->isPost() && !empty($this->_data['recalculate'])){
+			$this->ObjModel->ReCalculationSalary();
+		}
+		if($this->_request->isPost() && !empty($this->_data['Exportsalary'])){ 
+			$this->ObjModel->ExportCurrentSalary();
+		}
+		$this->view->salarylist = $this->ObjModel->SalaryList();
+		/*********************************************************************************
+		function name modify on the basis of main menu either HRM, CRM or Reporting 
+		by jm on 16072018
+		*********************************************************************************/
+		//$this->view->filteruser = $this->ObjModel->getAllUsersForSalary();
+		$this->view->filteruser = $this->ObjModel->getAllUsersForSalaryHRM();
+		$this->view->filterdesignation = $this->ObjModel->getDesignation();
+		$this->view->processingdate = $this->ObjModel->getSalaryDuration();
 	}
    public function editsalaryAction(){
       if($this->_request->isPost()){
@@ -109,32 +114,48 @@ class SalaryController extends Zend_Controller_Action {
 	     $_SESSION[ERROR_MSG] = 'There is no record found';
 	   }
       $this->view->salarylist = $this->ObjModel->getBackSalaryList();
-   } 
-   public function addarearAction(){
-       $usersalaryhead  = array();
-     if($this->_request->isPost() && !empty($this->_data['submit'])){
-         $usersalaryhead  = $this->ObjModel->getUserSalaryHead();
-		 $this->view->userinfo 	= $this->ObjModel->getAllUsersForSalary($this->_data['user_id']);
-      }
-     if($this->_request->isPost() && !empty($this->_data['submit_arrear'])){
-         $this->ObjModel->addArrearSalaryhead();
-      }
-      $this->view->usersalaryhead = $usersalaryhead;
-      $this->view->filteruserList = $this->ObjModel->getUserFilterHistory();
-   }
+   	} 
+   	public function addarearAction(){
+    	$usersalaryhead  = array();
+     	if($this->_request->isPost() && !empty($this->_data['submit'])){
+			$usersalaryhead  = $this->ObjModel->getUserSalaryHead();
+         	/*********************************************************************************
+			   	function name modify on the basis of main menu either HRM, CRM or Reporting 
+				by jm on 16072018
+			*********************************************************************************/
+	//$this->view->userinfo 	= $this->ObjModel->getAllUsersForSalary($this->_data['user_id']);
+	$this->view->userinfo 	= $this->ObjModel->getAllUsersForSalaryHRM($this->_data['user_id']);
+    	}
+     	if($this->_request->isPost() && !empty($this->_data['submit_arrear'])){
+        	$this->ObjModel->addArrearSalaryhead();
+      	}
+      	$this->view->usersalaryhead = $usersalaryhead;
+      	$this->view->filteruserList = $this->ObjModel->getUserFilterHistory();
+   	}
    
-   public function manualarrierAction(){
-     if($this->_request->isPost() && !empty($this->_data['submit'])){
-	      $this->ObjModel->insertManualSalary();
-	  }
-      $this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();
-   }
-   public function addarrierAction(){
-         if($this->_request->isPost() && !empty($this->_data['submit'])){
+	public function manualarrierAction(){
+		if($this->_request->isPost() && !empty($this->_data['submit'])){
+			$this->ObjModel->insertManualSalary();
+		}
+		/*********************************************************************************
+		  function name modify on the basis of main menu either HRM, CRM or Reporting 
+		  by jm on 16072018
+		*********************************************************************************/
+		//$this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();		
+		$this->view->filteruserList = $this->ObjModel->getAllUsersForSalaryHRM();
+	}
+
+   	public function addarrierAction(){
+        if($this->_request->isPost() && !empty($this->_data['submit'])){
 		    $this->ObjModel->insertBunchArrier();
-			 $_SESSION[SUCCESS_MSG] = 'Arrier Added for selected employee(s)';
-		 }
-       $this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();
-   }
+			$_SESSION[SUCCESS_MSG] = 'Arrier Added for selected employee(s)';
+		}
+		/*********************************************************************************
+		  function name modify on the basis of main menu either HRM, CRM or Reporting 
+		  by jm on 16072018
+		*********************************************************************************/
+		//$this->view->filteruserList = $this->ObjModel->getAllUsersForSalary();
+       	$this->view->filteruserList = $this->ObjModel->getAllUsersForSalaryHRM();
+   	}
 }
 ?>

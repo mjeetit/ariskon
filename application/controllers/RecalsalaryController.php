@@ -11,7 +11,12 @@ class RecalsalaryController extends Zend_Controller_Action {
 	    $salarydate = array(0=>'2013-04-25',1=>'2013-05-25',2=>'2013-06-25',3=>'2013-07-25',4=>'2013-08-25',5=>'2013-09-25',6=>'2013-10-25',7=>'2013-11-25',8=>'2013-12-25',9=>'2014-01-25',10=>'2014-02-25');
 		$updatedate = array(0=>'2013-04-25',1=>'2013-05-25',2=>'2013-06-25',3=>'2013-07-25',4=>'2013-08-25',5=>'2013-09-25',6=>'2013-10-25',7=>'2013-11-25',8=>'2013-12-25',9=>'2014-01-25','2014-02-25');
 		foreach($salarydate as $key=>$dates){
-		  $Allusers = $this->ObjModel->getAllUsersForSalary();
+		  /************************************************************************************
+		   function name modified as per the current module to distinguish in main library 
+		   custom class functions by jitender maithani on 16072018
+		  ************************************************************************************/
+		  //$Allusers = $this->ObjModel->getAllUsersForSalary();
+		  $Allusers = $this->ObjModel->getAllUsersForSalaryHRM();
 		  $this->ObjModel->_salaryDate = $dates;
 		  foreach($Allusers as $users){
 		     $this->ObjModel->CalculateSalary($users['user_id'],'test.pdf');

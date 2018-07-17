@@ -243,35 +243,26 @@ class ReportingController extends Zend_Controller_Action {
 	}
 
 	
-
 	public function chemistvisitAction()
-
 	{
-
 		$data = $this->_request->getParams();
-
 		$this->view->Filterdata = $data;
-
 		$this->view->doctors = $this->ObjAjax->getChemistLists();
-
 		$this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
-
 		$this->view->beDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'8'));
-
 		$this->view->abmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'7'));
-
 		$this->view->rbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'6'));
-
 		$this->view->zbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'5'));
+		$this->view->vistdetail = $this->ObjModel->getChemistVisist($data);
 
-	   
+		/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   	*********************************************************************************/
+	   	//$this->view->allusers = $this->ObjModel->getAllUsersForSalary();
+	   	$this->view->allusers = $this->ObjModel->getAllUsersForSalaryReporting();
 
-	   $this->view->vistdetail = $this->ObjModel->getChemistVisist($data);
-
-	   $this->view->allusers = $this->ObjModel->getAllUsersForSalary();
-
-	   $this->view->headquater = $this->ObjModel->getHeadquater();//echo "<pre>";print_r($this->view->zbmDetails);die;
-
+		$this->view->headquater = $this->ObjModel->getHeadquater();
 	}
 
 	
@@ -306,114 +297,76 @@ class ReportingController extends Zend_Controller_Action {
 
 	
 
-	public function stockistvisitAction()
-
-	{
+	public function stockistvisitAction(){
 
 		$data = $this->_request->getParams();
-
+	
 		$this->view->Filterdata = $data;
-
 		$this->view->doctors = $this->ObjAjax->getStockistLists();
-
 		$this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
-
 		$this->view->beDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'8'));
-
 		$this->view->abmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'7'));
-
 		$this->view->rbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'6'));
-
 		$this->view->zbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'5'));
+		$this->view->vistdetail = $this->ObjModel->getStockistVisist($data);
 
-	   
-
-	   $this->view->vistdetail = $this->ObjModel->getStockistVisist($data);
-
-	   $this->view->allusers = $this->ObjModel->getAllUsersForSalary();
-
-	   $this->view->headquater = $this->ObjModel->getHeadquater();//echo "<pre>";print_r($this->view->zbmDetails);die;
-
+		/*********************************************************************************
+		function name modify on the basis of main menu either HRM, CRM or Reporting 
+		by jm on 16072018
+		*********************************************************************************/
+		//$this->view->allusers = $this->ObjModel->getAllUsersForSalary();
+		$this->view->allusers = $this->ObjModel->getAllUsersForSalaryReporting();
+		$this->view->headquater = $this->ObjModel->getHeadquater();
 	}
 
 	
 
 	public function stockistdetailreportAction()
-
 	{
-
 	   	$data = $this->_request->getParams(); //echo "<pre>";print_r($data);die;
-
 		$visitorID  = (isset($data['token'])) ? Class_Encryption::decode($data['token']) : 0;
 
-		
-
 		if($visitorID>0) {
-
 			$this->view->reporteedetail = $this->ObjModel->getReportee($visitorID);
-
 			$this->view->detailreport = $this->ObjModel->getStockistVisitReport($data); //echo "<pre>";print_r($this->view->zbmDetails);die;
-
-		}
-
-		else {
-
+		}else {
 			$_SESSION[SUCCESS_MSG] = "Wrong parameter!!";
-
 			$this->_redirect($this->getRequest()->getControllerName().'/chemistvisit');
-
 		}
-
 	}
 
 	
 
 	public function repordetailAction()
-
 	{
-
-	  if($this->_data['Mode']=='Doctor'){
-
-	   $this->view->vistdetail = $this->ObjModel->getDoctorVisitDetail($this->_data);
-
-	  }elseif($this->_data['Mode']=='Chemist'){
-
-	    $this->view->vistdetail = $this->ObjModel->getChemistVisitDetail($this->_data);
-
-	  } 
-
-	   $this->view->patchlists = $this->ObjModel->getPatchlist($this->_data['user_id']);
-
+	  	if($this->_data['Mode']=='Doctor'){
+		   $this->view->vistdetail = $this->ObjModel->getDoctorVisitDetail($this->_data);
+	  	}elseif($this->_data['Mode']=='Chemist'){
+			$this->view->vistdetail = $this->ObjModel->getChemistVisitDetail($this->_data);
+		} 
+		$this->view->patchlists = $this->ObjModel->getPatchlist($this->_data['user_id']);
     }
 
 	
 
 	public function giftAction()
-
 	{
 
-	  $this->view->tableDatas = $this->ObjModel->getTableData(array('tableName'=>'app_gifts','tableColumn'=>array(),'columnName'=>'isActive','columnValue'=>'1','returnRow'=>'all'));	
-
+	  $this->view->tableDatas = $this->ObjModel->getTableData(array('tableName'=>'app_gifts','tableColumn'=>array(),'columnName'=>'isActive','columnValue'=>'1','returnRow'=>'all'));
 	}
 
 	
 
 	public function addgiftAction()
-
 	{
-
 		$data = $this->_request->getParams();
 
 		if($this->_request->isPost() && str_replace(' ','_',strtoupper($data['addnewdata'])) == 'SAVE'){
 
 			$tableData = $data['table'];
-
 		   	$tableData['rest_quantity'] = $data['table']['quantity'];
-
 			$tableData['created_by'] = $_SESSION['AdminLoginID'];
-
 		   	$tableData['created_ip'] = $_SERVER['REMOTE_ADDR'];
-
 		   	if($this->ObjModel->saveData(array('tableName'=>'app_gifts','tableData'=>$tableData))>0) {
 
 				$_SESSION[SUCCESS_MSG] = "Gift added successfully!!";

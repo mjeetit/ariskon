@@ -4,19 +4,18 @@
 		/**
 		*Variable Holds the Name of Section Table
 		**/
-		/**
-		**/
-	
+
 		public $parent_id = 1;				// For Getting submodule of application
 		public $status    = '1';			// Status of module
 		public $level_id  = NULL;			// Lavel of module.
 		public $Tables  = array('1'=>'admin_detail','2'=>'employee_personaldetail');
-		
+
 		public function checkAuthentication($datavalue){
+
 		    $select = $this->_db->select()
-									 ->from(array('UD'=>'users'),array('*'))
-									// ->joininner(array('EP'=>'employee_personaldetail'),array())
-									 ->where("UD.username='".$datavalue['username']."' AND UD.password='".md5($datavalue['password'])."'");
+				->from(array('UD'=>'users'),array('*'))
+				// ->joininner(array('EP'=>'employee_personaldetail'),array())
+				->where("UD.username='".$datavalue['username']."' AND UD.password='".md5($datavalue['password'])."'");
 			 $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
 			 if(!empty($result)){
 			    return $result;
@@ -24,26 +23,19 @@
 			    return false;
 			 }
 		}
-	
+
 		public function setSession($uservalue){
-			/*session_register("AdminLoginID");
-			session_register("AdminLevelID");
-			session_register("AdminUserType");
-			session_register("AdminName");
-			session_register("AdminBunit");
-			session_register("AdminDesignation");
-			session_register("AdminDepartment");*/
 			
 			$usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
 			$_SESSION['AdminLoginID']     = $uservalue['user_id'];
 			$_SESSION['AdminLevelID']     = $uservalue['level_id'];
 			$_SESSION['AdminUserType']    = $uservalue['user_type'];
 			$select = $this->_db->select()
-								 ->from($this->Tables[$usertype],array('*'))
-								 ->where("user_id='".$uservalue['user_id']."'");
-								 //echo $select->__toString();die;
+				->from($this->Tables[$usertype],array('*'))
+				->where("user_id='".$uservalue['user_id']."'");
+				//echo $select->__toString();die;
 			$result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
-			$_SESSION['AdminName']        = $result['first_name'];
+			$_SESSION['AdminName']        = $result['first_name'].' '.$result['last_name'];
 			$_SESSION['AdminBunit']    	  = $result['bunit_id'];
 			$_SESSION['AdminDesignation'] = $result['designation_id'];
 			$_SESSION['AdminDepartment']  = $result['department_id'];
@@ -61,7 +53,7 @@
 			}
 			$this->_db->update($table,array('last_login'=>new Zend_Db_Expr('NOW()'),'last_login_ip'=>$_SERVER['REMOTE_ADDR']),"user_id='".$_SESSION['AdminLoginID']."'");					 
 		   						 
-    	}
+		}
 		public function unsetSession(){
 			unset($_SESSION['AdminLoginID']);
 			unset($_SESSION['AdminLevelID']);
@@ -86,19 +78,19 @@
 			session_unregister($_SESSION['LastLogin']);
 			session_unregister($_SESSION['LastLoginIP']);*/
 			session_destroy();
-		
+
 		}
-                public function getStatusCheck($uservalue){
-				   $usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
-                    $select = $this->_db->select()
-                                             ->from($this->Tables[$usertype],array('*'))
-                                             ->where("user_id='".$uservalue['user_id']."' AND delete_status='0'");
-                    $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
-                    if(!empty($result)){
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }
+        public function getStatusCheck($uservalue){
+		   $usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
+            $select = $this->_db->select()
+                                     ->from($this->Tables[$usertype],array('*'))
+                                     ->where("user_id='".$uservalue['user_id']."' AND delete_status='0'");
+            $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
+            if(!empty($result)){
+                return true;
+            }else{
+                return false;
+            }
+        }
 	}
 ?>

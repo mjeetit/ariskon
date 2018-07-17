@@ -18,7 +18,12 @@ class ReportingController extends Zend_Controller_Action {
 	}
 	public function doctorvisitAction(){
 	   $this->view->vistdetail = $this->ObjModel->getDoctorVisist();
-	   $this->view->allusers = $this->ObjModel->getAllUsersForSalary();
+	   /*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   *********************************************************************************/
+	   //$this->view->allusers = $this->ObjModel->getAllUsersForSalary();
+	   $this->view->allusers = $this->ObjModel->getAllUsersForSalaryHRM();
 	   $this->view->headquater = $this->ObjModel->getHeadquater();
 	}
 	public function chemistvisitAction(){

@@ -245,33 +245,25 @@ class ReportingoldController extends Zend_Controller_Action {
 	
 
 	public function chemistvisitAction()
-
 	{
-
 		$data = $this->_request->getParams();
-
 		$this->view->Filterdata = $data;
-
 		$this->view->doctors = $this->ObjAjax->getChemistLists();
-
 		$this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
-
 		$this->view->beDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'8'));
-
 		$this->view->abmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'7'));
-
 		$this->view->rbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'6'));
-
 		$this->view->zbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'5'));
+		$this->view->vistdetail = $this->ObjModel->getChemistVisist($data);
+		
+		/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   	*********************************************************************************/
+		//$this->view->allusers = $this->ObjModel->getAllUsersForSalary();
+	   	$this->view->allusers = $this->ObjModel->getAllUsersForSalaryReporting();
 
-	   
-
-	   $this->view->vistdetail = $this->ObjModel->getChemistVisist($data);
-
-	   $this->view->allusers = $this->ObjModel->getAllUsersForSalary();
-
-	   $this->view->headquater = $this->ObjModel->getHeadquater();//echo "<pre>";print_r($this->view->zbmDetails);die;
-
+	   	$this->view->headquater = $this->ObjModel->getHeadquater();
 	}
 
 	
@@ -307,33 +299,27 @@ class ReportingoldController extends Zend_Controller_Action {
 	
 
 	public function stockistvisitAction()
-
 	{
-
 		$data = $this->_request->getParams();
 
 		$this->view->Filterdata = $data;
-
 		$this->view->doctors = $this->ObjAjax->getStockistLists();
-
 		$this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
-
 		$this->view->beDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'8'));
-
 		$this->view->abmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'7'));
-
 		$this->view->rbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'6'));
-
 		$this->view->zbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'5'));
+		$this->view->vistdetail = $this->ObjModel->getStockistVisist($data);
 
-	   
 
-	   $this->view->vistdetail = $this->ObjModel->getStockistVisist($data);
+		/*********************************************************************************
+	     function name modify on the basis of main menu either HRM, CRM or Reporting 
+	     by jm on 16072018
+	   	*********************************************************************************/
+	   	//$this->view->allusers = $this->ObjModel->getAllUsersForSalary();	
+	   	$this->view->allusers = $this->ObjModel->getAllUsersForSalaryReporting();
 
-	   $this->view->allusers = $this->ObjModel->getAllUsersForSalary();
-
-	   $this->view->headquater = $this->ObjModel->getHeadquater();//echo "<pre>";print_r($this->view->zbmDetails);die;
-
+		$this->view->headquater = $this->ObjModel->getHeadquater();
 	}
 
 	

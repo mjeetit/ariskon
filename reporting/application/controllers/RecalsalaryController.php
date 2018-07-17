@@ -10,14 +10,21 @@ class RecalsalaryController extends Zend_Controller_Action {
 	public function getrecalculateAction(){
 	    $salarydate = array(0=>'2013-04-25',1=>'2013-05-25',2=>'2013-06-25',3=>'2013-07-25',4=>'2013-08-25',5=>'2013-09-25',6=>'2013-10-25',7=>'2013-11-25',8=>'2013-12-25',9=>'2014-01-25',10=>'2014-02-25');
 		$updatedate = array(0=>'2013-04-25',1=>'2013-05-25',2=>'2013-06-25',3=>'2013-07-25',4=>'2013-08-25',5=>'2013-09-25',6=>'2013-10-25',7=>'2013-11-25',8=>'2013-12-25',9=>'2014-01-25','2014-02-25');
+
 		foreach($salarydate as $key=>$dates){
-		  $Allusers = $this->ObjModel->getAllUsersForSalary();
-		  $this->ObjModel->_salaryDate = $dates;
-		  foreach($Allusers as $users){
-		     $this->ObjModel->CalculateSalary($users['user_id'],'test.pdf');
-			  $encoded_data = json_encode($this->ObjModel->_salaryData['Earnings']+$this->ObjModel->_salaryData['Deduction']+ array('2A'=>$this->ObjModel->_salaryData['PFComp'])+ array('15A'=>$this->ObjModel->_salaryData['ESIComp'])+ array('2B'=>$this->ObjModel->_salaryData['ArrPFComp'])+ array('15B'=>$this->ObjModel->_salaryData['ArrESIComp']));
-			  if(!empty($encoded_data)){
-			     $this->ObjModel->UpdateEncode($updatedate[($key+1)],$users['user_id'],$encoded_data,$dates);
+			/*********************************************************************************
+		     function name modify on the basis of main menu either HRM, CRM or Reporting 
+		     by jm on 16072018
+		   	*********************************************************************************/
+		  	//$Allusers = $this->ObjModel->getAllUsersForSalary();
+		  	$Allusers = $this->ObjModel->getAllUsersForSalaryReporting();
+		  	$this->ObjModel->_salaryDate = $dates;
+		  	foreach($Allusers as $users){
+		    	$this->ObjModel->CalculateSalary($users['user_id'],'test.pdf');
+			  	$encoded_data = json_encode($this->ObjModel->_salaryData['Earnings']+$this->ObjModel->_salaryData['Deduction']+ array('2A'=>$this->ObjModel->_salaryData['PFComp'])+ array('15A'=>$this->ObjModel->_salaryData['ESIComp'])+ array('2B'=>$this->ObjModel->_salaryData['ArrPFComp'])+ array('15B'=>$this->ObjModel->_salaryData['ArrESIComp']));
+			  
+			  	if(!empty($encoded_data)){
+			    	$this->ObjModel->UpdateEncode($updatedate[($key+1)],$users['user_id'],$encoded_data,$dates);
 			  }
 		  }
 		}die('Done');

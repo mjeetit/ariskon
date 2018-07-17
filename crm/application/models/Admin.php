@@ -24,13 +24,14 @@
 			$_SESSION['AdminLoginID']     = $uservalue->user_id;
 			$_SESSION['AdminLevelID']     = $uservalue->level_id;
 			$_SESSION['AdminUserType']    = $uservalue->user_type;
+
 			$tables = ($uservalue->user_id==1) ? 1 : 2;
 			$select = $this->_db->select()
-								 ->from($this->Tables[$tables],array('*'))
-								 ->where("user_id='".$uservalue->user_id."'");
-								 //echo $select->__toString();die;
+				->from($this->Tables[$tables],array('*'))
+				->where("user_id='".$uservalue->user_id."'");
+			//	echo $select->__toString();die;
 			$result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
-			$_SESSION['AdminName']        = $result['first_name'];
+			$_SESSION['AdminName']        = $result['first_name'].' '.$result['last_name'];
 			$_SESSION['AdminBunit']    	  = $result['bunit_id'];
 			$_SESSION['AdminDesignation'] = $result['designation_id'];
 			$_SESSION['AdminDepartment']  = $result['department_id'];
@@ -75,30 +76,20 @@
 			 below line is to set session variable for current root module either HRM(main) or crm or reporting by jm on 13072018
 			**********************************************************************************/
 			unset($_SESSION['ParentTab']);
-
-			/*session_unregister($_SESSION['AdminLoginID']);
-			session_unregister($_SESSION['AdminLevelID']);
-			session_unregister($_SESSION['AdminUserType']);
-			session_unregister($_SESSION['AdminName']);
-			session_unregister($_SESSION['AdminBunit']);
-			session_unregister($_SESSION['AdminDesignation']);
-			session_unregister($_SESSION['AdminDepartment']);
-			session_unregister($_SESSION['LastLogin']);
-			session_unregister($_SESSION['LastLoginIP']);*/
+			
 			session_destroy();
-		
 		}
         
 		public function getStatusCheck($uservalue){
-                    $select = $this->_db->select()
-                                             ->from($this->Tables[$uservalue->user_type],array('*'))
-                                             ->where("user_id='".$uservalue->user_id."' AND delete_status='0'");//echo $select->__toString();die;
-                    $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
-                    if(!empty($result)){
-                        return true;
-                    }else{
-                        return false;
-                    }
-                }
+            $select = $this->_db->select()
+                                     ->from($this->Tables[$uservalue->user_type],array('*'))
+                                     ->where("user_id='".$uservalue->user_id."' AND delete_status='0'");//echo $select->__toString();die;
+            $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
+            if(!empty($result)){
+                return true;
+            }else{
+                return false;
+            }
+        }
 	}
 ?>

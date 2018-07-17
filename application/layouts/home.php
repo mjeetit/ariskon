@@ -6,15 +6,6 @@
                     <div id="nav">
 					 <ul>
 					  <li><a href="<?php echo $this->url(array('controller'=>'Home'),'default',true)?>">Dashboard</a></li> 
-					<?php /*?><?php 
-					  $ObjModel =new Zend_Custom();
-					  $MainModules  = $ObjModel->AdminModuleAndSubModule();
-					  foreach($MainModules as $module){
-					  ?>
-                     <li><a href="<?php echo $this->url(array('controller'=>$module['module_controller'],'action'=>$module['module_action']),'default',true)?>"><?php echo  $module['module_name']?></a></li> 
-					  <?php }?>		
-                        </ul><?php */?>
-                        
                     </div><!-- End. .grid_12-->
                 </div><!-- End. .container_12 -->
                 <div style="clear: both;"></div>

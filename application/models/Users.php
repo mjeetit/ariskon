@@ -69,7 +69,7 @@ class Users extends Zend_Custom
 				
 				->joininner(array('US'=>'users'),"US.user_id=UT.user_id",array())
                 ->where("`UT`.`delete_status`='0'".$where);
-				//echo $select->__toString();die;
+	echo $select->__toString();die;
 		if(isset($arr['QueryCheck']) && $arr['QueryCheck']==1){
 			echo $select->__toString();die;
 		}
@@ -787,7 +787,7 @@ class Users extends Zend_Custom
 	    
 		//Now no use of below lines 
 		/*$select = $this->_db->select()
-		 				->from(array('UT'=>'employee_personaldetail'),array('COUNT(1) AS CNT'))
+		 				->from(array('UT'=>'employee_personaldetail'),array('COUNT(1) AS CNT'))EditUserDetail
 		 				->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array(''))
 						->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array(''))
 						->joininner(array('EL'=>'emp_locations'),"EL.user_id=UT.user_id",array(''))
@@ -1197,7 +1197,10 @@ class Users extends Zend_Custom
 		 * @param	$moduleID , hold module ID and $gui holds web
 		 * @return	array.
 		 */
-		public function getModules($moduleID=0){
+		//public function getModules($moduleID=0){
+		public function getModulesHRM($moduleID=0){	
+
+			echo "1203 user.php model page getModuleHRM funciton"; die;
 			$select = $this->_db->select()
                                 ->from('crm_modules',array('module_id','parent_id','level_id','module_name'))
                                 ->where("parent_id='".(int)$moduleID."' AND isActive='1' AND isDelete='0'")
