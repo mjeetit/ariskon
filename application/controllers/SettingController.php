@@ -61,27 +61,34 @@ class SettingController extends Zend_Controller_Action {
 	   }
 	    $this->view->ID = $this->_data['ID'];
 	}
-	public function editAction(){
-	     if($this->_request->isPost()){
-	       $action =  $this->ObjModel->EditMasterSetting();
-		   $this->_redirect($this->_request->getControllerName().'/'. $action);
-	   }
-	  //$this->view->back =  $this->ObjModel->BackAction();
-	   $this->view->EditRec = $this->ObjModel->getEdit();//print_r($this->view->EditRec);die;
-   }
-   public function designationAction(){
-      $this->view->designation = $this->ObjModel->getDesignation();
-   }
-   public function salaryheadAction(){
-      $this->view->salary = $this->ObjModel->getAllSalaryHead();
-	  $this->view->Detectsalaryhead = $this->ObjModel->getDetectionSalaryhead();
-   }
-   public function addnewAction(){
 
-   	/************************************************************************************
-	 check for all field values at the time of adding designation to prevent from the 
-	 blank designation adding by jm on 12072018
-   	*************************************************************************************/
+	public function editAction(){
+	
+	    if($this->_request->isPost()){
+	       $action =  $this->ObjModel->EditMasterSetting();
+		   $this->_redirect($this->_request->getControllerName().'/'.$action);
+	   	}
+	  	//$this->view->back =  $this->ObjModel->BackAction();
+	   	$this->view->EditRec = $this->ObjModel->getEdit();
+	   	//echo "71 settingcontroller <pre>";print_r($this->view->EditRec);die;
+   	}
+
+   	public function designationAction(){
+      $this->view->designation = $this->ObjModel->getDesignation();
+   	}
+
+   	public function salaryheadAction(){
+    	
+    	$this->view->salary = $this->ObjModel->getAllSalaryHead();
+	  	$this->view->Detectsalaryhead = $this->ObjModel->getDetectionSalaryhead();
+   	}
+   
+   	public function addnewAction(){
+
+   	/*******************************************************************
+	 check for all field values at the time of adding designation to 
+	 prevent from the 	 blank designation adding by jm on 12072018
+   	*********************************************************************/
      if($this->_request->isPost() && !empty($this->_data['designation_name']) && !empty($this->_data['designation_code']) && !empty($this->_data['designation_level']) && !empty($this->_data['Designation']) ){
 
 	       $this->ObjModel->AddDesignation();

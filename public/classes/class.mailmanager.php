@@ -30,9 +30,9 @@ class class_mailmanager extends Zend_Custom{
 
 	public function LeaveRequestMail($body,$data){
 	
-		$this->_senderEmail 	= 'kunal.jha@jclifecare.com';//$data['email'];
+		$this->_senderEmail 	= 'jiterder.maithani@gmail.com';//$data['email'];
 		$this->_Sender 			= $data['Sender'];
-		$this->_receiverEmail 	= 'kunal.jha@jclifecare.com';//$data['Appemail'];
+		$this->_receiverEmail 	= 'jiterder.maithani@gmail.com';//$data['Appemail'];
 		$this->_receiver 		= $data['Receiver'];
 		$this->_subject 		= $body['subject'];
 		$this->_MailBody 		= $body['contents'];
@@ -118,7 +118,7 @@ class class_mailmanager extends Zend_Custom{
 					$this->_mailObj->addCc($cc,$cc);
 				}
 			}
-			$this->_mailObj->addBcc('info@jclifecare.com');
+			$this->_mailObj->addBcc('jiterder.maithani@gmail.com');
 			$this->_mailObj->setSubject ($this->_subject);
 			$this->_mailObj->setBodyHtml($this->_MailBody);
 

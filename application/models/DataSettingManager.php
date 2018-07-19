@@ -1,8 +1,6 @@
 <?php
-
-    class DataSettingManager extends Zend_Custom
-
-    {
+class DataSettingManager extends Zend_Custom
+{
 
 	public $_getData = array();
 
@@ -10,6 +8,12 @@
 
 	   $this->_db->insert('bussiness_to_comapny',array('bunit_id'=>$this->_getData['bunit_id'],'company_code'=>$this->_getData['company_code']));
 
+	   /***********************************************************************
+		Add below update query to update the business_unit table->company_code 
+		columne at the time of Business to company mapping in locationMap menu
+		who map business unit with a company by jm on 18072018
+	   ************************************************************************/
+	   $this->_db->update('bussiness_unit',array('company_code'=>$this->_getData['company_code']),"bunit_id='".$this->_getData['bunit_id']."'");
 	}
 
 	

@@ -83,39 +83,43 @@ class Bootstrap
         self::$root = dirname(dirname(__FILE__));
     }
 
+    
     /**
-     * Error reporting setting
-     * @return Error
-     */
+    * Error reporting setting
+    * @return Error
+    */
     public static function setupErrorReporting()
     {
     	//error_reporting(E_ALL|E_STRICT);
-	error_reporting(E_ERROR | E_WARNING | E_PARSE);
+        error_reporting(E_ERROR | E_WARNING | E_PARSE);
     	ini_set('display_errors', 1);
     }
 	
-    /**
-     * Date Time setting
-     * @return Date Time
-     */
-    public static function setupDateTime()
-    {
-	date_default_timezone_set('Asia/Calcutta');  
-    }
 
     /**
-     * Registry setting
-     */
+    * Date Time setting
+    * @return Date Time
+    */
+    public static function setupDateTime()
+    {
+	   date_default_timezone_set('Asia/Calcutta');  
+    }
+
+
+    /**
+    * Registry setting
+    */
     public static function setupRegistry()
     {
         self::$registry = new Zend_Registry(array(), ArrayObject::ARRAY_AS_PROPS);
         Zend_Registry::setInstance(self::$registry);
     }
 
+
     /**
-     * Initialize the configuration
-     * @return void
-     */
+    * Initialize the configuration
+    * @return void
+    */
     public static function setupConfiguration()
     {
         $config = new Zend_Config_Ini(
@@ -125,9 +129,10 @@ class Bootstrap
         self::$registry->configuration = $config;
     }
 
+
     /**
-     * Important: Setting of Default controller.
-     */
+    * Important: Setting of Default controller.
+    */
     public static function setupFrontController()
     {
     	self::$frontController = Zend_Controller_Front::getInstance();
@@ -142,6 +147,7 @@ class Bootstrap
 	
         self::$frontController->setParam('registry', self::$registry);
     }
+
 
     /**
     * Initialize the view
@@ -179,6 +185,7 @@ class Bootstrap
 	$layout->setViewSuffix("php");
     }
 
+
     /**
     * DB setup done here.
     * Read configuration, create db instance & set in registry to use in other part of application.
@@ -193,9 +200,10 @@ class Bootstrap
         Zend_Db_Table::setDefaultAdapter($db);
     }
 
+
     /**
-     * Response will be sent from following function, also set header for response.
-     */
+    * Response will be sent from following function, also set header for response.
+    */
     public static function sendResponse(Zend_Controller_Response_Http $response)
     {
         $response->setHeader('Content-Type', 'text/html; charset=UTF-8', true);
@@ -203,36 +211,37 @@ class Bootstrap
     }
    
     /**
-     * Zend session setting done here.
-     */
+    * Zend session setting done here.
+    */
     public static function setupSession()
     {
         try
-	{
+    	{
             Zend_Session::setOptions(array(
 				'save_path' => self::$root . "/tmp/sessions",
 				'remember_me_seconds' => 7200,
             ));
 
             Zend_Session::start();
-	}
-	catch (Zend_Session_Exception $e)
-	{
-		$dbLogger->log('Error: ' . $e->getMessage(), 1);
-		$fileLogger->log($e->getMessage(), 1);
-	}
-	$defaultNs = new Zend_Session_Namespace('exim',true);
+    	}
+    	catch (Zend_Session_Exception $e)
+    	{
+    		$dbLogger->log('Error: ' . $e->getMessage(), 1);
+    		$fileLogger->log($e->getMessage(), 1);
+    	}
+    	$defaultNs = new Zend_Session_Namespace('exim',true);
 
-	Zend_Registry::set("defaultNs", $defaultNs);
+    	Zend_Registry::set("defaultNs", $defaultNs);
 
-	if($config->log_level == 2)
-	{
-		$fileLogger->info("Sessions setup finished!");
-	}
-  }
-  /**
-     * Load a common class function that is used in whole project.
-     */
+    	if($config->log_level == 2)
+    	{
+    		$fileLogger->info("Sessions setup finished!");
+    	}
+    }
+
+    /**
+    * Load a common class function that is used in whole project.
+    */
 	public function commonClass() {
         /*
 		include self::$root . "/public/classes/class.salaryslip.pdf.php";
@@ -260,15 +269,15 @@ class Bootstrap
 		self::$Mail = new class_mailmanager();
 	}
 	
-  public function showMessage(){
-     if(isset($_SESSION[SUCCESS_MSG])){
-	     echo $_SESSION[SUCCESS_MSG];
-		 unset($_SESSION[SUCCESS_MSG]);
-	 }
-	 if(isset($_SESSION[ERROR_MSG])){
-	   echo $_SESSION[ERROR_MSG];
-	   unset($_SESSION[ERROR_MSG]);
-	 }
-  }
+    public function showMessage(){
+        if(isset($_SESSION[SUCCESS_MSG])){
+            echo $_SESSION[SUCCESS_MSG];
+		    unset($_SESSION[SUCCESS_MSG]);
+        }
+        if(isset($_SESSION[ERROR_MSG])){
+            echo $_SESSION[ERROR_MSG];
+            unset($_SESSION[ERROR_MSG]);
+        }
+    }
 }
 ?>

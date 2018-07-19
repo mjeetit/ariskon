@@ -226,20 +226,26 @@ class AjaxManager extends Zend_Custom
   public function getExpenseHead(){
     if(!empty($this->_getData['exp_setting_id'])){
 		$select = $this->_db->select()
-									->from(array('ETA'=>'expense_template_amount'),array('*'))
-									->joinleft(array('EH'=>'expense_head'),"EH.head_id=ETA.head_id",array('head_name'))
-									->where("exp_setting_id='".$this->_getData['exp_setting_id']."'"); 
+			->from(array('ETA'=>'expense_template_amount'),array('*'))
+			->joinleft(array('EH'=>'expense_head'),"EH.head_id=ETA.head_id",array('head_name'))
+			->where("exp_setting_id='".$this->_getData['exp_setting_id']."'"); 
 	 }else{
 	    $select = $this->_db->select()
-									->from(array('EH'=>'expense_head'),array('*'))
-									->where("expense_type='".$this->_getData['expense_type']."'");  
+			->from(array('EH'=>'expense_head'),array('*'))
+			->where("expense_type='".$this->_getData['expense_type']."'");  
 	 }							
-								//echo $select->__toString();die;
-	 $results = $this->getAdapter()->fetchAll($select);
-	 $string = '';
-	 if(!empty($results)){
-	   foreach($results as $heads){
-	      $string .= '<tr class="odd"><td><strong>'.$heads['head_name'].'</strong><input type="hidden" name="head_id[]" value="'.$heads['head_id'].'"></td><td><input type="text" name="expense_amount[]" value="'.$heads['expense_amount'].'" class="input-short"></td></tr>';
+	//echo $select->__toString();die;
+	$results = $this->getAdapter()->fetchAll($select);
+	$string = '';
+	if(!empty($results)){
+		foreach($results as $heads){
+
+		/***********************************************************************
+		add place hoder for the input field for Expense Amount in HRM Expence 
+		Setting form by jm on 18072018
+	   	***********************************************************************/
+
+	    $string .= '<tr class="odd"><td><strong>'.$heads['head_name'].'</strong><input type="hidden" name="head_id[]" value="'.$heads['head_id'].'"></td><td><input type="text" name="expense_amount[]" placeholder="Enter Amount" value="'.$heads['expense_amount'].'" class="input-short"></td></tr>';
 	   }
 	 }
 	 echo $string;exit();

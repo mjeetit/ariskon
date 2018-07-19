@@ -1,20 +1,31 @@
 <?php
 
 class Users extends Zend_Custom
-
 {
-	 public $_getData = array();
-  	 public function getDepartmentByBunitId(){
+	public $_getData = array();
+  	
+  	public function getDepartmentByBunitId(){
+
+  		/*********************************************************************
+  		 select query modify (add group by and order by property) to prevent 
+  		 the output department name duplication in business unit to department dependency of Expense setting form of HRM by jm on 18072018 
+  		*********************************************************************/
+	    
+		/*
+	    $select = $this->_db->select()
+			->from(array('D2B'=>'department_to_bunit'),array('*'))
+			->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=D2B.bunit_id",array('bunit_name'))
+			->joininner(array('DT'=>'department'),"DT.department_id=D2B.department_id",array('department_name'))
+			->where("D2B.bunit_id='".$this->_getData['bunit_id']."'");
+		*/
 
 	    $select = $this->_db->select()
-
-		 				->from(array('D2B'=>'department_to_bunit'),array('*'))
-
-		 				->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=D2B.bunit_id",array('bunit_name'))
-
-						->joininner(array('DT'=>'department'),"DT.department_id=D2B.department_id",array('department_name'))
-
-						->where("D2B.bunit_id='".$this->_getData['bunit_id']."'");
+			->from(array('D2B'=>'department_to_bunit'),array('D2B.d2b_id','D2B.department_id','D2B.bunit_id'))
+			->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=D2B.bunit_id",array('bunit_name'))
+			->joininner(array('DT'=>'department'),"DT.department_id=D2B.department_id",array('department_name'))
+			->where("D2B.bunit_id='".$this->_getData['bunit_id']."'")
+			->Group("DT.department_name")
+			->ORDER(array("D2B.d2b_id ASC"));
 
 		//echo $select->__toString();die;
 
@@ -351,19 +362,14 @@ class Users extends Zend_Custom
 	public function getDesignationByDepartmentId(){
 
 	    $select = $this->_db->select()
-
-		 				->from(array('D2D'=>'designation_to_department'),array('*'))
-
-		 				->joininner(array('DES'=>'designation'),"DES.designation_id=D2D.designation_id AND DES.parent_designation=0",array('designation_name'))
-
-						->where("D2D.department_id='".$this->_getData['department_id']."'");
-
+			->from(array('D2D'=>'designation_to_department'),array('*'))
+			->joininner(array('DES'=>'designation'),"DES.designation_id=D2D.designation_id AND DES.parent_designation=0",array('designation_name'))
+			->where("D2D.department_id='".$this->_getData['department_id']."'");
 		//echo $select->__toString();die;
 
 		$result = $this->getAdapter()->fetchAll($select);
 
 		return $result; 
-
 	}
 
 	public function addNewUser(){

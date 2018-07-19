@@ -1,32 +1,44 @@
 <div class="grid_12">
-                <div class="module">
-                     <h2><span>New Event</span></h2>
-                     <div class="module-body">
-                       <form name="data_setting" action="" method="post"> 
-					   <table width="70%" style="border:none">
-						<thead>
-						  <tr>
-							<td align="center" style="border:none">
-								<table style=" width:70%">
-									<thead>
+	<div class="module">
+		<h2><span>New Event</span></h2>
+		<div class="module-body">
+            <form name="data_setting" action="" method="post"> 
+				<table width="70%" style="border:none">
+					<thead>
+					<tr>
+						<td align="center" style="border:none">
+							<table style=" width:70%">
+								<thead>
 									<tr>
 										<td colspan="2" align="left" style="border:none">
 											<a href="<?php echo $this->url(array('controller'=>'Setting','action'=>'addexpense'),'default',true)?>" class="button back">
-											<span>Back<img src="<?php echo IMAGE_LINK;?>/plus-small.gif"  width="12" height="9" alt="Back" /></span>
+												<span>Back<img src="<?php echo IMAGE_LINK;?>/plus-small.gif"  width="12" height="9" alt="Back" /></span>
 											</a>
-											</td>
-										</tr>
-										<tr>
-										<?php if($this->mode=='Add'){?>
+										</td>
+									</tr>
+									<tr>
+									<?php if($this->mode=='Add'){?>
 										<th colspan="2">Add  Expense Head</th>
-						    			</tr>
-										<tr class="odd"><td>Expense Head Name</td><td><input name="head_name" type="text" class="input-medium" /></td></tr>
-										<tr class="even"><td>Expense Type</td><td> <select name="expense_type" class="input-medium">
-												 <option value="1">Actual Expense</option>
-												 <option value="2">Fixed Expense</option>
-												  <option value="3">Actual+Fixed Expense</option>
-										  </select></td></tr>
-										<tr class="odd"><td>Including Salary Head</td><td>
+						    		</tr>
+									<tr class="odd">
+										<td>Expense Head Name</td>
+										<td>
+											<input name="head_name" type="text" class="input-medium" />
+										</td>
+									</tr>
+									<tr class="even">
+										<td>Expense Type</td>
+										<td> 
+											<select name="expense_type" class="input-medium">
+												<option value="1">Actual Expense</option>
+												<option value="2">Fixed Expense</option>
+												<option value="3">Actual+Fixed Expense</option>
+										  	</select>
+										</td>
+									</tr>
+									<tr class="odd">
+										<td>Including Salary Head</td>
+										<td>
 										<?php  $salaryheads = $this->ObjModel->getAllSalaryHead();?>
 										   <select name="salary_head" class="input-medium">
 										   <option value="">--Select--</option>

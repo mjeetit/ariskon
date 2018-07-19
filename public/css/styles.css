@@ -273,7 +273,12 @@ a.button:hover span{
 /* -------------------- Forms -------------------- */
 fieldset {
 	margin-top: 15px; 
-	margin-bottom: 15px; 
+	margin-bottom: 15px;
+	width:0px;
+}
+fieldset input{
+	margin-right:1px !important;
+	margin-bottom:1px !important;
 }
 	
 legend {

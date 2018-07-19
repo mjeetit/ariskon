@@ -44,9 +44,14 @@
 						<?php } ?> 
 						 <?php if($this->type=='Department'){?> 
 						       <p>
-                                <label>Department Name</label>
-                                <input type="text" name="department_name" class="input-short" value="<?php echo $this->EditNewRec['department_id'];?>" />
-                            </p>
+                      <label>Department Name</label>
+
+                      <!--
+                        $this->EditNewRec['department_id'] variable is replaced with 
+                        $this->EditNewRec['department_name'] by jm on 17072018
+                      -->
+                      <input type="text" name="department_name" class="input-short" value="<?php echo $this->EditNewRec['department_name'];?>" />
+                  </p>
 					 <?php } ?> 
 					 
 					  <?php if($this->type=='Salaryhead'){?> 

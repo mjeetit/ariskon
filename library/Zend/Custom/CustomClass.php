@@ -308,7 +308,8 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Fetch All the column Name of specific table.
     * */
     public function getBusinessToCountry(){
-       $select = $this->_db->select()
+
+        $select = $this->_db->select()
                         ->from(array('BUC'=>'business_to_country'),array('*'))
                         ->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=BUC.bunit_id",array('bunit_name'))
                         ->joininner(array('CT'=>'country'),"CT.country_id=BUC.country_id",array('country_name'));

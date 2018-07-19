@@ -5,216 +5,164 @@ class AjaxController extends Zend_Controller_Action {
 	var $session="";
 
 	public $users;
-
 	public $ObjModel = NULL;
-
 	public $_data = NULL;
-
-
 
 	public function init(){
 
 		$this->session = Bootstrap::$registry->get('defaultNs');
-
 		$this->_helper->layout->setLayout('main');
-
 		$this->_data = $this->_request->getParams();
-
 		$this->ObjModelUser = new Users();
-
 		$this->ObjModelSetting = new SettingManager();
-
 		$this->ObjModelAjax = new AjaxManager();
-
 		$this->ObjModelUser->_getData = $this->_data;
-
 		$this->ObjModelSetting->_getData = $this->_data;
-
 		$this->ObjModelAjax->_getData = $this->_data;
-
 		$this->view->ObjModel = $this->ObjModel;
-
 	}
 
-   public function changestatusAction(){
+   	public function changestatusAction(){
 
-	  if($this->_data['Mode']=='Bunit'){
+	  	if($this->_data['Mode']=='Bunit'){
 
-	     $departmentlist = $this->ObjModelUser->getDepartmentByBunitId();
+			$departmentlist = $this->ObjModelUser->getDepartmentByBunitId();
+		 	$string = '<option value="">---Select--</option>';
 
-		 $string = '<option value="">---Select--</option>';
+		 	if($departmentlist){
 
-		 if($departmentlist){
+				foreach($departmentlist as $department){
 
-			 foreach($departmentlist as $department){
+					$selected = '';
 
-				$selected = '';
+					if($this->_data['selected']==$department['department_id']){
+				  		$selected = 'selected="selected"';
+					}
 
-				if($this->_data['selected']==$department['department_id']){
+					$string .='<option value="'.$department['department_id'].'" '.$selected.'>'.$department['department_name'].'</option>'; 
+			 	}
+	     	}
+		 	echo  $string;
+		 	exit;
+	   	}
 
-				  $selected = 'selected="selected"';
+	   	if($this->_data['Mode']=='Department'){
 
+	    	$designationlist = $this->ObjModelUser->getDesignationByDepartmentId();
+			$string = '<option value="">---Select--</option>';
+
+		 	if($designationlist){
+
+				foreach($designationlist as $designation){
+		
+					$selected = '';
+
+					if($this->_data['selected']==$designation['designation_id']){
+						$selected = 'selected="selected"';
+					}
+					$string .='<option value="'.$designation['designation_id'].'" '.$selected.'>'.$designation['designation_name'].'</option>'; 
 				}
-
-				$string .='<option value="'.$department['department_id'].'" '.$selected.'>'.$department['department_name'].'</option>'; 
-
-			 }
-
-	     }
-
-		 echo  $string;
-
-		 exit;
-
-	   }
-
-	   if($this->_data['Mode']=='Department'){
-
-	     $designationlist = $this->ObjModelUser->getDesignationByDepartmentId();
-
-		 $string = '<option value="">---Select--</option>';
-
-		 if($designationlist){
-
-			 foreach($designationlist as $designation){
-
-				$selected = '';
-
-				if($this->_data['selected']==$designation['designation_id']){
-
-				  $selected = 'selected="selected"';
-
-				}
-
-				$string .='<option value="'.$designation['designation_id'].'" '.$selected.'>'.$designation['designation_name'].'</option>'; 
-
-			 }
-
-	     }
-
-		 echo  $string;
-
-		 exit;  
-
-	   }
+			}
+			echo  $string;
+			exit;  
+		}
 
 	    if($this->_data['Mode']=='Designation'){
 
-	     $parnetlist = $this->ObjModelAjax->getParnetByDesignationId();
-
-		 $string = '<option value="">---Select--</option>';
-		 if($this->_data['selected']==0){
-
-				  $selected = 'selected="selected"';
-
-		 }
-		 $string .= '<option value="44" '.$selected.'>Super Admin</option>';
+	    	$parnetlist = $this->ObjModelAjax->getParnetByDesignationId();
+			$string = '<option value="">---Select--</option>';
+		 	
+		 	if($this->_data['selected']==0){
+				$selected = 'selected="selected"';
+			}
+		 
+		 	$string .= '<option value="44" '.$selected.'>Super Admin</option>';
 			$selected = '';
-		 if($parnetlist){
+		 
+		 	if($parnetlist){
 
-			 foreach($parnetlist as $parnet){
+				foreach($parnetlist as $parnet){
 
-			    $selected = '';
+			    	$selected = '';
 
-				if($this->_data['selected']==$parnet['user_id']){
+					if($this->_data['selected']==$parnet['user_id']){
+						$selected = 'selected="selected"';
+					}
 
-				  $selected = 'selected="selected"';
-
+					$string .='<option value="'.$parnet['user_id'].'" '.$selected.'>'.$parnet['first_name'].' '.$parnet['last_name'].' ( '.$parnet['designation_code'].' ) - '.$parnet['employee_code'].'</option>';
 				}
-
-				$string .='<option value="'.$parnet['user_id'].'" '.$selected.'>'.$parnet['first_name'].' '.$parnet['last_name'].' ( '.$parnet['designation_code'].' ) - '.$parnet['employee_code'].'</option>'; 
-
-			 }
-
-	     }
-
-		 echo  $string;
-
-		 exit;  
-
-	   }	 
+			}
+			echo  $string;
+			exit;  
+		}	 
 	   
-	   if($this->_data['Mode']=='Designation_Child'){
-	     $designationlist = $this->ObjModelAjax->getDesignationChild();
-		 $string = '<option value="">---Select--</option>';
-		 if($designationlist){
-			 foreach($designationlist as $designation){
-				$selected = '';
-				if($this->_data['selected']==$designation['designation_id']){
-				  $selected = 'selected="selected"';
-				}
-				$string .='<option value="'.$designation['designation_id'].'" '.$selected.'>'.$designation['designation_name'].'</option>'; 
-			 }
-	     }
-		 echo  $string;
-		 exit;  
-	   } 
-
+	   	if($this->_data['Mode']=='Designation_Child'){
+	    	
+	    	$designationlist = $this->ObjModelAjax->getDesignationChild();
+		 	$string = '<option value="">---Select--</option>';
+		 
+		 	if($designationlist){
+				foreach($designationlist as $designation){
+					
+					$selected = '';
+					
+					if($this->_data['selected']==$designation['designation_id']){
+				  		$selected = 'selected="selected"';
+					}
+					
+					$string .='<option value="'.$designation['designation_id'].'" '.$selected.'>'.$designation['designation_name'].'</option>'; 
+			 	}
+	     	}
+		 	echo  $string;
+		 	exit;  
+	   	} 
 	}
-
 	
-
-   public function changestatusrecordAction(){
+	public function changestatusrecordAction(){
 
       $string = '';
 
-      switch($this->_data['level']){
+    	switch($this->_data['level']){
 
-	     case 5:
-
-		    $datas = $this->ObjModelSetting->getAjaxData('zone','bunit_id'); 
-
+	    case 5:
+			$datas = $this->ObjModelSetting->getAjaxData('zone','bunit_id'); 
 		    $string = '<option value="">---Select Zone--</option>';
 
-		 if($datas){
+			if($datas){
 
-			 foreach($datas as $data){
+				foreach($datas as $data){
 
-				$selected = '';
+					$selected = '';
 
-				if($this->_data['selected']==$data['zone_id']){
-
-				  $selected = 'selected="selected"';
-
+					if($this->_data['selected']==$data['zone_id']){
+						$selected = 'selected="selected"';
+					}
+					$string .='<option value="'.$data['zone_id'].'" '.$selected.'>'.$data['zone_name'].'</option>'; 
 				}
+			}
+			break;
 
-				$string .='<option value="'.$data['zone_id'].'" '.$selected.'>'.$data['zone_name'].'</option>'; 
-
-			 }
-
-	     }
-
-		 break;
-
-		 case 6:
-
-		    $datas = $this->ObjModelSetting->getAjaxData('region','zone_id'); 
-
+		case 6:
+			$datas = $this->ObjModelSetting->getAjaxData('region','zone_id'); 
 		    $string = '<option value="">---Select Region--</option>';
 
-		 if($datas){
+			if($datas){
 
-			 foreach($datas as $data){
+				foreach($datas as $data){
 
-				$selected = '';
+					$selected = '';
 
-				if($this->_data['selected']==$data['region_id']){
+					if($this->_data['selected']==$data['region_id']){
+						$selected = 'selected="selected"';
+					}
 
-				  $selected = 'selected="selected"';
-
-				}
-
-				$string .='<option value="'.$data['region_id'].'" '.$selected.'>'.$data['region_name'].'</option>'; 
-
-			 }
-
-	     }
-
-		 break;
+					$string .='<option value="'.$data['region_id'].'" '.$selected.'>'.$data['region_name'].'</option>'; 
+			 	}
+			}
+			break;
 
 		case 7:
-
-		    $datas = $this->ObjModelSetting->getAjaxData('area','region_id'); 
+			$datas = $this->ObjModelSetting->getAjaxData('area','region_id'); 
 
 		    $string = '<option value="">---Select Area--</option>';
 

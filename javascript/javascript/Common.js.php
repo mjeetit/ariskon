@@ -46,20 +46,20 @@ $.ajax({
 		  url: '<?php echo $basename;?>/Ajax/changestatus',
 		  data: 'Mode=Bunit&bunit_id='+bunit_id+'&selected='+selected,
 		  success: function(data) {
-		      //alert(data);return false;
+		    // alert("49 common js php = "+data);return false;
 			 $("#department_id").html(data);
 		  }
 	 });
 }
 function changeStatusDepartment(department_id,selected){ 
-$.ajax({
-		  url: '<?php echo $basename;?>/Ajax/changestatus',
-		  data: 'Mode=Department&department_id='+department_id+'&selected='+selected,
-		  success: function(data) {
-		     //alert(data);return false;
-			 $("#designation_id").html(data);
-		  }
-	 });
+	$.ajax({
+		url: '<?php echo $basename;?>/Ajax/changestatus',
+		data: 'Mode=Department&department_id='+department_id+'&selected='+selected,
+		success: function(data) {
+		    //alert(data);return false;
+			$("#designation_id").html(data);
+		}
+	});
 }
 function changeStatusdesignation(designation_id,selected,sub_desig){ 
     $.ajax({

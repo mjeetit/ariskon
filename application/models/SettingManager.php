@@ -1,74 +1,47 @@
 <?php
 
     class SettingManager extends Zend_Custom
-
     {
 
 		/**
-
 		*Variable Holds the Name of Section Table
-
 		**/
-
-		/**
-
-		**/
-
-	
-
 		public $parent_id = 1;				// For Getting submodule of application
-
 		public $status    = '1';			// Status of module
-
 		public $_getData  = array();			// Lavel of module.
-
-	
-
-		
 
 		public function AddMasterSetting(){
 
-		  if(!empty($this->_getData['1'])){
-
-			       $this->_db->insert('company',array('company_name'=>$this->_getData['company_name'],'company_address'=>$this->_getData['company_address']));
+		  	if(!empty($this->_getData['1'])){
+				$this->_db->insert('company',array('company_name'=>$this->_getData['company_name'],'company_address'=>$this->_getData['company_address']));
 
 				return 'company';   
-
 		    }		   
 
 			if(!empty($this->_getData['2'])){
 
-			        $this->_db->insert('bussiness_unit',array_filter(array('bunit_name'=>$this->_getData['bunit_name'])));
+				$this->_db->insert('bussiness_unit',array_filter(array('bunit_name'=>$this->_getData['bunit_name'])));
 
 				return 'businesunit';  
-
 			 }		
 
 			if(!empty($this->_getData['3'])){
 
-			        $this->_db->insert('company_country',array_filter(array('country_id'=>$this->_getData['country_id'])));
+				$this->_db->insert('company_country',array_filter(array('country_id'=>$this->_getData['country_id'])));
 
 				return 'country';  
-
 			  }		
 
 			if(!empty($this->_getData['4'])){
 
-			       $this->_db->insert('zone',array_filter(array('bunit_id'=>$this->_getData['bunit_id'],
-
-														 'zone_name'=>$this->_getData['zone_name'])));
+				$this->_db->insert('zone',array_filter(array('bunit_id'=>$this->_getData['bunit_id'],'zone_name'=>$this->_getData['zone_name'])));
 
 				return 'zone';  
-
 			}
 
 			if(!empty($this->_getData['5'])){
 
-			        $this->_db->insert('region',array_filter(array('zone_id'=>$this->_getData['zone_id'],
-
-														   'bunit_id'=>$this->_getData['bunit_id'],
-
-														   'region_name'=>$this->_getData['region_name'])));
+			    $this->_db->insert('region',array_filter(array('zone_id'=>$this->_getData['zone_id'],'bunit_id'=>$this->_getData['bunit_id'],'region_name'=>$this->_getData['region_name'])));
 
 				return 'region';  
 
@@ -76,15 +49,7 @@
 
 			if(!empty($this->_getData['6'])){
 
-			         $this->_db->insert('area',array_filter(array('zone_id'=>$this->_getData['zone_id'],
-
-														   'bunit_id'=>$this->_getData['bunit_id'],
-
-														   'region_id'=>$this->_getData['region_id'],
-
-														   'area_code'=>$this->_getData['area_code'],
-
-														   'area_name'=>$this->_getData['area_name'])));
+				$this->_db->insert('area',array_filter(array('zone_id'=>$this->_getData['zone_id'],'bunit_id'=>$this->_getData['bunit_id'],'region_id'=>$this->_getData['region_id'],'area_code'=>$this->_getData['area_code'],'area_name'=>$this->_getData['area_name'])));
 
 				return 'area';  
 
@@ -92,28 +57,20 @@
 
 			if(!empty($this->_getData['7'])){
 
-			         $this->insertInToTable('headoffice', array($this->_getData));
+				$this->insertInToTable('headoffice', array($this->_getData));
 
-			        /* $this->_db->insert('headoffice',array_filter(array('area_id'=>$this->_getData['area_id'],
-
-														   'zone_id'=>$this->_getData['zone_id'],
-
-														   'region_id'=>$this->_getData['region_id'],
-
-														    'bunit_id'=>$this->_getData['bunit_id'],
-
-															 'headoffice_address'=>$this->_getData['headoffice_address'])));*/
+				/* $this->_db->insert('headoffice',array_filter(array('area_id'=>$this->_getData['area_id'], 			'zone_id'=>$this->_getData['zone_id'],'region_id'=>$this->_getData['region_id'],
+					    'bunit_id'=>$this->_getData['bunit_id'], 'headoffice_address' =>$this->_getData['headoffice_address'])));
+				*/
 
 				return 'headoffice';  
-
 			}
 
-		 if(!empty($this->_getData['8'])){
+			if(!empty($this->_getData['8'])){
 
-			         $this->insertInToTable('headquater', array($this->_getData));
-
+				$this->insertInToTable('headquater', array($this->_getData));
+				
 				return 'headquater';  
-
 		 }
 
 		 if(!empty($this->_getData['9'])){
@@ -189,15 +146,10 @@
 
 			if(!empty($this->_getData['5'])){
 
-			      $this->_db->update('region',array_filter(array('zone_id'=>$this->_getData['zone_id'],
+			    $this->_db->update('region',array_filter(array('zone_id'=>$this->_getData['zone_id'], 'bunit_id'=>$this->_getData['bunit_id'],  'region_name'=>$this->_getData['region_name'])),"region_id='".$this->_getData['region_id']."'");
+			    $this->ChangeLocationMap();	
 
-														   'bunit_id'=>$this->_getData['bunit_id'],
-
-														   'region_name'=>$this->_getData['region_name'])),"region_id='".$this->_getData['region_id']."'");
-														   $this->ChangeLocationMap();	
-
-				return 'region';    
-
+				return 'region';
 			}
 
 		 if(!empty($this->_getData['6'])){
@@ -355,24 +307,16 @@
 
 		public function getZone(){
 
-		 $select = $this->_db->select()
+			$select = $this->_db->select()
+				->from(array('ZT'=>'zone'),array('*'))
+				->joininner(array('BU'=>'bussiness_unit'),"ZT.bunit_id=BU.bunit_id",array('bunit_name'))
+				->joininner(array('CM'=>'company'),"CM.company_code=BU.company_code",array('company_name'));
+				//->joininner(array('CT'=>'country'),"CT.country_id=B2C.country_id",array('country_name'))
 
-		 				->from(array('ZT'=>'zone'),array('*'))
-
-						->joininner(array('BU'=>'bussiness_unit'),"ZT.bunit_id=BU.bunit_id",array('bunit_name'))
-
-						->joininner(array('CM'=>'company'),"CM.company_code=BU.company_code",array('company_name'));
-
-						//->joininner(array('CT'=>'country'),"CT.country_id=B2C.country_id",array('country_name'))
-
-						//echo $select->__toString();die;
-
-		     $result = $this->getAdapter()->fetchAll($select);
+			//echo "316 setting manager = ".$select->__toString();die;
+			$result = $this->getAdapter()->fetchAll($select);
 
 			return $result; 
-
-		
-
 		}
 
 		
@@ -2978,21 +2922,31 @@ $select = $this->_db->select()
 
 	}
 	public function getHolidays($data){
-	   $where =  '1';
-	   if(!empty($data['months'])){
-	       $exploded_date = explode(',',$data['months']);
+
+		/*******************************************************************
+		 code and code condition commented and modified to get the list of holidays in list view of HRM->holiday calendar by jm on 18072018
+		********************************************************************/
+	   	//$where =  '1';
+	   	
+	   	if(!empty($data['months'])){
+	    
+	    	$exploded_date = explode(',',$data['months']);
 			$month = $exploded_date[0];
 			$year = $exploded_date[1];
 			$where .=  " AND DATE_FORMAT(HD.holiday_date,'%Y-%m')='".$year.'-'.$month."'";
-	   }
-	    $where .=  " AND HD.region_id='".$data['region_id']."'";
-	   $select = $this->_db->select()
-						->from(array('HD'=>'holidays'),array('DATE_FORMAT(HD.holiday_date,"%Y-%m") AS month','*'))
-						->where($where)
-						->order("HD.holiday_date ASC");//print_r($select->__toString());die;
-	  $result = $this->getAdapter()->fetchAll($select);//print_r($result);die;
+	   	}
 
-	  return $result;
+	   	//$where .=  "AND HD.region_id = '".$data['region_id']."'";
+	    $where .=  "HD.region_id != '".$data['region_id']."'";
+	   
+	   	$select = $this->_db->select()
+			->from(array('HD'=>'holidays'),array('DATE_FORMAT(HD.holiday_date,"%Y-%m") AS month','*'))
+			->where($where)
+			->order("HD.holiday_date ASC");
+		//echo "<br><br>2999 = ".$select->__toString();//die;
+	   	$result = $this->getAdapter()->fetchAll($select);
+		
+		return $result;
 	}
 	
 	public function SaveHoliday($data){
