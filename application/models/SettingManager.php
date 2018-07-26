@@ -841,49 +841,29 @@ $select = $this->_db->select()
 		
 
 		public function UploadePatchFile($formData)
-
 		{
 
 			ini_set("memory_limit","512M");
-
 			ini_set("max_execution_time",180);
 
 			$filename 	= CommonFunction::UploadFile('patchFile','xls');
-
 			$inputFileType = PHPExcel_IOFactory::identify($filename);
-
 			$objReader = PHPExcel_IOFactory::createReader($inputFileType);
-
 			$objReader->setReadDataOnly(true);
-
 			$reader = $objReader->load($filename);
-
 			$data = $reader->getSheet(0);
-
 			$k = $data->getHighestRow();
-
-			
-
+	
 			// Count Columns of each Row
-
 			$totalColumns = $data->getHighestColumn();
 
-			
-
 			// Get All Business Unit Data
-
 			$getBusinessUnit = $this->getLocationData(array('tableName'=>'bussiness_unit','tableColumn'=>array('bunit_id','UPPER(bunit_name)')));
 
-			
-
 			// Get All Country Data
-
 			$getCountry = $this->getLocationData(array('tableName'=>'country','tableColumn'=>array('country_id',"UPPER(replace(country_name,' ',''))")));
 
-			
-
 			// Get All Zone Data
-
 			//$getZone = $this->getLocationData(array('tableName'=>'zone','tableColumn'=>array('zone_id',"UPPER(replace(zone_name,' ',''))")));
 
 			$getZone = array();
@@ -891,31 +871,21 @@ $select = $this->_db->select()
 			foreach($getBusinessUnit as $bu) {
 
 				$getZone[$bu] = $this->getLocationData(array('tableName'=>'zone','tableColumn'=>array('zone_id',"UPPER(replace(zone_name,' ',''))"),'columnName'=>'bunit_id','columnValue'=>$bu));
-
 			}
 
-			
-
 			// Get All Region Data
-
 			//$getRegion = $this->getLocationData(array('tableName'=>'region','tableColumn'=>array('region_id',"UPPER(replace(region_name,' ',''))")));
 
 			$getRegion = array();
-
 			foreach($getZone as $zone) {
 
 				foreach($zone as $zoneID) {
 
 					$getRegion[$zoneID] = $this->getLocationData(array('tableName'=>'region','tableColumn'=>array('region_id',"UPPER(replace(region_name,' ',''))"),'columnName'=>'zone_id','columnValue'=>$zoneID));
-
 				}
-
 			}
 
-			
-
 			// Get All Area Data
-
 			//$getArea = $this->getLocationData(array('tableName'=>'area','tableColumn'=>array('area_id',"UPPER(replace(area_name,' ',''))")));
 
 			$getArea = array();
@@ -927,17 +897,11 @@ $select = $this->_db->select()
 					foreach($region as $regionID) {
 
 						$getArea[$regionID] = $this->getLocationData(array('tableName'=>'area','tableColumn'=>array('area_id',"UPPER(replace(area_name,' ',''))"),'columnName'=>'region_id','columnValue'=>$regionID));
-
 					}
-
 				}
-
 			}
 
-			
-
 			// Get All Headquarter Data
-
 			//$getHQ = $this->getLocationData(array('tableName'=>'headquater','tableColumn'=>array('headquater_id',"UPPER(replace(headquater_name,' ',''))")));
 
 			$getHQ = array();
@@ -949,17 +913,11 @@ $select = $this->_db->select()
 					foreach($area as $areaID) {
 
 						$getHQ[$areaID] = $this->getLocationData(array('tableName'=>'headquater','tableColumn'=>array('headquater_id',"UPPER(replace(headquater_name,' ',''))"),'columnName'=>'area_id','columnValue'=>$areaID));
-
 					}
-
 				}
-
 			}
 
-			
-
 			// Get All City Data
-
 			$getCity = array();
 
 			foreach($getHQ as $hq) {
@@ -969,29 +927,18 @@ $select = $this->_db->select()
 					foreach($hq as $hqID) {
 
 						$getCity[$hqID] = $this->getLocationData(array('tableName'=>'city','tableColumn'=>array('city_id',"UPPER(replace(city_name,' ',''))"),'columnName'=>'headquater_id','columnValue'=>$hqID));
-
 					}
-
 				}
-
 			}
 
-			
-
 			// Get All Location Type Data
-
 			$getLocation = $this->getLocationData(array('tableName'=>'location_types','tableColumn'=>array('location_type_id',"UPPER(replace(location_type_code,' ',''))")));
 
 			//echo "<pre>";print_r($getCity);echo "</pre>";die;
 
-	
-
 			$rowError = array();
-
 			$rowData  = array();
-
 			$sheetHeader = $data->rangeToArray('A1:'.$totalColumns.'1');
-
 			$rowData[] = $sheetHeader[0];
 
 			for ($i=1; $i<$k; $i+=1) {
@@ -999,28 +946,28 @@ $select = $this->_db->select()
 				if ($isFirstRow) {
 
 					$isFirstRow = FALSE;
-
 					continue;
-
 				}
-
-				
-
+		
 				// Get the specified row as an array of all cells value
-
-				$rowValue  = $data->rangeToArray('A'.($i+1).':'.$totalColumns.($i+1)); //echo "<pre>";print_r($totalColumns);echo "</pre>";die;
-
-				
+				$rowValue  = $data->rangeToArray('A'.($i+1).':'.$totalColumns.($i+1)); 
+				//echo "<pre>";print_r($totalColumns);echo "</pre>";die;
 
 				if($totalColumns == 'I' || $totalColumns == 'J') {
 
 					$patchData = array();
 
-					$businessUnit = ($this->getCell($data,$i,1)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,1))) : '';
+				/***********************************************************
+				below line of code commented and modify because str_replace 
+				function remove all the spaces between the business unit name
+				value due to which it fails to get the id of business unit and 
+				code return error. resolved by jm on 19072018 by using trim
+				************************************************************/
+				//$businessUnit = ($this->getCell($data,$i,1)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,1))) : '';
 
-					$patchData['bunit_id'] = (!empty($businessUnit) && isset($getBusinessUnit[$businessUnit])) ? $getBusinessUnit[$businessUnit] : 0;
+				$businessUnit = ($this->getCell($data,$i,1)!='') ? strtoupper(trim(($this->getCell($data,$i,1)),' ')) : '';
 
-					
+ 				$patchData['bunit_id'] = (!empty($businessUnit) && isset($getBusinessUnit[$businessUnit])) ? $getBusinessUnit[$businessUnit] : 0;
 
 					if($patchData['bunit_id'] > 0) {
 
@@ -1028,15 +975,11 @@ $select = $this->_db->select()
 
 						$patchData['country_id'] = (!empty($country) && isset($getCountry[$country])) ? $getCountry[$country] : 0;
 
-						
-
 						if($patchData['country_id'] > 0) {
 
 							$zone = ($this->getCell($data,$i,3)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,3))) : '';
 
 							$patchData['zone_id'] = (!empty($zone) && isset($getZone[$patchData['bunit_id']][$zone])) ? $getZone[$patchData['bunit_id']][$zone] : 0;
-
-							
 
 							if($patchData['zone_id'] > 0) {
 
@@ -1045,14 +988,11 @@ $select = $this->_db->select()
 								$patchData['region_id'] = (!empty($region) && isset($getRegion[$patchData['zone_id']][$region])) ? $getRegion[$patchData['zone_id']][$region] : 0;
 
 								
-
 								if($patchData['region_id'] > 0) {
 
 									$area = ($this->getCell($data,$i,5)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,5))) : '';
 
 									$patchData['area_id'] = (!empty($area) && isset($getArea[$patchData['region_id']][$area])) ? $getArea[$patchData['region_id']][$area] : 0;
-
-									
 
 									if($patchData['area_id'] > 0) {
 
@@ -1176,9 +1116,7 @@ $select = $this->_db->select()
 
 						}
 
-					}
-
-					else {
+					}else {
 
 						$rowError[] = array(($i+1),"Business Unit (".$businessUnit.") not found !!");
 

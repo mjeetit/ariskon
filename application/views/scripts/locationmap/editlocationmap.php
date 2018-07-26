@@ -11,7 +11,7 @@
 									<thead>
 									<tr>
 										<td colspan="2" align="left" style="border:none">
-											<a href="<?php echo "14-oo-".$this->url(array('controller'=>'Locationmap','action'=>$this->backNew),'default',true)?>" class="button back">
+											<a href="<?php echo $this->url(array('controller'=>'Locationmap','action'=>$this->backNew),'default',true)?>" class="button back">
 											<span>Back<img src="<?php echo IMAGE_LINK;?>/plus-small.gif"  width="12" height="9" alt="Back" /></span>
 											</a>
 											</td>
@@ -31,7 +31,7 @@
 												     $seletcted = 'selected="selected"';
 													 }
 													 ?>
-												<option value="<?php echo  $designation['designation_id']; ?>" <?php echo $seletcted;?>><?php echo  $designation['designation_name']; ?></option>
+												<option value="<?php echo $designation['designation_id']; ?>" <?php echo $seletcted;?>><?php echo  $designation['designation_name']; ?></option>
 												<?php } ?>
 												</select>
 										</td>

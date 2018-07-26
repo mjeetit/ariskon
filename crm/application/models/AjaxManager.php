@@ -69,11 +69,9 @@ class AjaxManager extends Zend_Custom
 	
 
 	public function getlocationinfo($data=array())
-
 	{
 
 		$response = 0;
-
 		$locationInfo = $this->getlocation();
 
 		if(!empty($locationInfo)){
@@ -85,47 +83,31 @@ class AjaxManager extends Zend_Custom
 			$response .= '^';
 
 			if(!empty($BeAbmRsmDetail)){
-
 				$response .= $BeAbmRsmDetail['abmHQName'];
-
 			}
 
 			$response .= '^'.$locationInfo['buName'];
-
 		}	 
-
 		return $response;
-
 	}
 
 	
-
 	public function getlocation($data=array())
-
 	{
-
 		$streetID = (isset($data['streetID']) && trim($data['streetID'])>0) ? trim($data['streetID']) : $this->_getData['token'];
 
 		$query = $this->_db->select()
-
-				 ->from(array('ST'=>'patchcodes'),array('ST.patch_id'))
-
-				 ->joininner(array('CT'=>'city'),"CT.city_id=ST.city_id",array('CT.city_id','cityName'=>'CONCAT(CT.location_code," - ",CT.city_name)'))
-
-				 ->joininner(array('HQ'=>'headquater'),"HQ.headquater_id=ST.headquater_id",array('HQ.headquater_id','hqName'=>'CONCAT(HQ.location_code," - ",HQ.headquater_name)'))
-
-				 ->joininner(array('AT'=>'area'),"AT.area_id=ST.area_id",array('AT.area_id','areaName'=>'CONCAT(AT.location_code," - ",AT.area_name)'))
-
-				 ->joininner(array('RT'=>'region'),"RT.region_id=ST.region_id",array('RT.region_id','regionName'=>'CONCAT(RT.location_code," - ",RT.region_name)'))
-
-				 ->joininner(array('ZT'=>'zone'),"ZT.zone_id=ST.zone_id",array('ZT.zone_id','zoneName'=>'CONCAT(ZT.location_code," - ",ZT.zone_name)'))
-
-				 ->joininner(array('BT'=>'bussiness_unit'),"BT.bunit_id=ST.bunit_id",array('BT.bunit_id','buName'=>'CONCAT(BT.company_code," - ",BT.bunit_name )'))
-
-				 ->where("ST.patch_id ='".$streetID."'"); //echo $query->__toString();die;
+			->from(array('ST'=>'patchcodes'),array('ST.patch_id'))
+			->joininner(array('CT'=>'city'),"CT.city_id=ST.city_id",array('CT.city_id','cityName'=>'CONCAT(CT.location_code," - ",CT.city_name)'))
+			->joininner(array('HQ'=>'headquater'),"HQ.headquater_id=ST.headquater_id",array('HQ.headquater_id','hqName'=>'CONCAT(HQ.location_code," - ",HQ.headquater_name)'))
+			->joininner(array('AT'=>'area'),"AT.area_id=ST.area_id",array('AT.area_id','areaName'=>'CONCAT(AT.location_code," - ",AT.area_name)'))
+			->joininner(array('RT'=>'region'),"RT.region_id=ST.region_id",array('RT.region_id','regionName'=>'CONCAT(RT.location_code," - ",RT.region_name)'))
+			->joininner(array('ZT'=>'zone'),"ZT.zone_id=ST.zone_id",array('ZT.zone_id','zoneName'=>'CONCAT(ZT.location_code," - ",ZT.zone_name)'))
+			->joininner(array('BT'=>'bussiness_unit'),"BT.bunit_id=ST.bunit_id",array('BT.bunit_id','buName'=>'CONCAT(BT.company_code," - ",BT.bunit_name )'))
+			->where("ST.patch_id ='".$streetID."'");
+		//echo "116 = ".$query->__toString();die;
 
 		return $this->getAdapter()->fetchRow($query);
-
 	}
 
 	

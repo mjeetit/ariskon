@@ -1,40 +1,26 @@
 <?php
+	
+	error_reporting(E_ALL);
+	ini_set('display_errors', '1');
 
-error_reporting(E_ALL);
+	$root = dirname(dirname(__FILE__))."/ariskon";
+	require $root.'/application/bootstrap.php';
 
-ini_set('display_errors', '1');
+	try{
 
-$root = dirname(dirname(__FILE__))."/ariskon";
+		Bootstrap::run();
 
-//echo $root; die;
+	}catch(Exception $e){
+	?>
 
-//echo "http://".$_SERVER['HTTP_HOST']."/";die;
-
-require $root.'/application/bootstrap.php';
-
-//echo $root; die;
-
-try{
-
-Bootstrap::run();
-
-}catch(Exception $e){
-
-?>
-
-<table width="100%">
-
-<tr height="500px" valign="middle">
-
-<td align="center"> 
-
-	<font color="#FF0000"><strong><?php print $e->getMessage(); ?></strong></font>
-
-</td>
-
-</tr>
-
-</table>	
-
+	<table width="100%">
+		<tr height="500px" valign="middle">
+			<td align="center"> 
+				<font color="#FF0000">
+					<strong><?php print $e->getMessage(); ?></strong>
+				</font>
+			</td>
+		</tr>
+	</table>	
 <?php }?>
 

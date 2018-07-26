@@ -199,23 +199,33 @@ class AjaxManager extends Zend_Custom
 	exit;
 
  }
- public function getUserListByDesignation(){
-			$select = $this->_db->select()
-								->from(array('ED'=>'employee_personaldetail'),array('*'))
-								->where("designation_id='".$this->_getData['designation_id']."' AND department_id='".$this->_getData['department_id']."'");
-								//echo $select->__toString();die;
+
+
+ 	public function getUserListByDesignation(){
+
+		$select = $this->_db->select()
+			->from(array('ED'=>'employee_personaldetail'),array('*'))
+			->where("designation_id='".$this->_getData['designation_id']."' AND department_id='".$this->_getData['department_id']."'");
+	
 		$result = $this->getAdapter()->fetchAll($select);
+		
 		$string = '<option value="">--Select--</option>';
+		
 		foreach($result as $users){
-		  $selected = '';
-		  if($this->_getData['user_id']==$users['user_id']){
-		   $selected = 'selected="selected"';
-		  }
-		  $string .= '<option value="'.$users['user_id'].'" '.$selected.'>'.$users['employee_code'].'-'.$users['first_name'].' '.$users['last_name'].'</option>';
+			$selected = '';
+		  	
+		  	if($this->_getData['user_id']==$users['user_id']){
+		   		$selected = 'selected="selected"';
+		  	}
+		 	
+		 	$string .= '<option value="'.$users['user_id'].'" '.$selected.'>'.$users['employee_code'].'-'.$users['first_name'].' '.$users['last_name'].'</option>';
 		}
-	  echo $string;exit;		
- } 
-  public function geteXtraHead(){
+	  	
+	  	echo $string;exit;		
+ 	}
+
+
+  	public function geteXtraHead(){
     $string = '';
    if(!empty($this->_getData['salaryhead'])){
     $string ='<tr class="odd"><td>'. $this->getSalaryHeadName($this->_getData['salaryhead']).'</td><td><input type="text" name="extra_amount[]" class="input-short"><input type="hidden" name="extra_head[]" value="'.$this->_getData['salaryhead'].'"><input type="hidden" name="extra_type[]" value="'.$this->_getData['type'].'"></td></tr>';

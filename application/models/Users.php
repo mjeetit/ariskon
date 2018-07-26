@@ -35,6 +35,7 @@ class Users extends Zend_Custom
 
 	}
 	public function getEmpListOnly($arr=array()){
+	
 		$where="";
 		if(isset($arr['designation_id']) && $arr['designation_id']!=''){
 			$where.=" AND UT.designation_id=".$arr['designation_id']."";			
@@ -46,10 +47,11 @@ class Users extends Zend_Custom
 			$where.=" AND UT.user_id=".$arr['user_id']."";
 		}
 		$select=$this->_db->select()
-					->from(array('UT'=>'employee_personaldetail'),array('user_id','first_name'))
-					->where("`UT`.`delete_status`='0'".$where);
+			->from(array('UT'=>'employee_personaldetail'),array('user_id','first_name'))
+			->where("`UT`.`delete_status`='0'".$where);
 		return $this->getAdapter()->fetchAll($select);
 	}
+
 	public function getEmpDetail($arr=array()){
 		//It Will Select All BE of the respective ABM
 		$where="";
@@ -80,13 +82,14 @@ class Users extends Zend_Custom
 				
 				->joininner(array('US'=>'users'),"US.user_id=UT.user_id",array())
                 ->where("`UT`.`delete_status`='0'".$where);
-	echo $select->__toString();die;
+	//echo $select->__toString();die;
 		if(isset($arr['QueryCheck']) && $arr['QueryCheck']==1){
 			echo $select->__toString();die;
 		}
 		return $this->getAdapter()->fetchAll($select);
 	}
 	public function ExportOrganographReport(){
+
 		$result=array();
 		$blankPerson=array();
 		//It will select all ZBM
@@ -773,23 +776,30 @@ class Users extends Zend_Custom
 		
 
 	public function getUsers(){
-	     $filter = '';
-		 if($this->_getData['user_id']>0){
+
+	    $filter = '';
+		
+		if($this->_getData['user_id']>0){
 		   $filter .= " AND UT.user_id='".$this->_getData['user_id']."'";
-		 }
-		 if($this->_getData['designation_id']>0){
+		}
+		
+		if($this->_getData['designation_id']>0){
 		   $filter .= " AND DES.designation_id='".$this->_getData['designation_id']."'";
-		 }
-		 if($this->_getData['department_id']>0){
+		}
+		
+		if($this->_getData['department_id']>0){
 		   $filter .= " AND DEP.department_id='".$this->_getData['department_id']."'";
-		 }
-		 if($this->_getData['headquater_id']>0){
+		}
+		
+		if($this->_getData['headquater_id']>0){
 		   $filter .= " AND EL.headquater_id='".$this->_getData['headquater_id']."'";
-		 }
-		 if($this->_getData['search_word']!=''){
+		}
+		
+		if($this->_getData['search_word']!=''){
 		   $filter .= " AND (UT.employee_code='".$this->_getData['search_word']."' OR UT.first_name LIKE '".$this->_getData['search_word']."' OR US.username='".$this->_getData['search_word']."')";
-		 }
-	     $orderlimit = CommonFunction::OdrderByAndLimit($this->_getData,'UT.employee_code');
+		}
+	    
+	    $orderlimit = CommonFunction::OdrderByAndLimit($this->_getData,'UT.employee_code');
 	    
 		//Now no use of below lines 
 		/*$select = $this->_db->select()
@@ -803,95 +813,67 @@ class Users extends Zend_Custom
 		$total = $this->getAdapter()->fetchRow($select);*/
 
 	     $select = $this->_db->select()
-		 				->from(array('UT'=>'employee_personaldetail'),array('*'))
- 
-		 				->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
-
-						->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
-						->joininner(array('EL'=>'emp_locations'),"EL.user_id=UT.user_id",array(''))
-						->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=EL.headquater_id",array('headquater_name'))
-						->joininner(array('US'=>'users'),"US.user_id=UT.user_id",array('username','passwowrd_text'))
-						->where("delete_status='0'".$filter)
-						->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType']);
-						//->limit($orderlimit['Toshow'],$orderlimit['Offset']);
+			->from(array('UT'=>'employee_personaldetail'),array('*'))
+			->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
+			->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
+			->joininner(array('EL'=>'emp_locations'),"EL.user_id=UT.user_id",array(''))
+			->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=EL.headquater_id",array('headquater_name'))
+			->joininner(array('US'=>'users'),"US.user_id=UT.user_id",array('username','passwowrd_text'))
+			->where("delete_status='0'".$filter)
+			->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType']);
+			//->limit($orderlimit['Toshow'],$orderlimit['Offset']);
 
 		//echo $select->__toString();die;
-
 		$result = $this->getAdapter()->fetchAll($select);
 
-		//return array('Total'=>$total['CNT'],'Records'=>$result,'Toshow'=>$orderlimit['Toshow'],'Offset'=>$orderlimit['Offset']);
 		return array('Records'=>$result);
 	}
-
      
 
 	public function EditUserDetail(){
 
-	     $select = $this->_db->select()
-
-		 				->from(array('UT'=>'users'),array('*'))
-
-		 				->joininner(array('EPD'=>'employee_personaldetail'),"EPD.user_id=UT.user_id",array('*'))
-
-						->where("UT.user_id='".$this->_getData['user_id']."'");
-
+		$select = $this->_db->select()
+			->from(array('UT'=>'users'),array('*'))
+			->joininner(array('EPD'=>'employee_personaldetail'),"EPD.user_id=UT.user_id",array('*'))
+			->where("UT.user_id='".$this->_getData['user_id']."'");
 		//echo $select->__toString();die;
+		$result = $this->getAdapter()->fetchRow($select);
 
-		 $result = $this->getAdapter()->fetchRow($select);
+		$select = $this->_db->select()
+			->from(array('EE'=>'employee_education'),array('*'))
+			->where("EE.user_id='".$this->_getData['user_id']."'")
+			->order("degree");
 
-		 
+		$education = $this->getAdapter()->fetchAll($select);
 
-		 $select = $this->_db->select()
+		$result['Education'] = $education;
 
-		 				->from(array('EE'=>'employee_education'),array('*'))
+		$select = $this->_db->select()
+			->from(array('ED'=>'emp_employeement_detail'),array('*'))
+			->where("ED.user_id='".$this->_getData['user_id']."'");
 
-						->where("EE.user_id='".$this->_getData['user_id']."'")
-						->order("degree");
+		$employeement = $this->getAdapter()->fetchAll($select);
 
-		 $education = $this->getAdapter()->fetchAll($select);
+		$result['Employeement'] = $employeement;
 
-		 $result['Education'] = $education;
+		$select = $this->_db->select()
+			->from(array('DT'=>'emp_docoments'),array('*'))
+			->where("DT.user_id='".$this->_getData['user_id']."'");
 
-		 
+		$documents = $this->getAdapter()->fetchAll($select);
 
-		 $select = $this->_db->select()
+		$result['Document'] = $documents;
 
-		 				->from(array('ED'=>'emp_employeement_detail'),array('*'))
+		$select = $this->_db->select()
+			->from(array('AD'=>'emp_bank_account'),array('*'))
+			->where("AD.user_id='".$this->_getData['user_id']."'");
 
-						->where("ED.user_id='".$this->_getData['user_id']."'");
+		$accountDetail = $this->getAdapter()->fetchRow($select);
 
-		 $employeement = $this->getAdapter()->fetchAll($select);
-
-		 $result['Employeement'] = $employeement;
-
-		 
-
-		 $select = $this->_db->select()
-
-		 				->from(array('DT'=>'emp_docoments'),array('*'))
-
-						->where("DT.user_id='".$this->_getData['user_id']."'");
-
-		 $documents = $this->getAdapter()->fetchAll($select);
-
-		 $result['Document'] = $documents;
-
-		 
-
-		 $select = $this->_db->select()
-
-		 				->from(array('AD'=>'emp_bank_account'),array('*'))
-
-						->where("AD.user_id='".$this->_getData['user_id']."'");
-
-		 $accountDetail = $this->getAdapter()->fetchRow($select);
-
-		 $result['AccountDetail'] = $accountDetail;
-
-		 $result['Location'] = $this->getlocationInfo($this->_getData['user_id']);
-			///print_r($result['Location']);die;
+		$result['AccountDetail'] = $accountDetail;
+		$result['Location'] = $this->getlocationInfo($this->_getData['user_id']);
+		///print_r($result['Location']);die;
 		return $result; 
-
 	}
 
     
@@ -899,11 +881,9 @@ class Users extends Zend_Custom
     public function UpdateUserDetail(){
 
        $updata = $this->_getData;
-
        unset($updata['user_id']);
 
        $this->updateTable('user_detail',$updata,array('user_id'=>$this->_getData['user_id']));
-
     }
 
 	
@@ -911,67 +891,49 @@ class Users extends Zend_Custom
     public function generateEmployeeCode(){
 
        $select = $this->_db->select()
-
-		 				->from(array('ED'=>'employee_personaldetail'),array('employee_code'))
-
-						->order("employee_code DESC")
-
-						->limit(1);
+			->from(array('ED'=>'employee_personaldetail'),array('employee_code'))
+			->order("employee_code DESC")
+			->limit(1);
 
 	   $emp_code = $this->getAdapter()->fetchRow($select);
 
 	   if($emp_code['employee_code']!=''){
 
-	     $substr = substr($emp_code['employee_code'],3);
-
-	     $empcode = 'JC'. str_pad(($substr + 1),5,'0',STR_PAD_LEFT);
-
-	   }else{
-
-	     $empcode = 'JC00001';
-
-	   }
+			$substr = substr($emp_code['employee_code'],3);
+		    $empcode = 'JC'. str_pad(($substr + 1),5,'0',STR_PAD_LEFT);
+		}else{
+		    $empcode = 'JC00001';
+		}
 
 	   return $empcode;
-
    }
 
-   public function viewUserDetail(){
 
-       $user_type = $this->getUserType($user_id);
+   	public function viewUserDetail(){
 
-	   $dataarray = array();
+       	$user_type = $this->getUserType($user_id);
+	   	$dataarray = array();
 
-       $select = $this->_db->select()
+		$select = $this->_db->select()
+			->from(array('UD'=>'employee_personaldetail'),array('*'))
+			->joinleft(array('PU'=>'employee_personaldetail'),"PU.user_id=UD.parent_id",array('CONCAT(PU.first_name," ",PU.last_name) as Parent'))
+			->joinleft(array('BU'=>'bussiness_unit'),"BU.bunit_id=UD.bunit_id",array('bunit_name'))
+			->joinleft(array('DP'=>'department'),"DP.department_id=UD.department_id",array('department_name'))
+			->joinleft(array('DG'=>'designation'),"DG.designation_id=UD.designation_id",array('designation_name'))
+			->joinleft(array('HO'=>'headoffice'),"HO.headoff_id=UD.office_id",array('office_name'))
+			->where("UD.user_id='".$this->_getData['user_id']."'");
 
-		 				->from(array('UD'=>'employee_personaldetail'),array('*'))
-
-						->joinleft(array('PU'=>'employee_personaldetail'),"PU.user_id=UD.parent_id",array('CONCAT(PU.first_name," ",PU.last_name) as Parent'))
-
-						->joinleft(array('BU'=>'bussiness_unit'),"BU.bunit_id=UD.bunit_id",array('bunit_name'))
-
-						->joinleft(array('DP'=>'department'),"DP.department_id=UD.department_id",array('department_name'))
-
-						->joinleft(array('DG'=>'designation'),"DG.designation_id=UD.designation_id",array('designation_name'))
-
-						->joinleft(array('HO'=>'headoffice'),"HO.headoff_id=UD.office_id",array('office_name'))
-
-						->where("UD.user_id='".$this->_getData['user_id']."'");
-
-	   $dataarray = $this->getAdapter()->fetchRow($select);
-
-	   $dataarray['Education'] 	  = $this->getEducations($this->_getData['user_id']);
-
-	   $dataarray['Employeement'] = $this->getEmployeements($this->_getData['user_id']);
-
-	   $dataarray['Account']      = $this->getBankAccountDetail($this->_getData['user_id']);
-
-	   $dataarray['Documents']    = $this->getDocumentsInfo($this->_getData['user_id']);
-	   $dataarray['Location']    = $this->getlocationInfo($this->_getData['user_id']);
+		$dataarray = $this->getAdapter()->fetchRow($select);
+		$dataarray['Education'] = $this->getEducations($this->_getData['user_id']);
+		$dataarray['Employeement'] = $this->getEmployeements($this->_getData['user_id']);
+		$dataarray['Account'] = $this->getBankAccountDetail($this->_getData['user_id']);
+		$dataarray['Documents'] = $this->getDocumentsInfo($this->_getData['user_id']);
+	   	$dataarray['Location'] = $this->getlocationInfo($this->_getData['user_id']);
 
 	  return $dataarray; 
+   }
 
-   }				
+   				
    public function AddPrivillage(){ //print_r($this->_getData);die;
       $this->_db->delete('user_privillage',"user_id='".$this->_getData['user_id']."'");
 	  if(!empty($this->_getData['tree'])){
@@ -1079,11 +1041,11 @@ class Users extends Zend_Custom
    }
    public function getUserHistory(){
      $select = $this->_db->select()
-		 				->from(array('UT'=>'edit_emp_personaldetail'),array('*'))
-		 				->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
-						->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
-						->joinleft(array('EL'=>'edit_emp_locations'),"EL.user_id=UT.user_id",array('*'))
-						->where("UT.user_id='".$this->_getData['user_id']."'");
+		->from(array('UT'=>'edit_emp_personaldetail'),array('*'))
+		->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name'))
+		->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
+		->joinleft(array('EL'=>'edit_emp_locations'),"EL.user_id=UT.user_id",array('*'))
+		->where("UT.user_id='".$this->_getData['user_id']."'");
 		//echo $select->__toString();die;
 
 		$result = $this->getAdapter()->fetchAll($select);
@@ -1206,11 +1168,11 @@ class Users extends Zend_Custom
 		//public function getModules($moduleID=0){
 		public function getModulesHRM($moduleID=0){	
 
-			echo "1203 user.php model page getModuleHRM funciton"; die;
 			$select = $this->_db->select()
-                                ->from('crm_modules',array('module_id','parent_id','level_id','module_name'))
-                                ->where("parent_id='".(int)$moduleID."' AND isActive='1' AND isDelete='0'")
-								->order('module_id ASC'); //echo $select->__toString();die;
+                ->from('crm_modules',array('module_id','parent_id','level_id','module_name'))
+                ->where("parent_id='".(int)$moduleID."' AND isActive='1' AND isDelete='0'")
+				->order('module_id ASC'); 
+			//echo $select->__toString();die;
 			return $this->getAdapter()->fetchAll($select);
 		}
 		
@@ -1222,28 +1184,32 @@ class Users extends Zend_Custom
 		 * @return	array
 		 */
 		public function getModuleSections($moduleID){
+
 			$select = $this->_db->select()
-                                ->from(array('MS'=>'crm_modulesections'),array('MS.section_id'))
-                                ->joininner(array('ST'=>'crm_sections'),"ST.section_id=MS.section_id AND ST.status='1' AND ST.delete_status='0'",array('ST.section_name'))
-                                ->where("MS.module_id='".(int)$moduleID."'")
-								->order('ST.section_name ASC'); //echo $select->__toString();die;
+                ->from(array('MS'=>'crm_modulesections'),array('MS.section_id'))
+                ->joininner(array('ST'=>'crm_sections'),"ST.section_id=MS.section_id AND ST.status='1' AND ST.delete_status='0'",array('ST.section_name'))
+                ->where("MS.module_id='".(int)$moduleID."'")
+				->order('ST.section_name ASC'); 
+				//echo $select->__toString();die;
 			return $this->getAdapter()->fetchAll($select);
 		}
 		
 		
 		/**
-		 * Method getLevelPrivileges() get list of module_id, section_id, status, delete_status on the basis of level_id and 
-		   which have delete_status=0, status=1.
-		 * @access	public
-		 * @param	$levelID holds level_id
-		 * @return	array
-		 */
+		* Method getLevelPrivileges() get list of module_id, section_id, status, 
+		  delete_status on the basis of level_id and 
+		  which have delete_status=0, status=1.
+		* @access	public
+		* @param	$levelID holds level_id
+		* @return	array
+		*/
 		public function getLevelPrivileges($levelID){
 			$select = $this->_db->select()
-                                ->from(array('LP'=>'crm_leveldefaultprivileges'),array('LP.module_id','LP.section_id'))
-                                ->joininner(array('CM'=>'crm_modules'),"CM.module_id=LP.module_id AND CM.isActive='1' AND CM.isDelete='0'",'')
-								->joinleft(array('ST'=>'crm_sections'),"ST.section_id=LP.section_id",array('ST.status','ST.delete_status'))
-                                ->where("LP.level_id='".(int)$levelID."'"); //echo $select->__toString();die;
+            ->from(array('LP'=>'crm_leveldefaultprivileges'),array('LP.module_id','LP.section_id'))
+            ->joininner(array('CM'=>'crm_modules'),"CM.module_id=LP.module_id AND CM.isActive='1' AND CM.isDelete='0'",'')
+			->joinleft(array('ST'=>'crm_sections'),"ST.section_id=LP.section_id",array('ST.status','ST.delete_status'))
+            ->where("LP.level_id='".(int)$levelID."'"); 
+            //echo $select->__toString();die;
 			$results = $this->getAdapter()->fetchAll($select);
 			$modules = array(); $sections = array();
 			foreach($results as $info) {

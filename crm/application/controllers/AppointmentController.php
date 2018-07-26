@@ -41,6 +41,7 @@ class AppointmentController extends Zend_Controller_Action {
 		 $this->view->abmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'7'));
 		 $this->view->rbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'6'));
 		 $this->view->zbmDetails = $this->ObjAjax->getDesignationWiseUserLists(array('designationID'=>'5'));
+		 
 		 $this->view->appointments = $this->ObjModel->getAppointments($data);
 	}
 	

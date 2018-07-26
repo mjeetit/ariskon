@@ -94,9 +94,9 @@ class DoctorController extends Zend_Controller_Action {
 
 		 
 
-		 // When Doctor file will be upload
+		// When Doctor file will be upload
 
-		 if($this->_request->isPost() && str_replace(' ','_',strtoupper($data['uplDr'])) == 'UPLOAD'){
+		if($this->_request->isPost() && str_replace(' ','_',strtoupper($data['uplDr'])) == 'UPLOAD'){
 
 		 	$this->ObjModel->UpdateDoctorFromExcel($data); //First time upload doctor file
 

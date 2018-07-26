@@ -486,6 +486,7 @@ class Zend_Form_DisplayGroup implements Iterator,Countable
      */
     public function addElements(array $elements)
     {
+echo "489 library/zend/form/DisplayGroup.php <pre>"; print_r($elements); die;       
         foreach ($elements as $element) {
             if (!$element instanceof Zend_Form_Element) {
                 require_once 'Zend/Form/Exception.php';

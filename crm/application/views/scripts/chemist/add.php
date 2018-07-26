@@ -40,21 +40,33 @@
 					</tr>
 					
 					<tr class="odd">
-					  <td align="left">Street Code <span class="strick">*</span> :</td>
-					  <td align="left">
-					    <select name="street_id" id="streetCode" required aria-required="true">
-						  <option value="" selected="selected">Please select</option>
-						  <?php foreach($this->streets as $street) { ?>
-						  <option value="<?=$street['street_id']?>"><?=$street['location_code'].' - '.$street['street_name']?></option>
-						  <?php } ?>
-						</select>
-					  </td>
-					  <td align="left">City Code <span class="strick">*</span> :</td>
-					  <td align="left"><input type="text" id="city_name" class="input-medium" readonly="readonly"/></td>
-					  <td align="left">Headquarter Code <span class="strick">*</span> :</td>
-					  <td align="left"><input type="text" id="headquarter_name" class="input-medium" readonly="readonly"/></td>
-					  <td align="left">BU <span class="strick">*</span> :</td>
-					  <td align="left"><input type="text" id="bu_name" class="input-medium" readonly="readonly"/></td>
+						<!-- street is replaced by patch by jm on 25072018
+						<td align="left">Street Code <span class="strick">*</span> -->
+					  	<td align="left">Patch Code <span class="strick">*</span> :</td>
+					  	<td align="left">
+					    	<select name="street_id" id="streetCode" required aria-required="true">
+								<option value="" selected="selected">Please select</option>
+								<!-- code modified because we get values from patch instead of street by jm on 25072018 -->
+								<?php //foreach($this->streets as $street) { ?>
+								  	<!--
+								  	<option value="<?=$street['street_id']?>"><?=$street['location_code'].' - '.$street['street_name']?>
+								  	</option> -->
+
+								<?php //} ?>
+
+								<?php  foreach($this->patchcodes as $patchcode){ ?>
+								  	<option value="<?=$patchcode['patch_id']?>"><?=$patchcode['patchcode'].' - '.$patchcode['patch_name']?>
+								  	</option>
+								<?php } ?>
+							</select>
+					  	</td>
+					  	
+					  	<td align="left">City Code <span class="strick">*</span> :</td>
+					  	<td align="left"><input type="text" id="city_name" class="input-medium" readonly="readonly"/></td>
+					    <td align="left">Headquarter Code <span class="strick">*</span> :</td>
+						<td align="left"><input type="text" id="headquarter_name" class="input-medium" readonly="readonly"/></td>
+						<td align="left">BU <span class="strick">*</span> :</td>
+						<td align="left"><input type="text" id="bu_name" class="input-medium" readonly="readonly"/></td>
 					</tr>
 					
 					<tr class="event">
@@ -75,7 +87,7 @@
 					  <td align="left"><input type="text" name="stockists[]" id="stockist_2" required aria-required="true" class="input-medium" /></td>
 					  <td align="left">Stockist 3 <span class="strick">*</span> :</td>
 					  <td align="left"><input type="text" name="stockists[]" id="stockist_3" class="input-medium" /></td>
-					  <td align="left">Stockist 3 <span class="strick">*</span> :</td>
+					  <td align="left">Stockist 4 <span class="strick">*</span> :</td>
 					  <td align="left"><input type="text" name="stockists[]" id="stockist_4" class="input-medium" /></td>
 					</tr>
 					
@@ -98,12 +110,17 @@
 $(document).ready(function() {	
 	$('#streetCode').change(function() {//alert(this.value);return false;
 		if(this.value > 0) {
+
+			var url = '<?=Bootstrap::$baseUrl?>/Ajax/getlocation';
+
 			$.ajax({
-				url: '<?=Bootstrap::$baseUrl?>/Ajax/getlocation',
+				url: url,
 				data: 'token='+this.value,
 				success: function(response) {
 					if($.trim(response) != 0) {
-						var details = response.split('^'); //alert(details[0]);return false;
+
+						var details = response.split('^'); 
+						
 						$("#city_name").val(details[0]);
 						$("#headquarter_name").val(details[1]);
 						$("#bu_name").val(details[6])

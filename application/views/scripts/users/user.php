@@ -11,7 +11,15 @@
 						</tr>
 						<tr>
 							<td>Employee</td>
-							<td><?php  echo $this->htmlSelectUser('user_id',$this->filteruser,$this->filter['user_id'],array('class'=>'input-medium'));?></td>
+							<td><?php  
+
+							/**************************************************************
+							 old code commented and modified to show the Employee name in 
+							 employe name filter by jm on 2472018	
+							***************************************************************/
+							//echo $this->htmlSelectUser('user_id',$this->filteruser,$this->filter['user_id'],array('class'=>'input-medium'));
+							echo $this->htmlSelect('user_id',CommonFunction::getAssociative($this->filteruser,'user_id','name'),$this->filter['user_id'],array('class'=>'input-medium'));
+							?></td>
 							<td>Designation</td>
 							<td><?php  echo $this->htmlSelect('designation_id',CommonFunction::getAssociative($this->filterdesignation,'designation_id','designation_name'),$this->filter['designation_id'],array('class'=>'input-medium'));?></td>
 							<td>Department</td>

@@ -65,6 +65,7 @@ class LocationsController extends Zend_Controller_Action {
 		
 		// Upload Patch data file
 		if(!empty($data['uploadpatch']) && strtoupper(str_replace(' ','_',$data['uploadpatch'])) == 'UPLOAD'){
+		
 		 	$this->ObjModel->UploadePatchFile($data); 
 			$this->_redirect($this->_request->getControllerName().'/'.$this->getRequest()->getActionName());
 		}
@@ -104,7 +105,8 @@ class LocationsController extends Zend_Controller_Action {
 		   $this->_redirect($this->_request->getControllerName().'/'. $action);
 	   }
 	  //$this->view->back =  $this->ObjModel->BackAction();
-	   $this->view->EditRec = $this->ObjModel->getEdit();//print_r($this->view->EditRec);die;
+	   $this->view->EditRec = $this->ObjModel->getEdit();
+	   //print_r($this->view->EditRec);die;
    }
    public function designationAction(){
       $this->view->designation = $this->ObjModel->getDesignation();

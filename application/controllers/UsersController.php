@@ -21,20 +21,27 @@ class UsersController extends Zend_Controller_Action {
 		$this->view->filter = $this->_data; 
 	}
     public function userAction(){
-	if($this->_request->isGet() && !empty($this->_data['export'])){
-		$this->ObjModel->ExportOrganographReport();
-	   }
-	   $this->view->Users = $this->ObjModel->getUsers();
+	
+		if($this->_request->isGet() && !empty($this->_data['export'])){
+			$this->ObjModel->ExportOrganographReport();
+	   	}
+	   
+	   	$this->view->Users = $this->ObjModel->getUsers();
 		/*********************************************************************************
 	     function name modify on the basis of main menu either HRM, CRM or Reporting 
 	     by jm on 16072018
 	   	*********************************************************************************/
 		//$this->view->filteruser = $this->ObjModel->getAllUsersForSalary();
 		$this->view->filteruser = $this->ObjModel->getAllUsersForSalaryHRM();
+
+//echo "37 UsersController <pre>"; print_r($this->view->filteruser); //die;
+
 		$this->view->filterdesignation = $this->ObjModel->getDesignation();
 		$this->view->filterdepartment = $this->ObjModel->getDepartment();
 		$this->view->filterheadquater = $this->ObjModel->getHeadquaters();
 	}
+
+	
 	public function adduserAction(){
 	  $this->view->form = 1;
 	  if($this->_request->isPost()){ 

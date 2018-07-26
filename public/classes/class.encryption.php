@@ -12,7 +12,12 @@
 	 
 	class Class_Encryption
 	{
-		var $skey = "JCLCRMSecretKeys"; // you can change it
+		/*******************************************************************
+		 following $skey is commented and pass new 32 character hexa key pass 
+		 in the encode and decode functions to remove the error of encryption
+		 (Warning:  mcrypt_encrypt(): Key of size 0 not supported by this algorithm. Only keys of sizes 16, 24 or 32 supported) by jm on 19072018
+		*******************************************************************/
+		//var $skey = "JCLCRMSecretKeys"; // you can change it
 	
 		public  function safe_b64encode($string)
 		{
@@ -34,20 +39,24 @@
 		public  function encode($value)
 		{ 
 			if(!$value){return false;}
+			$skey = "aNdRgUkXp2s5v8y/B?E(H+MbQeShVmYq";
 			$text = $value;
 			$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
 			$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-			$crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->skey, $text, MCRYPT_MODE_ECB, $iv);
+			//$crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $this->skey, $text, MCRYPT_MODE_ECB, $iv);
+			$crypttext = mcrypt_encrypt(MCRYPT_RIJNDAEL_256, $skey, $text, MCRYPT_MODE_ECB, $iv);
 			return trim(Class_Encryption::safe_b64encode($crypttext)); 
 		}
 	
 		public function decode($value)
 		{
 			if(!$value){return false;}
+			$skey = "aNdRgUkXp2s5v8y/B?E(H+MbQeShVmYq";
 			$crypttext = Class_Encryption::safe_b64decode($value); 
 			$iv_size = mcrypt_get_iv_size(MCRYPT_RIJNDAEL_256, MCRYPT_MODE_ECB);
 			$iv = mcrypt_create_iv($iv_size, MCRYPT_RAND);
-			$decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->skey, $crypttext, MCRYPT_MODE_ECB, $iv);
+			//$decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $this->skey, $crypttext, MCRYPT_MODE_ECB, $iv);
+			$decrypttext = mcrypt_decrypt(MCRYPT_RIJNDAEL_256, $skey, $crypttext, MCRYPT_MODE_ECB, $iv);
 			return trim($decrypttext);
 		}
 	}

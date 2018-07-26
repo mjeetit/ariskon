@@ -21,16 +21,17 @@ class EmployeeAccount extends Zend_Custom
 	  }  
    }
    public function getItemsList(){
+
        $select = $this->_db->select()
-                    ->from(array('EAA'=>'emp_acceseries_account'), array('*','sum(acceseries_value) AS Amount'))
-					->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=EAA.bunit_id",array('bunit_name'))
-					->joininner(array('DP'=>'department'),"DP.department_id=EAA.department_id",array('department_name'))
-					->joininner(array('DG'=>'designation'),"DG.designation_id=EAA.designation_id",array('designation_name'))
-					->joininner(array('EMP'=>'employee_personaldetail'),"EMP.user_id=EAA.user_id",array('*'))
-					->where("1".$where)
-					->group("EAA.user_id");
-            //print_r($select->__toString());die;
-           return $this->getAdapter()->fetchAll($select);
+        ->from(array('EAA'=>'emp_acceseries_account'), array('*','sum(acceseries_value) AS Amount'))
+		->joininner(array('BU'=>'bussiness_unit'),"BU.bunit_id=EAA.bunit_id",array('bunit_name'))
+		->joininner(array('DP'=>'department'),"DP.department_id=EAA.department_id",array('department_name'))
+		->joininner(array('DG'=>'designation'),"DG.designation_id=EAA.designation_id",array('designation_name'))
+		->joininner(array('EMP'=>'employee_personaldetail'),"EMP.user_id=EAA.user_id",array('*'))
+		->where("1".$where)
+		->group("EAA.user_id");
+       	//print_r($select->__toString());die;
+        return $this->getAdapter()->fetchAll($select);
    }
    
    public function detailAllowetList($emp_acc_id=false){

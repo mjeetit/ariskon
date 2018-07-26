@@ -1,201 +1,128 @@
 <?php
-
-	class DoctorManager extends Zend_Custom
-
-	{
-
-		private $_leaveType 		= "leavetypes";
-
-		private $_leavedistribution = "leavedistributions";
-
-		private $_leaveapproval 	= "leaveapprovals";
-
-		private $_designation 		= "designation";
-
-		private $_headquarters 	= array();
-
+class DoctorManager extends Zend_Custom
+{
+	private $_leaveType 		= "leavetypes";
+	private $_leavedistribution = "leavedistributions";
+	private $_leaveapproval 	= "leaveapprovals";
+	private $_designation 		= "designation";
+	private $_headquarters 	= array();
 	
-
-		public function getDoctors($data)
-
+	public function getDoctors($data)
+	{
+		try 
 		{
+			$where 		 = 1;
+			$filterparam = '';
 
-			try {
+			if ($_SESSION['AdminLevelID'] != 1) {
 
-				$where 		 = 1;
-
-				$filterparam = '';
-
-				if ($_SESSION['AdminLevelID'] != 1) {
-
-					$this->getHeadQuaters($_SESSION['AdminLoginID']);
-
-					$where = 'DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
-
-				}
-
-				
-				//Filter With PATCH Data
-
-				if(!empty($data['token7'])){
-
-					$filterparam .= " AND DT.patch_id='".Class_Encryption::decode($data['token7'])."'";
-
-				}
-				
-				//Filter With ZBM Data
-
-				if(!empty($data['token6'])){
-
-					$where = '1';$this->_headquarters = array();
-
-					$this->getHeadQuaters(Class_Encryption::decode($data['token6']));
-
-					$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
-
-				}
-
-				//Filter With RBM Data
-
-				if(!empty($data['token5'])){
-
-					$where = '1';$this->_headquarters = array();
-
-					$this->getHeadQuaters(Class_Encryption::decode($data['token5']));
-
-					$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
-
-				}
-
-				//Filter With ABM Data
-
-				if(!empty($data['token4'])){
-
-					$where = '1';$this->_headquarters = array();
-
-					$this->getHeadQuaters(Class_Encryption::decode($data['token4']));
-
-					$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
-
-				}
-
-				//Filter With BE Data
-
-				if(!empty($data['token3'])){
-
-					$where = '1';$this->_headquarters = array();
-
-					$this->getHeadQuaters(Class_Encryption::decode($data['token3']));
-
-					$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
-
-				}
-
-				//Filter With Headquarter Data
-
-				if(!empty($data['token2'])){
-
-					$where = '1';
-
-					$filterparam .= " AND DT.headquater_id='".Class_Encryption::decode($data['token2'])."'";
-
-				}
-
-				//Filter With Doctor Data
-
-				if(!empty($data['token1'])){
-
-					$filterparam .= " AND DT.doctor_id='".Class_Encryption::decode($data['token1'])."'";
-
-				}
-
-				//Filter With Date Range
-
-				if(!empty($data['from_date']) && !empty($data['to_date'])){
-
-					$filterparam .= " AND DATE(DT.created_date) BETWEEN '".$data['from_date']."' AND '".$data['to_date']."'";
-
-				}
-
-				//Filter With Doctor Type
-
-				$filterparam .= (isset($data['dtype']) && $data['dtype']==0) ? " AND DT.isApproved='0'" : " AND DT.isApproved='1'";
-
-				//Filter with Activity
-
-				$filterparam .= (isset($data['atoken']) && !empty($data['atoken'])) ? " AND DT.activity_id='".Class_Encryption::decode($data['atoken'])."'" : '';
-
-				//Filter with Activity
-
-				$filterparam .= (isset($data['dstat']) && $data['dstat']==0) ? " AND DT.isActive='0'" : " AND DT.isActive='1'";
-
-				$filterparam .= " AND DT.isDelete='0' AND PT.isActive='1' AND PT.isDelete='0'";
-
-				
-
-				//Order
-
-				$orderlimit = CommonFunction::OdrderByAndLimit($data,'DT.headquater_id');
-
-				
-
-				$countQuery = $this->_db->select()
-
-								->from(array('DT'=>'crm_doctors'),array('COUNT(1) AS CNT'))
-
-								->joinleft(array('PT'=>'patchcodes'),"PT.patch_id=DT.patch_id",array())
-
-								->joinleft(array('CT'=>'city'),"CT.city_id=DT.city_id",array())
-
-								->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=DT.headquater_id",array())
-
-								->joinleft(array('AT'=>'area'),"AT.area_id=HQ.area_id",array())
-
-								->joinleft(array('ZT'=>'zone'),"ZT.zone_id=HQ.zone_id",array())
-
-								->joinleft(array('RT'=>'region'),"RT.region_id=HQ.region_id",array())
-
-								->where($where.$filterparam)
-
-								->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType']); //print_r($countQuery->__toString());die;
-
-				$total = $this->getAdapter()->fetchAll($countQuery);
-
-				
-
-				$query = $this->_db->select()
-
-								 ->from(array('DT'=>'crm_doctors'),array('DT.doctor_id','DT.svl_number','DT.doctor_name','DT.speciality','DT.qualification','DT.isActive','DT.class','DT.isApproved'))
-
-								 ->joinleft(array('PT'=>'patchcodes'),"PT.patch_id=DT.patch_id",array('patchName'=>'PT.patch_name'))
-
-								 ->joinleft(array('CT'=>'city'),"CT.city_id=DT.city_id",array('cityName'=>'CT.city_name'))
-
-								 ->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=DT.headquater_id",array('hq'=>'HQ.headquater_name'))
-
-								 ->joinleft(array('AT'=>'area'),"AT.area_id=HQ.area_id",array('areaName'=>'AT.area_name'))
-
-								 ->joinleft(array('ZT'=>'zone'),"ZT.zone_id=HQ.zone_id",array('zoneName'=>'ZT.zone_name'))
-
-								 ->joinleft(array('RT'=>'region'),"RT.region_id=HQ.region_id",array('regionName'=>'RT.region_name'))
-
-								 ->where($where.$filterparam)
-
-								 ->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType'])
-
-								 ->limit($orderlimit['Toshow'],$orderlimit['Offset']); //print_r($query->__toString());die;
-
-				
-
-				$result = $this->getAdapter()->fetchAll($query);
-
+				$this->getHeadQuaters($_SESSION['AdminLoginID']);
+				$where = 'DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
 			}
 
-			catch(Exception $e){
+			//Filter With PATCH Data
+			if(!empty($data['token7'])){
+
+				$filterparam .= " AND DT.patch_id='".Class_Encryption::decode($data['token7'])."'";
+			}
+			
+			//Filter With ZBM Data
+			if(!empty($data['token6'])){
+
+				$where = '1';$this->_headquarters = array();
+				$this->getHeadQuaters(Class_Encryption::decode($data['token6']));
+				$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
+			}
+
+			//Filter With RBM Data
+			if(!empty($data['token5'])){
+
+				$where = '1';$this->_headquarters = array();
+				$this->getHeadQuaters(Class_Encryption::decode($data['token5']));
+				$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
+			}
+
+			//Filter With ABM Data
+			if(!empty($data['token4'])){
+
+				$where = '1';$this->_headquarters = array();
+				$this->getHeadQuaters(Class_Encryption::decode($data['token4']));
+				$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
+			}
+
+			//Filter With BE Data
+			if(!empty($data['token3'])){
+
+				$where = '1';$this->_headquarters = array();
+				$this->getHeadQuaters(Class_Encryption::decode($data['token3']));
+				$filterparam .= ' AND DT.headquater_id IN ('.implode(',',array_unique($this->_headquarters)).')';
+			}
+
+			//Filter With Headquarter Data
+			if(!empty($data['token2'])){
+
+				$where = '1';
+				$filterparam .= " AND DT.headquater_id='".Class_Encryption::decode($data['token2'])."'";
+			}
+
+			//Filter With Doctor Data
+			if(!empty($data['token1'])){
+
+				$filterparam .= " AND DT.doctor_id='".Class_Encryption::decode($data['token1'])."'";
+			}
+
+			//Filter With Date Range
+			if(!empty($data['from_date']) && !empty($data['to_date'])){
+
+				$filterparam .= " AND DATE(DT.created_date) BETWEEN '".$data['from_date']."' AND '".$data['to_date']."'";
+			}
+
+			//Filter With Doctor Type
+			$filterparam .= (isset($data['dtype']) && $data['dtype']==0) ? " AND DT.isApproved='0'" : " AND DT.isApproved='1'";
+
+			//Filter with Activity
+			$filterparam .= (isset($data['atoken']) && !empty($data['atoken'])) ? " AND DT.activity_id='".Class_Encryption::decode($data['atoken'])."'" : '';
+
+			//Filter with Activity
+			$filterparam .= (isset($data['dstat']) && $data['dstat']==0) ? " AND DT.isActive='0'" : " AND DT.isActive='1'";
+
+			$filterparam .= " AND DT.isDelete='0' AND PT.isActive='1' AND PT.isDelete='0'";
+
+			//Order
+			$orderlimit = CommonFunction::OdrderByAndLimit($data,'DT.headquater_id');
+
+			$countQuery = $this->_db->select()
+				->from(array('DT'=>'crm_doctors'),array('COUNT(1) AS CNT'))
+				->joinleft(array('PT'=>'patchcodes'),"PT.patch_id=DT.patch_id",array())
+				->joinleft(array('CT'=>'city'),"CT.city_id=DT.city_id",array())
+				->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=DT.headquater_id",array())
+				->joinleft(array('AT'=>'area'),"AT.area_id=HQ.area_id",array())
+				->joinleft(array('ZT'=>'zone'),"ZT.zone_id=HQ.zone_id",array())
+				->joinleft(array('RT'=>'region'),"RT.region_id=HQ.region_id",array())
+				->where($where.$filterparam)
+				->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType']); 
+			//print_r($countQuery->__toString());die;
+			$total = $this->getAdapter()->fetchAll($countQuery);
+
+			$query = $this->_db->select()
+				->from(array('DT'=>'crm_doctors'),array('DT.doctor_id','DT.svl_number','DT.doctor_name','DT.speciality','DT.qualification','DT.isActive','DT.class','DT.isApproved'))
+				->joinleft(array('PT'=>'patchcodes'),"PT.patch_id=DT.patch_id",array('patchName'=>'PT.patch_name'))
+				->joinleft(array('CT'=>'city'),"CT.city_id=DT.city_id",array('cityName'=>'CT.city_name'))
+				->joinleft(array('HQ'=>'headquater'),"HQ.headquater_id=DT.headquater_id",array('hq'=>'HQ.headquater_name'))
+				->joinleft(array('AT'=>'area'),"AT.area_id=HQ.area_id",array('areaName'=>'AT.area_name'))
+				->joinleft(array('ZT'=>'zone'),"ZT.zone_id=HQ.zone_id",array('zoneName'=>'ZT.zone_name'))
+				->joinleft(array('RT'=>'region'),"RT.region_id=HQ.region_id",array('regionName'=>'RT.region_name'))
+				->where($where.$filterparam)
+				->order($orderlimit['OrderBy'].' '.$orderlimit['OrderType'])
+				->limit($orderlimit['Toshow'],$orderlimit['Offset']); 
+			//print_r($query->__toString());die;
+			$result = $this->getAdapter()->fetchAll($query);
+		
+		}catch(Exception $e){
 
 				$_SESSION[ERROR_MSG] =  'There is some error, please try again !!'; 
 
-			}
+		}
 
 			
 
@@ -1239,480 +1166,300 @@
 
 		
 
-		/**
-
-		 * Select Headquarter from drop down and then proceed to do Import doctor file, if doctor alreday exists for given patchcode then update, if not then add doctor data
-
-		 * Function : firstImportDoctorFile()
-
-		 * This function import doctor file only use for first time. Because first time this function will validate all location data and add patch data into patch table.
-
-		 **/
+	/**
+	* Select Headquarter from drop down and then proceed to do Import doctor 
+	* file,  if doctor alreday exists for given patchcode then update, if not 
+	* then add doctor data.
+	*
+	* Function : firstImportDoctorFile()
+	*
+	* This function import doctor file only use for first time. Because first 
+	* time  this function will validate all location data and add patch data 
+	* into patch table.
+	**/
 		 
-		 public function UpdateDoctorFromExcel($formData)
+	public function UpdateDoctorFromExcel($formData)
+	{
+		ini_set("memory_limit","512M");
+		ini_set("max_execution_time",180);
+		$filename 	= CommonFunction::UploadFile('doctorFile','xls');
+		$inputFileType = PHPExcel_IOFactory::identify($filename);
+		$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+		$objReader->setReadDataOnly(true);
+		$reader = $objReader->load($filename);
+		$data = $reader->getSheet(0);
+		$k = $data->getHighestRow();
+		$rowError = array();
+		$rowData  = array();
 
-		{
+		// Headquarter Detail
+		$headquaterID = Class_Encryption::decode($formData['hqt']);
 
-			ini_set("memory_limit","512M");
+		if($headquaterID > 0) {
 
-			ini_set("max_execution_time",180);
+			// Get All Location Data of Headquater
+			$queryField = array('tableName'=>'headquater','tableColumn'=>array('headquater_name','area_id','region_id','zone_id','country_id','bunit_id'),'columnName'=>'headquater_id','columnValue'=>$headquaterID,'returnRow'=>'single');
+			$headquaterData = $this->getTableData($queryField);
 
-			$filename 	= CommonFunction::UploadFile('doctorFile','xls');
+			// Get All Patchcode Data
+			$getPatchcode = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('patch_id',"UPPER(replace(patchcode,' ',''))"),'columnName'=>'headquater_id','columnValue'=>$headquaterID));
 
-			$inputFileType = PHPExcel_IOFactory::identify($filename);
+			// Get All Patchcode City Data
+			$getPatchcity = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('city_id',"patch_id"),'columnName'=>'headquater_id','columnValue'=>$headquaterID)); 
+			//echo "<pre>";print_r($getPatchcity);echo "</pre>";die;
 
-			$objReader = PHPExcel_IOFactory::createReader($inputFileType);
+			if(count($getPatchcode) > 0) {			
 
-			$objReader->setReadDataOnly(true);
+			// Count Columns of each Row
+			$totalColumns = $data->getHighestColumn();
 
-			$reader = $objReader->load($filename);
+				if($totalColumns == 'AI') {
 
-			$data = $reader->getSheet(0);
+					$sheetHeadeheadquaterDatar = $data->rangeToArray('A1:'.$totalColumns.'1');
+					$rowData[] = $sheetHeader[0];
 
-			$k = $data->getHighestRow();
+					for ($i=1; $i<$k; $i+=1) {
 
-			$rowError = array();
+						if ($isFirstRow) {
 
-			$rowData  = array();
+							$isFirstRow = FALSE;
+							continue;
+						}
 
-					
-
-			// Headquarter Detail
-
-			$headquaterID = Class_Encryption::decode($formData['hqt']);
-
-			
-
-			if($headquaterID > 0) {
-
-				// Get All Location Data of Headquater
-
-				$queryField = array('tableName'=>'headquater','tableColumn'=>array('headquater_name','area_id','region_id','zone_id','country_id','bunit_id'),'columnName'=>'headquater_id','columnValue'=>$headquaterID,'returnRow'=>'single');
-
-				$headquaterData = $this->getTableData($queryField);
-
-				
-
-				// Get All Patchcode Data
-
-				$getPatchcode = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('patch_id',"UPPER(replace(patchcode,' ',''))"),'columnName'=>'headquater_id','columnValue'=>$headquaterID));
-
-				
-
-				// Get All Patchcode City Data
-
-				$getPatchcity = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('city_id',"patch_id"),'columnName'=>'headquater_id','columnValue'=>$headquaterID)); //echo "<pre>";print_r($getPatchcity);echo "</pre>";die;
-
-				
-
-				if(count($getPatchcode) > 0) {			
-
-					// Count Columns of each Row
-
-					$totalColumns = $data->getHighestColumn();
-
-					if($totalColumns == 'AI') {
-
-						$sheetHeader = $data->rangeToArray('A1:'.$totalColumns.'1');
-
-						$rowData[] = $sheetHeader[0];
-
-						for ($i=1; $i<$k; $i+=1) {
-
-							if ($isFirstRow) {
-
-								$isFirstRow = FALSE;
-
-								continue;
-
-							}
-
-			$hq_name = trim($this->getCell($data,$i,6));			
-			$query = $this->_db->select()
+						$hq_name = trim($this->getCell($data,$i,6));			
+						$query = $this->_db->select()
 							->from('headquater',array('*'))
 							->where("LOWER(headquater_name)='".strtolower($hq_name)."'"); 
-			//echo $query->__toString();die;
-			$hq_detail = $this->getAdapter()->fetchRow($query);
-			if(empty($hq_detail)){
-			   //print_r($hq_name);die;
-			}
+						//echo $query->__toString();die;
+						$hq_detail = $this->getAdapter()->fetchRow($query);
+			
+						if(empty($hq_detail)){
+						   //print_r($hq_name);die;
+						}
 						
 						$queryField = array('tableName'=>'headquater','tableColumn'=>array('headquater_name','area_id','region_id','zone_id','country_id','bunit_id'),'columnName'=>'headquater_id','columnValue'=>$hq_detail['headquater_id'],'returnRow'=>'single');
 
 						$headquaterData = $this->getTableData($queryField);
 		
-						
-		
 						// Get All Patchcode Data
-		
 						$getPatchcode = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('patch_id',"UPPER(replace(patchcode,' ',''))"),'columnName'=>'headquater_id','columnValue'=>$hq_detail['headquater_id']));
 		
-						
-		
 						// Get All Patchcode City Data
-		
 						$getPatchcity = $this->getLocationData(array('tableName'=>'patchcodes','tableColumn'=>array('city_id',"patch_id"),'columnName'=>'headquater_id','columnValue'=>$hq_detail['headquater_id']));
 
-							// Get the specified row as an array of all cells value
+						// Get the specified row as an array of all cells value
+						$rowValue  = $data->rangeToArray('A'.($i+1).':'.$totalColumns.($i+1));
 
-							$rowValue  = $data->rangeToArray('A'.($i+1).':'.$totalColumns.($i+1)); //echo "<pre>";print_r($totalColumns);die;
+						$doctorData = array();
+						$doctorData['business_unit_id'] = $headquaterData['bunit_id'];
+						$doctorData['country_id'] 		= $headquaterData['country_id'];
+						$doctorData['zone_id'] 			= $headquaterData['zone_id'];
+						$doctorData['region_id'] 		= $headquaterData['region_id'];
+						$doctorData['area_id'] 			= $headquaterData['area_id'];
+						$doctorData['headquater_id'] 	= $headquaterID;
 
-							
+						$patchcode = ($this->getCell($data,$i,9)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,9))) : '';
 
-							$doctorData = array();
+    					$doctorData['patch_id'] = (!empty($patchcode) && isset($getPatchcode[$patchcode])) ? $getPatchcode[$patchcode] : 0;
 
-							$doctorData['business_unit_id'] = $headquaterData['bunit_id'];
+						if($doctorData['patch_id'] > 0){
 
-							$doctorData['country_id'] 		= $headquaterData['country_id'];
+							$doctorData['city_id'] = isset($getPatchcity[$doctorData['patch_id']]) ? $getPatchcity[$doctorData['patch_id']] : 0;
 
-							$doctorData['zone_id'] 			= $headquaterData['zone_id'];
+							$doctorID = ($this->getCell($data,$i,12)!='') ? trim($this->getCell($data,$i,12)) : '';
 
-							$doctorData['region_id'] 		= $headquaterData['region_id'];
+							$doctorID = (int)$doctorID;
 
-							$doctorData['area_id'] 			= $headquaterData['area_id'];
+							$doctorName = ($this->getCell($data,$i,13)!='') ? trim($this->getCell($data,$i,13)) : '';
 
-							$doctorData['headquater_id'] 	= $headquaterID;
+							$doctorData['doctor_name'] 		= $doctorName;
+							$doctorData['am_headquater_id'] = 0; 
+							$doctorData['speciality']  		= $this->getCell($data,$i,14); 
+							$doctorData['qualification']  	= $this->getCell($data,$i,15); 
+							$doctorData['class']  			= $this->getCell($data,$i,16); 
+							$doctorData['visit_frequency']  = $this->getCell($data,$i,17); 
+							$doctorData['meeting_day']  	= $this->getCell($data,$i,18); 
+							$doctorData['meeting_time']  	= $this->getCell($data,$i,19);
+							$doctorData['activity_id']  	= $this->getCell($data,$i,20);
+							$doctorData['gender']  			= $this->getCell($data,$i,21); 
+							$doctorData['dob']  			= $this->getCell($data,$i,22); 
+							$doctorData['phone']  			= $this->getCell($data,$i,23); 
+							$doctorData['mobile']  			= $this->getCell($data,$i,24); 
+							$doctorData['email']  			= $this->getCell($data,$i,25); 
+							$doctorData['address1']  		= $this->getCell($data,$i,26); 
+							$doctorData['address2']  		= $this->getCell($data,$i,27); 
+							$doctorData['postcode']  		= $this->getCell($data,$i,28);
+							$doctorData['state']  			= $this->getCell($data,$i,29);
+							$doctorData['doctor_potential'] = $this->getCell($data,$i,30);
+							$doctorData['remarks']  		= $this->getCell($data,$i,34);
+							//echo "<pre>";print_r($doctorID);die;
 
-							
+							// Check Doctor name for given patch
 
-							$patchcode = ($this->getCell($data,$i,9)!='') ? str_replace(' ','',strtoupper($this->getCell($data,$i,9))) : '';
+							//$doctorField = array('tableName'=>'crm_doctors','tableColumn'=>array('doctor_id'),'columnName'=>'patch_id','columnValue'=>$doctorData['patch_id'],'columnName1'=>"UPPER(replace(doctor_name,' ',''))",'columnValue1'=>str_replace(' ','',strtoupper($doctorName)),'returnRow'=>'single');
 
-							$doctorData['patch_id'] = (!empty($patchcode) && isset($getPatchcode[$patchcode])) ? $getPatchcode[$patchcode] : 0;
+							//$doctorRow = $this->getTableData($doctorField);
 
-							
+							//if(trim($doctorRow['doctor_id']) < 1) 
+							if(trim($doctorID) < 1) {
 
-							if($doctorData['patch_id'] > 0) {
-
-								$doctorData['city_id'] = isset($getPatchcity[$doctorData['patch_id']]) ? $getPatchcity[$doctorData['patch_id']] : 0;
-
-								$doctorID = ($this->getCell($data,$i,12)!='') ? trim($this->getCell($data,$i,12)) : '';
-
-								$doctorID = (int)$doctorID;
-
-								$doctorName = ($this->getCell($data,$i,13)!='') ? trim($this->getCell($data,$i,13)) : '';
-
-								
-
-								$doctorData['doctor_name'] 		= $doctorName;
-
-								$doctorData['am_headquater_id'] = 0; 
-
-								$doctorData['speciality']  		= $this->getCell($data,$i,14); 
-
-								$doctorData['qualification']  	= $this->getCell($data,$i,15); 
-
-								$doctorData['class']  			= $this->getCell($data,$i,16); 
-
-								$doctorData['visit_frequency']  = $this->getCell($data,$i,17); 
-
-								$doctorData['meeting_day']  	= $this->getCell($data,$i,18); 
-
-								$doctorData['meeting_time']  	= $this->getCell($data,$i,19);
-
-								$doctorData['activity_id']  	= $this->getCell($data,$i,20);												
-
-								$doctorData['gender']  			= $this->getCell($data,$i,21); 
-
-								$doctorData['dob']  			= $this->getCell($data,$i,22); 
-
-								$doctorData['phone']  			= $this->getCell($data,$i,23); 
-
-								$doctorData['mobile']  			= $this->getCell($data,$i,24); 
-
-								$doctorData['email']  			= $this->getCell($data,$i,25); 
-
-								$doctorData['address1']  		= $this->getCell($data,$i,26); 
-
-								$doctorData['address2']  		= $this->getCell($data,$i,27); 
-
-								$doctorData['postcode']  		= $this->getCell($data,$i,28);
-
-								$doctorData['state']  			= $this->getCell($data,$i,29);
-
-								$doctorData['doctor_potential'] = $this->getCell($data,$i,30);												
-
-								$doctorData['remarks']  		= $this->getCell($data,$i,34); //echo "<pre>";print_r($doctorID);die;
-
-								
-
-								// Check Doctor name for given patch
-
-								//$doctorField = array('tableName'=>'crm_doctors','tableColumn'=>array('doctor_id'),'columnName'=>'patch_id','columnValue'=>$doctorData['patch_id'],'columnName1'=>"UPPER(replace(doctor_name,' ',''))",'columnValue1'=>str_replace(' ','',strtoupper($doctorName)),'returnRow'=>'single');
-
-								//$doctorRow = $this->getTableData($doctorField);
-
-								
-
-								//if(trim($doctorRow['doctor_id']) < 1) 
-
-								if(trim($doctorID) < 1) {
-
-									$doctorData['doctor_code']  	= $this->makeDoctorCode();
-
-									$doctorData['org_svl_number']  	= $this->makeDoctorSVL();
-
-									$doctorData['svl_number']  		= $this->makeDoctorSVL(array('headquarterID'=>$headquaterID));
-
-									$doctorData['create_type']  	= '2';
-
-									$doctorData['created_by']  		= $_SESSION['AdminLoginID']; 
-
-									$doctorData['created_ip'] 	 	= $_SERVER['REMOTE_ADDR'];
+								$doctorData['doctor_code']  	= $this->makeDoctorCode();
+								$doctorData['org_svl_number']  	= $this->makeDoctorSVL();
+								$doctorData['svl_number']  		= $this->makeDoctorSVL(array('headquarterID'=>$headquaterID));
+								$doctorData['create_type']  	= '2';
+								$doctorData['created_by'] 	= $_SESSION['AdminLoginID']; 
+								$doctorData['created_ip'] 	 	= $_SERVER['REMOTE_ADDR'];
 
 									
+								if($_SESSION['AdminLoginID']==1) {
 
-									if($_SESSION['AdminLoginID']==1) {
+									$doctorData['isApproved']    = '1';
+									$doctorData['approved_by']   = $_SESSION['AdminLoginID']; 
+									$doctorData['approved_date'] = date('Y-m-d h:i:s');
+									$doctorData['approved_ip']   = $_SERVER['REMOTE_ADDR'];
+									$doctorData['old_doctor_id']   = trim($doctorID);
+								} 
+								//echo "<pre>";print_r($doctorData);echo "</pre>";die;
 
-										$doctorData['isApproved']    = '1';
+								$addDoctorMain = $this->addDoctorData(array('tableName'=>'crm_doctors','tableData'=>$doctorData));
 
-										$doctorData['approved_by']   = $_SESSION['AdminLoginID']; 
+								$chemist1 = ($this->getCell($data,$i,31)!='') ? trim($this->getCell($data,$i,31)) : '';
 
-										$doctorData['approved_date'] = date('Y-m-d h:i:s');
+								if(trim($chemist1) != ''){
 
-										$doctorData['approved_ip']   = $_SERVER['REMOTE_ADDR'];
-										$doctorData['old_doctor_id']   = trim($doctorID);
-
-									} //echo "<pre>";print_r($doctorData);echo "</pre>";die;
-
-									
-
-									$addDoctorMain = $this->addDoctorData(array('tableName'=>'crm_doctors','tableData'=>$doctorData));
-
-									
-
-									$chemist1 = ($this->getCell($data,$i,31)!='') ? trim($this->getCell($data,$i,31)) : '';
-
-									if(trim($chemist1) != ''){
-
-										$chemist1ID = $this->getChemistIdOrAdd($chemist1,$doctorData);
-
-										$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist1ID)));
-
-									}
-
-									
-
-									$chemist2 = ($this->getCell($data,$i,32)!='') ? trim($this->getCell($data,$i,32)) : '';
-
-									if(trim($chemist2) != ''){
-
-										$chemist2ID = $this->getChemistIdOrAdd($chemist2,$doctorData);
-
-										$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist2ID)));
-
-									}
-
-
-									
-
-									$chemist3 = ($this->getCell($data,$i,33)!='') ? trim($this->getCell($data,$i,33)) : '';
-
-									if(trim($chemist3) != ''){
-
-										$chemist3ID = $this->getChemistIdOrAdd($chemist3,$doctorData);
-
-										$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist3ID)));
-
-									}
-
+									$chemist1ID = $this->getChemistIdOrAdd($chemist1,$doctorData);
+									$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist1ID)));
 								}
 
-								else {
+									
+								$chemist2 = ($this->getCell($data,$i,32)!='') ? trim($this->getCell($data,$i,32)) : '';
 
-									$doctorData['isActive']  	= ($this->getCell($data,$i,35)==0) ? '0' : '1';
+								if(trim($chemist2) != ''){
 
-									$doctorData['isModify']  	= '1';
-
-									$doctorData['modify_by']  	= $_SESSION['AdminLoginID'];
-
-									$doctorData['modify_date'] 	= date('Y-m-d H:i:s');
-
-									$doctorData['modify_ip'] 	= $_SERVER['REMOTE_ADDR'];
-
-									$this->updateTableData(array('tableName'=>'crm_doctors','tableData'=>$doctorData,'whereColumn'=>'doctor_id='.$doctorID));
-
+									$chemist2ID = $this->getChemistIdOrAdd($chemist2,$doctorData);
+									$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist2ID)));
 								}
 
+
+								$chemist3 = ($this->getCell($data,$i,33)!='') ? trim($this->getCell($data,$i,33)) : '';
+
+								if(trim($chemist3) != ''){
+
+									$chemist3ID = $this->getChemistIdOrAdd($chemist3,$doctorData);
+									$this->_db->insert('crm_doctor_chemists',array_filter(array('doctor_id'=>$addDoctorMain,'chemist_id'=>$chemist3ID)));
+								}
+							}else{
+
+								$doctorData['isActive']  	= ($this->getCell($data,$i,35)==0) ? '0' : '1';
+								$doctorData['isModify']  	= '1';
+								$doctorData['modify_by']  	= $_SESSION['AdminLoginID'];
+								$doctorData['modify_date'] 	= date('Y-m-d H:i:s');
+								$doctorData['modify_ip'] 	= $_SERVER['REMOTE_ADDR'];
+
+								$this->updateTableData(array('tableName'=>'crm_doctors','tableData'=>$doctorData,'whereColumn'=>'doctor_id='.$doctorID));
+
 							}
+						}else{
 
-							else {
-
-								$rowError[] = array(($i+1),"Patchcode (".$patchcode.") is not found !!");
-
-								$rowData[]  = $rowValue[0];
-
-							}
-
+							$rowError[] = array(($i+1),"1364 by jeet Patchcode (".$patchcode.") is not found !!");
+							$rowData[]  = $rowValue[0];
 						}
-
 					}
-
-					else {
-
-						$rowError[] = array('',"Column length didn't match, please verify file column header !!");
-
-					}
-
+				}else {
+				
+					$rowError[] = array('',"Column length didn't match, please verify file column header !!");
 				}
+			}else{
 
-				else {
-
-					$rowError[] = array('',"No any patch added yet for headquater (".$headquaterData['headquater_name'].") !!");
-
-				}
-
+				$rowError[] = array('',"No any patch added yet for headquater (".$headquaterData['headquater_name'].") !!");
 			}
+		}else {
 
-			else {
-
-				$rowError[] = array('',"Please select headquater !!");
-
-			}
-
-			
-
-			//echo "<pre>";print_r($rowData);echo "</pre>";die;
-
-			
-
-			if(count($rowError)>0) {
-
-				ini_set("memory_limit","512M");
-
-				ini_set("max_execution_time",180);
-
-				ob_end_clean();
-
-				$objPHPExcel = new PHPExcel(); //print_r($objPHPExcel);die;
-
-				
-
-				// Create a first sheet, representing sales data
-
-				$objPHPExcel->setActiveSheetIndex(0);
-
-				
-
-				$objPHPExcel->getActiveSheet()->setCellValue('A1', 'Row Number')
-
-											  ->setCellValue('B1', 'Error Description');
-
-				// Set title row bold
-
-				$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getFont()->setBold(true);
-
-				
-
-				// Setting Auto Width
-
-				//$objPHPExcel->getActiveSheet()->getColumnDimension("A")->setAutoSize(true);
-
-				foreach(range('A',$objPHPExcel->getActiveSheet()->getHighestColumn()) as $columnID) {
-
-					$objPHPExcel->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
-
-				}
-
-				
-
-				// Setting Column Background Color
-
-				$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF00');
-
-				
-
-				// Setting Text Alignment Center
-
-				$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
-
-				
-
-				// Write Data
-
-				$objPHPExcel->getActiveSheet()->fromArray($rowError, NULL, 'A2');
-
-				
-
-				// Freez Pane of Top Row
-
-				$objPHPExcel->getActiveSheet()->freezePane('A2');
-
-				
-
-				// Rename sheet
-
-				$objPHPExcel->getActiveSheet()->setTitle('Error Detail');
-
-				
-
-				if(count($rowData) > 0) {
-
-					// Create a new worksheet, after the default sheet
-
-					$objPHPExcel->createSheet();
-
-					
-
-					// Add some data to the second sheet, resembling some different data types
-
-					$objPHPExcel->setActiveSheetIndex(1);
-
-					//$objPHPExcel->getActiveSheet()->setCellValue('A1', 'More data');
-
-					
-
-					$objPHPExcel->getActiveSheet()->fromArray($rowData, NULL, 'A2');
-
-					
-
-					// Rename 2nd sheet
-
-					$objPHPExcel->getActiveSheet()->setTitle('Error Data Row');
-
-				}
-
-				
-
-				// Set active sheet index to the first sheet, so Excel opens this as the first sheet
-
-				$objPHPExcel->setActiveSheetIndex(0);					
-
-								
-
-				// Redirect output to a client’s web browser (Excel5)
-
-				header('Content-Type: application/xlsx');
-
-				header('Content-Disposition: attachment;filename="error_response.xlsx"');
-
-				header('Cache-Control: max-age=0');
-
-				$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
-
-				ob_end_clean();
-
-				$objWriter->save('php://output'); // $objWriter->save('-'); //THIS DOES NOT WORK WHY?
-
-				//$objWriter->save('test.xlsx');  //THIS WORKS
-
-				$objPHPExcel->disconnectWorksheets();
-
-				unset($objPHPExcel);die;
-
-			}
-
-			
-
-			return TRUE;
-
+			$rowError[] = array('',"Please select headquater !!");
 		}
 
-		public function UpdateDoctorFromExcel_original($formData)
-
-		{
+		//echo "<pre>";print_r($rowData);echo "</pre>";die;
+		if(count($rowError)>0) {
 
 			ini_set("memory_limit","512M");
+			ini_set("max_execution_time",180);
+			ob_end_clean();
 
+			$objPHPExcel = new PHPExcel(); //print_r($objPHPExcel);die;
+
+			// Create a first sheet, representing sales data
+			$objPHPExcel->setActiveSheetIndex(0);
+
+			$objPHPExcel->getActiveSheet()->setCellValue('A1', 'Row Number')
+			  ->setCellValue('B1', 'Error Description');
+
+			// Set title row bold
+			$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getFont()->setBold(true);
+
+			// Setting Auto Width
+			//$objPHPExcel->getActiveSheet()->getColumnDimension("A")->setAutoSize(true);
+
+			foreach(range('A',$objPHPExcel->getActiveSheet()->getHighestColumn()) as $columnID) {
+
+				$objPHPExcel->getActiveSheet()->getColumnDimension($columnID)->setAutoSize(true);
+			}
+
+			// Setting Column Background Color
+			$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getFill()->setFillType(PHPExcel_Style_Fill::FILL_SOLID)->getStartColor()->setARGB('FFFF00');
+
+			// Setting Text Alignment Center
+			$objPHPExcel->getActiveSheet()->getStyle('A1:'.$objPHPExcel->getActiveSheet()->getHighestColumn().'1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_CENTER);
+
+			// Write Data
+			$objPHPExcel->getActiveSheet()->fromArray($rowError, NULL, 'A2');
+
+			// Freez Pane of Top Row
+			$objPHPExcel->getActiveSheet()->freezePane('A2');
+				
+			// Rename sheet
+			$objPHPExcel->getActiveSheet()->setTitle('Error Detail');
+
+			if(count($rowData) > 0) {
+
+				// Create a new worksheet, after the default sheet
+				$objPHPExcel->createSheet();
+		
+				// Add some data to the second sheet, resembling some different data types
+				$objPHPExcel->setActiveSheetIndex(1);
+
+				//$objPHPExcel->getActiveSheet()->setCellValue('A1', 'More data');
+				$objPHPExcel->getActiveSheet()->fromArray($rowData, NULL, 'A2');
+
+				// Rename 2nd sheet
+				$objPHPExcel->getActiveSheet()->setTitle('Error Data Row');
+			}
+
+			// Set active sheet index to the first sheet, so Excel opens this as the first sheet
+			$objPHPExcel->setActiveSheetIndex(0);					
+
+			// Redirect output to a client’s web browser (Excel5)
+			header('Content-Type: application/xlsx');
+			header('Content-Disposition: attachment;filename="error_response.xlsx"');
+			header('Cache-Control: max-age=0');
+
+			$objWriter = PHPExcel_IOFactory::createWriter($objPHPExcel, 'Excel2007');
+			ob_end_clean();
+
+			$objWriter->save('php://output'); // $objWriter->save('-'); //THIS DOES NOT WORK WHY?
+
+			//$objWriter->save('test.xlsx');  //THIS WORKS
+			$objPHPExcel->disconnectWorksheets();
+
+			unset($objPHPExcel);die;
+		}
+
+		return TRUE;
+	}
+
+	public function UpdateDoctorFromExcel_original($formData)
+	{
+
+			ini_set("memory_limit","512M");
 			ini_set("max_execution_time",180);
 
 			$filename 	= CommonFunction::UploadFile('doctorFile','xls');

@@ -126,10 +126,10 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
         }
     
         $select = $this->_db->select()
-                    ->from('module',array('*'))
-                    ->where("parent_id='".$parent_id."'")
-                    ->where($where)
-                    ->where("module_type=1");
+            ->from('module',array('*'))
+            ->where("parent_id='".$parent_id."'")
+            ->where($where)
+            ->where("module_type=1");
         //echo $select->__toString();die;
         $result = $this->getAdapter()->fetchAll($select);
         
@@ -326,7 +326,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * function separated on the basis of main dashboard menu
     * */
     public function getAllUsersForSalaryHRM($user_id=false){
-            
+  //  echo "<br><br>329 custom clas page get All Users For Salary = ".$user_id;        
         $where = '';
 
         if($user_id){
@@ -337,9 +337,9 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
             ->from(array('UT'=>'employee_personaldetail'),array('CONCAT(first_name," ",last_name) as name','*'))
             ->joininner(array('DES'=>'designation'),"DES.designation_id=UT.designation_id",array('designation_name','designation_code'))
             ->joininner(array('DEP'=>'department'),"DEP.department_id=UT.department_id",array('department_name'))
-            ->where("UT.user_status='1' AND UT.delete_status='0'".$where)
+            ->where("UT.user_status='0' AND UT.delete_status='0'".$where)
             ->order("employee_code ASC");
-        //echo $select->__toString();die;
+      // echo "<br><br><br>".$select->__toString();die;
 
         if($user_id){
             $result = $this->getAdapter()->fetchRow($select);
@@ -422,6 +422,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Fetch All the column Name of specific table.
     **/
     public function getDesignation(){
+
         $select = $this->_db->select()
             ->from('designation',array('*'))
             ->joinleft(array('PD'=>'designation'),"PD.designation_id=designation.designation_level",array('designation_name as parentdesig'))
@@ -438,7 +439,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
     * Fetch All the column Name of specific table.
     * */
     public function getDepartment(){
-        
+       
         $select = $this->_db->select()
                 ->from('department',array('*'));
         $result = $this->getAdapter()->fetchAll($select);
@@ -1143,7 +1144,7 @@ class Zend_Custom_Class extends Zend_Db_Table_Abstract {
 					->where("parent_id='".$parent_id."'")
 					->where($where)
 					->where("module_type=1");
-        echo "1142 main custom class from library getAllMOdule function is call<pre>"; print_r($select->__toString()); die;            
+        //echo "1142 main custom class from library getAllMOdule function is call<pre>"; print_r($select->__toString()); die;            
 		$result = $this->getAdapter()->fetchAll($select);
 		
         return $result;

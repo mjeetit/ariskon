@@ -1,14 +1,17 @@
 <?php
 class EmployeeaccountController extends Zend_Controller_Action {
+	
 	var $session="";
 	public $users;
 	public $ObjModel = NULL;
 	public $_data = NULL;
 
 	public function init(){
+
 	    if(!isset($_SESSION['AdminLoginID'])){
 	      $this->_redirect(Bootstrap::$baseUrl);
-	   }
+	    }
+	    
 		$this->session = Bootstrap::$registry->get('defaultNs');
 		Bootstrap::$_parent = 106;
 		Bootstrap::$_level = 2;

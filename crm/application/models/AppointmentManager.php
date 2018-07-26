@@ -15,10 +15,13 @@ class AppointmentManager extends Zend_Custom
 		return $this->getAdapter()->fetchRow($query);
 	}
 	
-	public function getAppointments($data) {
-		try {
+	public function getAppointments($data){
+
+		try{
+
 			$where = "1";
 			$filterparam = '';
+
 			if($_SESSION['AdminLevelID'] != 1 && $_SESSION['AdminLevelID'] != 44 && $_SESSION['AdminDesignation'] != 34){
 			  $value = implode(',',$this->geHierarchyId());
 			  $filterparam .= " AND HQ.headquater_id IN(".$value.")";

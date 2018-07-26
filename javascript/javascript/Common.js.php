@@ -319,14 +319,33 @@ function showHide(shID)
 	}
 }
 function getUsersByDesignation(designation_id,selected){
+
     var department_id = $("#department_id").val();
-  $.ajax({
-		  url: '<?php echo $basename;?>/Ajax/userbydesignation',
-		  data: 'department_id='+department_id+'&designation_id='+designation_id+'&selected='+selected,
-		  success: function(data) {
-		     //alert(data);return false;
-			 $("#user_id").html(data);
-		  }
+  	
+  	$.ajax({
+		
+		url: '<?php echo $basename;?>/Ajax/userbydesignation',
+		data: 'department_id='+department_id+'&designation_id='+designation_id+'&selected='+selected,
+		success: function(data) {
+		
+		   	//alert(data);
+		   	/*****************************************************************
+		   	add if condition to validate the employee name filter should not 
+		   	be blank. due to which list view is also blank by jm on 24072018
+		   	******************************************************************/
+		   	var selectheader = '<option value="">--Select--</option>';
+ 
+			if( data != selectheader ){
+
+				$("#user_id").html(data);
+   				$('#Add').show();
+   	
+   			}else{
+	
+	   			$("#user_id").html('<option value="">--Select--</option>');
+   				$('#Add').hide();
+   			}   			
+		}
 	 });
 }
 function showmonthtextbox(id){

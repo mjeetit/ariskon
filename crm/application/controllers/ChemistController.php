@@ -6,9 +6,11 @@ class ChemistController extends Zend_Controller_Action {
 	public $_data = NULL;
 
 	public function init(){
+
 		if(!isset($_SESSION['AdminLoginID'])){
 	      $this->_redirect(Bootstrap::$baseUrl);
-	   }
+	   	}
+
 		$this->session = Bootstrap::$registry->get('defaultNs');
 		Bootstrap::$_parent = 18;
 		Bootstrap::$_level = 2;
@@ -26,22 +28,25 @@ class ChemistController extends Zend_Controller_Action {
 	}
 	
     public function indexAction(){
+
 	     $data = $this->_request->getParams();
-		 
 		 $this->view->Filterdata = $data;
 		 $this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
-		 
 		 $this->view->chemists = $this->ObjModel->getChemists($data);
 	}
 	
 	public function addAction(){
+		
 		$data = $this->_request->getParams();
+
 		// Add New Chemist Details
 		if($this->_request->isPost() && str_replace(' ','_',strtoupper($data['chemistAdd'])) == 'ADD_CHEMIST'){
-			$filterFormData = $this->getfilterFormData(array('formData'=>$data)); //echo "<pre>";print_r($filterFormData);echo "</pre>";die;
+
+			$filterFormData = $this->getfilterFormData(array('formData'=>$data)); 
 		   
 		   	$filterFormData['chemistData']['created_by'] = $_SESSION['AdminLoginID'];
-		   	$filterFormData['chemistData']['created_ip'] = $_SERVER['REMOTE_ADDR']; //echo "<pre>";print_r($filterFormData);echo "</pre>";die;
+		   	$filterFormData['chemistData']['created_ip'] = $_SERVER['REMOTE_ADDR'];
+  	
 		   	$addChemistMain = $this->ObjModel->addChemistData(array('tableName'=>'crm_chemists','tableData'=>$filterFormData['chemistData']));
 		   
 		   	if($addChemistMain > 0) {
@@ -56,14 +61,23 @@ class ChemistController extends Zend_Controller_Action {
 		     
 		   	$this->_redirect($this->_request->getControllerName().'/index');
 	   	}
-		$this->view->streets = $this->ObjModel->getStreetCodes();
+
+		/****************************************************************
+	    modify the function name from getStreetCodes to getPatchCodes as 
+	    per the requirement and naming convention rule by jm on 25072018
+		*****************************************************************/
+		//$this->view->streets = $this->ObjModel->getStreetCodes();
+		$this->view->patchcodes = $this->ObjModel->getPatchCodes();
 	}
 	
 	public function editAction(){
-	   	$data = $this->_request->getParams(); //echo "<pre>";print_r($data);echo "</pre>";die;
+	   	$data = $this->_request->getParams(); 
+
+	   	//echo "66 chemistcontroller crm <pre>";print_r($data); die;
 		 
 		// Get Patch data with location data
 		if(!empty($data['chemistUpd']) && strtoupper(str_replace(' ','_',$data['chemistUpd'])) == 'UPDATE'){
+
 			$filterFormData = $this->getfilterFormData(array('formData'=>$data));
 			$filterFormData['chemistData']['isModify'] = '1';
 			$filterFormData['chemistData']['modify_by'] = $_SESSION['AdminLoginID'];
@@ -82,45 +96,54 @@ class ChemistController extends Zend_Controller_Action {
 				}
 				$_SESSION[SUCCESS_MSG] = "Chemist detail has updated successfully!!";
 				$this->_redirect($this->_request->getControllerName().'/'.$this->_request->getActionName().'/token/'.$data['token']);
-			}
-			else {
+			
+			}else {
+			
 				$_SESSION[ERROR_MSG] = "Some problem found on update chemist detail, please try again!!";
 				$this->_redirect($this->_request->getControllerName().'/'.$this->_request->getActionName().'/token/'.$data['token']);
 			}
 		}
 	   
 	   	$this->view->postData = $data;
+echo "<br>108 indexAction = <pre>"; print_r($data);	
 		$this->view->headquarters = $this->ObjAjax->getHeadquarterLists();
 		$this->view->chemist = $this->ObjModel->getChemists($data);
-		$this->view->stokist = $this->ObjModel->getLocationData(array('tableName'=>'crm_chemist_stockists','tableColumn'=>array('stockist_name'),'columnName'=>'chemist_id','columnValue'=>$this->view->chemist[0]['chemist_id'])); //echo "<pre>";print_r($this->view->stokist);echo "</pre>";die;
+		$this->view->stokist = $this->ObjModel->getLocationData(array('tableName'=>'crm_chemist_stockists','tableColumn'=>array('stockist_name'),'columnName'=>'chemist_id','columnValue'=>$this->view->chemist[0]['chemist_id'])); 
+
+		//echo "<pre>"; print_r($this->view->stokist); die;
 	}
 	
-	public function getfilterFormData($data=array()) {
-		 $formData = (isset($data['formData']) && count($data['formData'])>0) ? $data['formData'] : array();
-		 
-		 $chemistData = array();
-		 $chemistData['legacy_code'] 	= (isset($formData['legacy_code'])) ? trim($formData['legacy_code']) : '';
-		 $chemistData['chemist_name'] 	= (isset($formData['chemist_name'])) ? trim($formData['chemist_name']) : '';
-		 $chemistData['contact_person']	= (isset($formData['contact_person'])) ? trim($formData['contact_person']) : '';
-		 $chemistData['class'] 			= (isset($formData['class'])) 		? trim($formData['class']) : '';
-		 $chemistData['email'] 			= (isset($formData['email'])) 		? trim($formData['email']) : '';
-		 $chemistData['phone'] 			= (isset($formData['phone'])) 		? trim($formData['phone']) : '';
-		 $chemistData['mobile'] 		= (isset($formData['mobile'])) 		? trim($formData['mobile']) : '';
-		 $chemistData['address1'] 		= (isset($formData['address1'])) 	? trim($formData['address1']) : '';
-		 $chemistData['address2'] 		= (isset($formData['address2'])) 	? trim($formData['address2']) : '';
-		 $chemistData['postcode'] 		= (isset($formData['postcode'])) 	? trim($formData['postcode']) : '';	
-		 
-		 $locationInfo = $this->ObjAjax->getlocation(array('streetID'=>$formData['patchtoken']));
-		 $chemistData['patch_id'] 		= $formData['patchtoken'];
-		 $chemistData['city_id'] 		= $locationInfo['city_id'];
-		 $chemistData['headquater_id'] 	= $locationInfo['headquater_id'];
-		 $chemistData['area_id'] 		= $locationInfo['area_id'];
-		 $chemistData['region_id'] 		= $locationInfo['region_id'];
-		 $chemistData['zone_id'] 		= $locationInfo['zone_id'];
-		 $chemistData['country_id']		= (isset($locationInfo['country_id'])) ? $locationInfo['bunit_id'] : '27';
-		 $chemistData['bunit_id'] 		= $locationInfo['bunit_id'];
-		 
-		 return array('chemistData'=>$chemistData);
+	public function getfilterFormData($data=array())
+	{
+		$formData = (isset($data['formData']) && count($data['formData'])>0) ? $data['formData'] : array();
+ 
+		$chemistData = array();
+		
+		$chemistData['legacy_code'] 	= (isset($formData['legacy_code'])) ? trim($formData['legacy_code']) : '';
+		$chemistData['chemist_name'] 	= (isset($formData['chemist_name'])) ? trim($formData['chemist_name']) : '';
+		$chemistData['contact_person']	= (isset($formData['contact_person'])) ? trim($formData['contact_person']) : '';
+		$chemistData['class'] 			= (isset($formData['class'])) ? trim($formData['class']) : '';
+		$chemistData['email'] 			= (isset($formData['email'])) ? trim($formData['email']) : '';
+		$chemistData['phone'] 			= (isset($formData['phone'])) ? trim($formData['phone']) : '';
+		$chemistData['mobile'] 		= (isset($formData['mobile'])) ? trim($formData['mobile']) : '';
+		$chemistData['address1'] 		= (isset($formData['address1'])) ? trim($formData['address1']) : '';
+		$chemistData['address2'] 		= (isset($formData['address2'])) ? trim($formData['address2']) : '';
+		$chemistData['postcode'] 		= (isset($formData['postcode'])) ? trim($formData['postcode']) : '';
+
+		//$locationInfo = $this->ObjAjax->getlocation(array('streetID'=>$formData['patchtoken']));
+		$locationInfo = $this->ObjAjax->getlocation(array('streetID'=>$formData['street_id']));
+
+		//$chemistData['patch_id'] 		= $formData['patchtoken'];
+		$chemistData['patch_id'] 		= $formData['street_id'];
+		$chemistData['city_id'] 		= $locationInfo['city_id'];
+		$chemistData['headquater_id'] 	= $locationInfo['headquater_id'];
+		$chemistData['area_id'] 		= $locationInfo['area_id'];
+		$chemistData['region_id'] 		= $locationInfo['region_id'];
+		$chemistData['zone_id'] 		= $locationInfo['zone_id'];
+		$chemistData['country_id']		= (isset($locationInfo['country_id'])) ? $locationInfo['bunit_id'] : '27';
+		$chemistData['bunit_id'] 		= $locationInfo['bunit_id'];
+
+		return array('chemistData'=>$chemistData);
 	}
 }
 ?>

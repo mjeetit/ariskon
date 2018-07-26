@@ -114,8 +114,8 @@
         public function getStatusCheck($uservalue){
 		   $usertype  = ($uservalue['user_type']==1 || $uservalue['user_type']==2)?$uservalue['user_type']:2;
             $select = $this->_db->select()
-                                     ->from($this->Tables[$usertype],array('*'))
-                                     ->where("user_id='".$uservalue['user_id']."' AND delete_status='0'");
+                 ->from($this->Tables[$usertype],array('*'))
+                 ->where("user_id='".$uservalue['user_id']."' AND delete_status='0'");
             $result = $this->getAdapter()->fetchRow($select);//print_r($result);die;
             if(!empty($result)){
                 return true;

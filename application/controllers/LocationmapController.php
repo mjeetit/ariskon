@@ -6,6 +6,7 @@ class LocationmapController extends Zend_Controller_Action {
 	public $_data = NULL;
 
 	public function init(){
+		
 		if(!isset($_SESSION['AdminLoginID'])){
 	      $this->_redirect(Bootstrap::$baseUrl);
 	    }
@@ -23,12 +24,15 @@ class LocationmapController extends Zend_Controller_Action {
 	public function businesstocompanyAction(){
 	     $this->view->bunittocompany = $this->ObjModel->getBusinessToCompany();
 	}
+
 	public function b2cAction(){
-	   if($this->_request->isPost() && !empty($this->_data['b2c'])){
+	
+	   	if($this->_request->isPost() && !empty($this->_data['b2c'])){
 	       $this->ObjModel->Addb2c();
 		   $this->_redirect($this->_request->getControllerName().'/businesstocompany');
-	   }
+	   	}
 	}
+
 	public function departmenttobunitAction(){
 	    $this->view->departmenttobunit = $this->ObjModel->getDepartmentToBusinessUnit();
 	}
